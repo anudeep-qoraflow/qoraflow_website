@@ -248,7 +248,7 @@ Contact us</button>
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">About your business<textarea class="qf-input" data-on="input:onField" name="message" placeholder="A short description, e.g. a family dental clinic in Phoenix open Mon to Sat" required="" rows="3" style="resize: vertical"></textarea></label>
 <button style="margin-top: 4px; min-height: 50px; border: none; border-radius: 999px; background: #3DB8FF; color: #000000; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 0 30px rgba(61,184,255,0.45)" type="submit">Start my free 14-day trial</button>
 <p style="margin: 0; text-align: center; font-size: 13px; color: #9AA6BA">By submitting, you agree to our <a href="terms.html" style="color: #3DB8FF">Terms of Service</a> and <a href="privacy.html" style="color: #3DB8FF">Privacy Policy</a>.</p>
-<p style="margin: 0; text-align: center; font-size: 14px; color: #C9D2E3">Or email us directly at <a href="mailto:hello@qoraflow.com" style="color: #3DB8FF; font-weight: 700">hello@qoraflow.com</a></p>
+<p style="margin: 0; text-align: center; font-size: 14px; color: #C9D2E3">Or email us directly at <a href="mailto:contact@qoraflow.com" style="color: #3DB8FF; font-weight: 700">contact@qoraflow.com</a></p>
 </form>
 </div>
 <div data-if="contactSent" style="display: none">
@@ -741,11 +741,11 @@ Talk to Qoraflow</span></button>
 <div style="flex: 1 1 260px; min-width: 0">
 <p style="margin: 0 0 10px; font-size: 26px; font-weight: 800; letter-spacing: -0.5px">Qora<span style="color: #FF9F1C">flow</span></p>
 <p style="margin: 0 0 6px; color: #C9D2E3; max-width: 300px">AI voice agents for every business. Every call answered. Every booking made.</p>
-<a href="mailto:hello@qoraflow.com" style="color: #3DB8FF; font-weight: 700">hello@qoraflow.com</a>
+<a href="mailto:contact@qoraflow.com" style="color: #3DB8FF; font-weight: 700">contact@qoraflow.com</a>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 56px">
 <div style="display: flex; flex-direction: column; gap: 10px"><p style="margin: 0 0 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #9AA6BA">Product</p><a href="#app" style="color: #FFFFFF">The app</a><a href="#pricing" style="color: #FFFFFF">Pricing</a><a href="#faq" style="color: #FFFFFF">FAQ</a><a href="https://app.qoraflow.com" style="color: #FFFFFF">Log in</a></div>
-<div style="display: flex; flex-direction: column; gap: 10px"><p style="margin: 0 0 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #9AA6BA">Company</p><a href="about.html" style="color: #FFFFFF">About us</a><a href="mailto:hello@qoraflow.com" style="color: #FFFFFF">Contact</a><a href="privacy.html" style="color: #FFFFFF">Privacy policy</a><a href="terms.html" style="color: #FFFFFF">Terms of service</a></div>
+<div style="display: flex; flex-direction: column; gap: 10px"><p style="margin: 0 0 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #9AA6BA">Company</p><a href="about.html" style="color: #FFFFFF">About us</a><a href="mailto:contact@qoraflow.com" style="color: #FFFFFF">Contact</a><a href="privacy.html" style="color: #FFFFFF">Privacy policy</a><a href="terms.html" style="color: #FFFFFF">Terms of service</a></div>
 </div>
 </div>
 <div style="max-width: 1200px; margin: 0 auto; padding: 20px 24px 32px; box-sizing: border-box; border-top: 1px solid rgba(255,255,255,0.06); color: #9AA6BA; font-size: 14px">© 2026 Qoraflow. All rights reserved.</div>
@@ -809,7 +809,7 @@ s.onField = function (e) { if (e && e.target) s.form[e.target.name] = e.target.v
 s.onSubmit = function (e) {
 if (e) e.preventDefault();
 var f = s.form, lines = ['Full name: ' + (f.name || ''), 'Email: ' + (f.email || ''), 'Phone: ' + (f.phone || ''), 'Business name: ' + (f.business || ''), '', 'About the business:', f.message || ''];
-var url = 'mailto:hello@qoraflow.com?subject=' + encodeURIComponent('Free 14-day trial request: ' + (f.business || f.name || 'website')) + '&body=' + encodeURIComponent(lines.join('\n'));
+var url = 'mailto:contact@qoraflow.com?subject=' + encodeURIComponent('Free 14-day trial request: ' + (f.business || f.name || 'website')) + '&body=' + encodeURIComponent(lines.join('\n'));
 try { window.location.href = url; } catch (err) {}
 s.setState({ sent: true });
 };
