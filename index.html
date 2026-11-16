@@ -1,0 +1,1265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Qoraflow — AI voice agents for every business</title>
+<meta name="description" content="Qoraflow builds AI voice agents that answer every call, book appointments and take messages 24/7, at a price any business can afford.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Qoraflow — AI voice agents for every business">
+<meta property="og:description" content="Qoraflow builds AI voice agents that answer every call, book appointments and take messages 24/7, at a price any business can afford.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;800&amp;display=swap" rel="stylesheet"/>
+<style>
+body{margin:0;background:#000000}
+a{color:#3DB8FF;text-decoration:none}a:hover{color:#8FD6FF}
+@keyframes qfRingIn{0%{opacity:0;transform:scale(.3) rotate(-120deg)}100%{opacity:1;transform:none}}
+@keyframes qfLetter{0%{opacity:0;transform:translateY(30px) scale(.5)}100%{opacity:1;transform:none}}
+@keyframes qfFadeUp{0%{opacity:0;transform:translateY(16px)}100%{opacity:1;transform:none}}
+@keyframes qfExpand{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(7);visibility:hidden}}
+@keyframes qfVeil{0%{opacity:1}100%{opacity:0;visibility:hidden}}
+@keyframes qfFlash{0%{opacity:0;transform:scale(.3)}40%{opacity:.9}100%{opacity:0;transform:scale(2.4)}}
+@keyframes qfBarIn{0%{opacity:0}100%{opacity:1}}
+@keyframes qfFly{0%{opacity:0;transform:translate3d(var(--dx),var(--dy),0) scale(var(--s,1.8)) rotate(var(--r,0deg))}100%{opacity:1;transform:none}}
+@keyframes qfWord{0%{opacity:0;transform:translate3d(0,22px,0)}100%{opacity:1;transform:none}}
+.qf-veil{animation:qfVeil .5s ease 1.5s both}
+.qf-lockup{animation:qfExpand .6s cubic-bezier(.7,0,.3,1) 1.4s both}
+.qf-ring{animation:qfRingIn .6s cubic-bezier(.16,1,.3,1) both}
+.qf-letter{display:inline-block;animation:qfLetter .45s cubic-bezier(.16,1,.3,1) both}
+.qf-tag{animation:qfFadeUp .5s ease .75s both}
+.qf-flash{animation:qfFlash .6s ease-out 1.35s both}
+.qf-bar{animation:qfBarIn .5s ease 4.5s both}
+.qf-pill{animation:qfWord .8s cubic-bezier(.16,1,.3,1) 3.5s both}
+#home{transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1)}
+.qf-skip .qf-veil{display:none!important}
+.qf-skip .qf-word,.qf-skip .qf-fly,.qf-skip .qf-pill,.qf-skip .qf-bar{animation-delay:0s!important;animation-duration:.45s!important}
+.qf-skip .qf-word.qf-cta{animation-duration:.45s,5s!important}
+.qf-talking #home{opacity:0;transform:translateY(-24px);pointer-events:none!important}
+.qf-talking #home *{pointer-events:none!important}
+.qf-talking .qf-bar{transform:translateY(-110%)!important}
+.qf-shade-l{transition:opacity .6s ease}
+.qf-talking .qf-shade-l{opacity:0!important}
+.qf-talk-in{animation:qfWord .7s cubic-bezier(.16,1,.3,1) .45s both}
+.qf-talk-back:hover,.qf-talk-mic:hover{background:rgba(255,255,255,0.1)!important}
+@media (prefers-reduced-motion: reduce){.qf-talk-in{animation:none}}
+@media (prefers-reduced-motion: reduce){.qf-pill{animation:none}}
+.qf-fly{animation:qfFly 1s cubic-bezier(.16,1,.3,1) both;will-change:transform,opacity}
+.qf-word{display:inline-block;animation:qfWord .8s cubic-bezier(.16,1,.3,1) both}
+.qf-hx{--k:clamp(0,calc(var(--p,0)*4.5 - var(--o)*0.35),1);translate:calc(var(--k) * -70px) calc(var(--k) * -18px);filter:opacity(calc(1 - var(--k)))}
+.qf-hero-el{--k:clamp(0,calc(var(--p,0)*4.5 - var(--o)*0.35),1);opacity:calc(1 - var(--k));transform:translate3d(calc(var(--k) * -70px),calc(var(--k) * -18px),0) scale(calc(1 - var(--k) * 0.06));will-change:transform,opacity}
+.qf-shade-l{opacity:clamp(0,calc(1 - var(--p,0)*2.4),1)}
+.qf-shade-r{opacity:clamp(0,calc(var(--p,0)*2.6 - 0.9 - var(--q,0)*4),1)}
+.qf-how-el{--h:clamp(0,calc((var(--q,0) - 0.42 - var(--i)*0.05)*6),1);opacity:var(--h);transform:translate3d(0,calc((1 - var(--h)) * 50px),0) scale(calc(0.96 + var(--h) * 0.04));will-change:transform,opacity}
+.qf-how-track{opacity:clamp(0,calc((var(--q,0) - 0.48)*6),1)}
+.qf-how-line{transform-origin:top;transform:scaleY(clamp(0,calc((var(--q,0) - 0.5)*2.6),1))}
+.qf-bub{--b:clamp(0,calc((var(--q,0) - 0.55 - var(--i)*0.06)*8),1);opacity:var(--b);transform:translate3d(0,calc((1 - var(--b)) * 16px),0) scale(calc(0.9 + var(--b) * 0.1))}
+@keyframes qfWave{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.qf-wave{transform-origin:center;animation:qfWave 1.1s ease-in-out infinite}
+@keyframes qfLive{0%,100%{opacity:1}50%{opacity:.3}}
+.qf-live{animation:qfLive 1.2s ease-in-out infinite}
+@media (max-width: 900px){.qf-how-card{display:none!important}.qf-how-wrap{padding:24px 20px 72px!important}
+.qf-app-calls > :nth-child(4){display:none!important}}
+@media (prefers-reduced-motion: reduce){.qf-wave,.qf-live{animation:none}}
+.qf-feat-el{--f:clamp(0,calc((var(--p,0) - 0.45 - var(--i)*0.04)*6),1);--fo:clamp(0,calc(var(--q,0)*4.5 - var(--i)*0.08),1);opacity:calc(var(--f) * (1 - var(--fo)));transform:translate3d(0,calc((1 - var(--f)) * -46px - var(--fo) * 70px),0) scale(calc(0.94 + var(--f) * 0.06 - var(--fo) * 0.06));will-change:transform,opacity}
+.qf-feat-wrap{max-width:1380px}
+.qf-feat-inner{margin-left:auto;width:min(600px,100%)}
+@media (max-width: 900px){
+.qf-feat-wrap{padding:0 16px 24px!important}
+.qf-feat-inner{margin:0;width:100%;padding-top:25vh;padding-top:25svh}
+#features{align-items:flex-start!important}
+.qf-feat-grid{gap:10px!important}
+.qf-card{padding:12px!important;gap:10px!important}
+.qf-card-ico{width:32px!important;height:32px!important}
+.qf-card h3{font-size:14px!important}
+.qf-card p{font-size:12px!important}
+.qf-feat-h2{margin-bottom:16px!important}
+.qf-hero-sec{align-items:flex-end!important}
+.qf-hero-wrap{padding:0 20px 40px!important}
+.qf-shade-l{background:linear-gradient(0deg,rgba(0,0,0,0.95) 0%,rgba(0,0,0,0.8) 40%,rgba(0,0,0,0) 65%)!important}
+.qf-shade-r{background:linear-gradient(180deg,rgba(0,0,0,0) 18%,rgba(0,0,0,0.85) 36%,rgba(0,0,0,0.95) 100%)!important}
+}
+@media (max-width: 760px){.qf-navlinks{display:none!important}.qf-login{display:none!important}}
+@media (max-width: 900px){
+.qf-feat-grid > :nth-child(3),.qf-feat-grid > :nth-child(4){display:none!important}
+.qf-card{flex-direction:column!important;gap:10px!important}
+.qf-card p{font-size:12.5px!important;line-height:1.45!important}
+.qf-app-pts li{display:flex!important;width:100%}
+}
+@keyframes qfShift{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.qf-word.qf-cta{background:linear-gradient(90deg,#E01E37,#FF4D5E,#E01E37);background-size:200% 100%;animation-name:qfWord,qfShift;animation-duration:.8s,5s;animation-timing-function:cubic-bezier(.16,1,.3,1),linear;animation-iteration-count:1,infinite;animation-fill-mode:both,none;transition:transform .25s ease,box-shadow .25s ease}
+.qf-word.qf-cta:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 0 50px rgba(255,59,82,0.65),0 0 80px rgba(224,30,55,0.45)!important}
+@keyframes qfPing{0%{transform:scale(1);opacity:.75}100%{transform:scale(2.4);opacity:0}}
+@keyframes qfGlowPulse{0%,100%{box-shadow:0 0 10px rgba(61,184,255,0.7),0 0 22px rgba(61,184,255,0.45)}50%{box-shadow:0 0 16px rgba(61,184,255,1),0 0 34px rgba(61,184,255,0.7)}}
+.qf-ping{position:absolute;inset:0;border-radius:50%;background:#3DB8FF;animation:qfPing 1.8s ease-out infinite}
+.qf-glow-ico{animation:qfGlowPulse 1.8s ease-in-out infinite}
+.qf-input{font:inherit;font-size:15px;font-weight:500;color:#FFFFFF;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:12px 14px;outline:none;min-height:46px;box-sizing:border-box}
+.qf-input::placeholder{color:#8C96A8}
+.qf-input:focus{border-color:#3DB8FF;box-shadow:0 0 0 3px rgba(61,184,255,0.25)}
+@media (prefers-reduced-motion: reduce){.qf-ping,.qf-glow-ico{animation:none}}
+.qf-contact:hover{background:#6CCBFF!important;border-color:#6CCBFF!important}
+.qf-burger:hover{background:rgba(255,255,255,0.1)!important;border-color:rgba(255,255,255,0.5)!important}
+@media (max-width: 480px){.qf-contact{padding:8px 14px!important;font-size:14px!important}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+.qf-stage{height:520vh;height:520svh}
+.qf-sticky{height:100vh;height:100svh}
+@media (max-width: 900px){
+.qf-hero-wrap{padding-bottom:calc(28px + env(safe-area-inset-bottom))!important}
+.qf-hero-wrap h1{font-size:34px!important;letter-spacing:-1px!important;margin-bottom:14px!important;line-height:1.08!important}
+.qf-hero-wrap p.qf-word{font-size:15px!important;line-height:1.5!important;margin-bottom:18px!important}
+.qf-hero-wrap h1{font-size:30px!important}
+.qf-hero-wrap .qf-hero-el:first-child p{font-size:11px!important;padding:5px 12px!important;margin-bottom:14px!important}
+.qf-hero-wrap .qf-hero-el:last-child{flex-direction:column;gap:10px!important}
+.qf-hero-wrap .qf-hero-el:last-child > *{justify-content:center;text-align:center;padding:14px 20px!important;font-size:15px!important}
+.qf-bar nav{flex-wrap:nowrap!important}
+}
+@keyframes qfNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+@keyframes qfCard{0%{transform:scale(.9);opacity:.5}50%{transform:none;opacity:1}100%{transform:scale(.9);opacity:.5}}
+@media (max-width: 700px){
+#app{gap:26px!important;padding-top:72px!important;padding-bottom:72px!important}
+#app .qf-h2{font-size:28px!important;margin-bottom:10px!important}
+#app .qf-sub{font-size:15px!important;line-height:1.5;margin-bottom:16px!important}
+.qf-app-pts{display:flex!important;flex-direction:column!important;gap:10px!important;font-size:14px!important;line-height:1.35}
+.qf-app-pts li{gap:10px!important;align-items:center!important}
+.qf-app-card{padding:16px!important}
+.qf-app-stats{gap:8px!important;margin-bottom:12px!important}
+.qf-app-stats > div{padding:10px!important}
+.qf-app-stats p:last-child{font-size:22px!important}
+.qf-app-chart{height:90px!important;margin-bottom:14px!important;gap:6px!important}
+.qf-app-row{padding:9px 12px!important;font-size:13px!important}
+#pricing{padding-left:0!important;padding-right:0!important}
+#pricing > .qf-rv{padding:0 20px}
+.qf-plans{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px!important;max-width:none!important;padding:10px 8% 18px!important;scrollbar-width:none;align-items:stretch!important}
+.qf-plans::-webkit-scrollbar{display:none}
+.qf-plan{flex:0 0 84%;scroll-snap-align:center;scroll-snap-stop:always;padding:22px!important}
+.qf-plan h3{font-size:22px!important}
+.qf-plan .qf-price{font-size:36px!important}
+.qf-plan li,.qf-plan p{font-size:14px!important}
+.qf-plan .qf-price span{font-size:14px!important}
+.qf-swipe{display:flex!important}
+.qf-swipe-arrow{animation:qfNudge 1.2s ease-in-out infinite}
+@supports (animation-timeline: view()){.qf-plan{animation:qfCard linear both!important;animation-timeline:view(inline)!important;animation-range:normal!important}}
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce){.qf-plan,.qf-swipe-arrow{animation:none!important}}
+@media (max-width: 700px){.qf-values > :nth-child(4){display:none!important}}
+@media (max-width: 700px){
+.qf-cmp{min-width:0!important;table-layout:fixed;font-size:12px!important}
+.qf-cmp th,.qf-cmp td{padding:12px 4px!important;line-height:1.3;word-break:normal;overflow-wrap:anywhere}
+.qf-cmp thead th{font-size:11px!important;letter-spacing:0;padding:14px 2px!important}
+.qf-cmp th[scope=row]{padding-left:12px!important;width:40%;font-size:12.5px!important}
+.qf-cmp td{font-size:11.5px!important}
+.qf-cmp svg{width:18px;height:18px}
+}
+@media (max-width: 480px){
+.qf-bar nav{padding:12px 16px!important;gap:8px!important}
+.qf-bar nav > a{font-size:20px!important;gap:8px!important}
+.qf-bar nav > a svg{width:32px;height:32px}
+.qf-contact{padding:6px 12px 6px 6px!important;font-size:13px!important;gap:8px!important}
+.qf-burger{width:42px!important;height:42px!important}
+}
+@keyframes qfRv{from{opacity:0;transform:translate3d(0,50px,0) scale(.97)}to{opacity:1;transform:none}}
+@supports (animation-timeline: view()){.qf-rv{animation:qfRv linear both;animation-timeline:view();animation-range:entry 5% cover 28%}}
+@keyframes qfMarq{to{transform:translateX(-50%)}}
+.qf-marq{display:flex;gap:14px;width:max-content;animation:qfMarq 40s linear infinite}
+.qf-marq-wrap:hover .qf-marq{animation-play-state:paused}
+.qf-sec{max-width:1200px;margin:0 auto;padding:120px 24px;box-sizing:border-box}
+.qf-lbl{margin:0 0 10px;color:#FF9F1C;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.qf-h2{margin:0 0 16px;font-size:clamp(32px,4.4vw,56px);line-height:1.08;font-weight:800;letter-spacing:-1px}
+.qf-sub{margin:0;color:#C9D2E3;font-size:18px;max-width:620px}
+.qf-card2{background:#121215;border:1px solid rgba(255,255,255,0.1);border-radius:22px;box-sizing:border-box}
+details.qf-faq summary{cursor:pointer;list-style:none}
+details.qf-faq summary::-webkit-details-marker{display:none}
+details.qf-faq[open] .qf-plus{transform:rotate(45deg)}
+.qf-plus{transition:transform .3s ease}
+.qf-ghost{cursor:pointer;font:inherit}
+.qf-ghost:hover{background:rgba(255,255,255,0.08)!important}
+.qf-red{cursor:pointer;font:inherit;transition:transform .25s ease,box-shadow .25s ease}
+.qf-red:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(255,59,82,0.65)!important}
+@media (max-width: 600px){.qf-sec{padding:80px 20px}}
+@media (prefers-reduced-motion: reduce){.qf-rv,.qf-marq{animation:none!important}}
+.qf-mic{cursor:pointer;font:inherit}
+.qf-mic:hover{background:rgba(255,159,28,0.18)!important}
+@media (prefers-reduced-motion: reduce){.qf-word.qf-cta{animation:none}}
+@media (prefers-reduced-motion: reduce){.qf-veil,.qf-lockup,.qf-flash{display:none}.qf-ring,.qf-letter,.qf-tag,.qf-bar,.qf-fly,.qf-word{animation:none}}
+</style>
+
+</head>
+<body>
+
+
+<div class="" data-attrs="class:rootCls" data-on="pointermove:onMove;pointerleave:onLeave;pointerdown:onDown;pointerup:onTapUp" style="position: relative; overflow-x: clip; background: #000000; color: #FFFFFF; font-family: Manrope, system-ui, sans-serif; font-size: 16px; line-height: 1.6">
+<header class="qf-bar" data-ref="setHeader" data-styles="transform:hdrTf" style="position: sticky; top: 0; z-index: 20; background: #000000; border-bottom: 1px solid rgba(255,255,255,0.08); transform: translateY(0); transition: transform .45s cubic-bezier(.16,1,.3,1)">
+<nav style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a data-on="click:goHome" href="#home" style="pointer-events: auto; display: flex; align-items: center; gap: 10px; color: #FFFFFF; font-weight: 800; font-size: 24px; letter-spacing: -0.5px">
+<svg aria-hidden="true" height="40" style="overflow: visible" viewbox="0 0 120 120" width="40">
+<g class="qf-fly" style="--dx: -260px; --dy: -160px; --r: -180deg; transform-origin: 60px 60px; animation-delay: 4.5s"><circle cx="60" cy="60" fill="none" opacity="0.9" r="47" stroke="#FF9F1C" stroke-dasharray="3 6" stroke-width="3"></circle></g>
+<g class="qf-fly" style="--dx: 300px; --dy: -200px; --r: 200deg; transform-origin: 60px 60px; animation-delay: 4.57s"><circle cx="60" cy="60" fill="none" r="40" stroke="#3DB8FF" stroke-dasharray="58 17 22 17" stroke-linecap="round" stroke-width="6" transform="rotate(-20 60 60)"></circle></g>
+<g class="qf-fly" style="--dx: -200px; --dy: 260px; --r: -120deg; transform-origin: 60px 60px; animation-delay: 4.64s"><circle cx="60" cy="60" fill="none" r="29" stroke="#FF9F1C" stroke-dasharray="34 11" stroke-linecap="round" stroke-width="5" transform="rotate(40 60 60)"></circle></g>
+<g class="qf-fly" style="--dx: 240px; --dy: 300px; --s: 3; transform-origin: 60px 60px; animation-delay: 4.71s"><polyline fill="none" points="49,61 57,68 71,53" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></polyline></g>
+</svg>
+<span><span class="qf-fly" style="display: inline-block; color: #FFFFFF; --dx: -220px; --dy: -120px; --s: 0.2; animation-delay: 4.55s">Q</span><span class="qf-fly" style="display: inline-block; color: #FFFFFF; --dx: 0px; --dy: -160px; --s: 0.2; animation-delay: 4.59s">o</span><span class="qf-fly" style="display: inline-block; color: #FFFFFF; --dx: 200px; --dy: -140px; --s: 0.2; animation-delay: 4.63s">r</span><span class="qf-fly" style="display: inline-block; color: #FFFFFF; --dx: -180px; --dy: 140px; --s: 0.2; animation-delay: 4.67s">a</span><span class="qf-fly" style="display: inline-block; color: #FF9F1C; --dx: 260px; --dy: 60px; --s: 0.2; animation-delay: 4.71s">f</span><span class="qf-fly" style="display: inline-block; color: #FF9F1C; --dx: -80px; --dy: 180px; --s: 0.2; animation-delay: 4.75s">l</span><span class="qf-fly" style="display: inline-block; color: #FF9F1C; --dx: 160px; --dy: 170px; --s: 0.2; animation-delay: 4.79s">o</span><span class="qf-fly" style="display: inline-block; color: #FF9F1C; --dx: 300px; --dy: -40px; --s: 0.2; animation-delay: 4.83s">w</span></span></a>
+<div style="display: flex; gap: 12px; align-items: center">
+<button class="qf-word qf-contact" data-on="click:openContact" style="display: inline-flex; align-items: center; gap: 10px; color: #000000; font: inherit; font-weight: 700; font-size: 15px; padding: 8px 20px 8px 10px; background: #3DB8FF; border: 1px solid #3DB8FF; border-radius: 999px; cursor: pointer; animation-delay: 4.85s" type="button">
+<span style="position: relative; width: 28px; height: 28px; flex-shrink: 0; display: flex; align-items: center; justify-content: center">
+<span style="position: relative; width: 28px; height: 28px; border-radius: 50%; background: #000000; color: #3DB8FF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24" width="15"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg></span>
+</span>
+Contact us</button>
+<button aria-expanded="false" aria-label="Open menu" class="qf-word qf-burger" data-attrs="aria-label:menuLabel;aria-expanded:menuOpen" data-on="click:toggleMenu" style="width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); background: transparent; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer; animation-delay: 4.95s" type="button">
+<div data-if="menuOpen" style="display: none"><svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewbox="0 0 24 24" width="20"><path d="M6 6l12 12M18 6L6 18"></path></svg></div>
+<div data-if="menuClosed" style="display: contents"><svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewbox="0 0 24 24" width="20"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></div>
+</button>
+</div>
+</nav>
+<div data-if="menuOpen" style="display: none">
+<div style="position: absolute; top: 100%; right: max(24px, calc((100% - 1200px) / 2 + 24px)); margin-top: 10px; width: min(280px, calc(100vw - 48px)); padding: 10px; border-radius: 20px; background: rgba(10,10,12,0.92); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(16px); box-shadow: 0 20px 60px rgba(0,0,0,0.6); display: flex; flex-direction: column">
+<a data-on="click:closeMenu" href="about.html" style="color: #FFFFFF; font-weight: 700; padding: 12px 16px; border-radius: 12px">About us</a>
+<a data-on="click:closeMenu" href="#pricing" style="color: #FFFFFF; font-weight: 700; padding: 12px 16px; border-radius: 12px">Pricing</a>
+<a href="https://app.qoraflow.com" style="color: #FF9F1C; font-weight: 700; padding: 12px 16px; border-radius: 12px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 6px">Log in</a>
+</div>
+</div>
+</header>
+<div data-if="talk" style="display: none">
+<div style="position: fixed; inset: 0; z-index: 30; pointer-events: none">
+<button class="qf-talk-in qf-talk-back" data-on="click:exitTalk" style="pointer-events: auto; position: absolute; top: calc(20px + env(safe-area-inset-top)); left: 20px; display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.25); background: rgba(0,0,0,0.55); color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer" type="button"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24" width="16"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>Back to home</button>
+<div class="qf-talk-in" style="position: absolute; left: 0; right: 0; bottom: calc(36px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 20px; text-align: center; animation-delay: 0.6s">
+<p style="margin: 0; color: #FF9F1C; font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">Talk to Qoraflow</p>
+<p style="margin: 0; color: #C9D2E3; font-size: 17px; max-width: 440px">Our live voice agent is coming soon. Tap the mic to watch Qoraflow react to your voice.</p>
+<button class="qf-talk-mic" data-on="click:onMic" style="pointer-events: auto; display: inline-flex; align-items: center; gap: 10px; min-height: 50px; padding: 0 26px; border-radius: 999px; border: 1px solid rgba(255,159,28,0.6); background: rgba(0,0,0,0.55); color: #FFB547; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer" type="button"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg><span data-text="micLabel2">Tap to speak</span></button>
+</div>
+</div>
+</div>
+<div data-if="contactOpen" style="display: none">
+<div style="position: fixed; inset: 0; z-index: 40; display: flex; align-items: center; justify-content: center; padding: 16px">
+<button aria-label="Close contact form" data-on="click:closeContact" style="position: absolute; inset: 0; border: none; padding: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); cursor: pointer" type="button"></button>
+<div aria-label="Contact Qoraflow" aria-modal="true" class="qf-panel" role="dialog" style="position: relative; width: min(480px, 100%); max-height: calc(100vh - 32px); overflow-y: auto; box-sizing: border-box; padding: 28px; border-radius: 24px; background: #0A0A0C; border: 1px solid rgba(61,184,255,0.35); box-shadow: 0 0 60px rgba(61,184,255,0.2), 0 30px 80px rgba(0,0,0,0.7); color: #FFFFFF; font-family: Manrope, system-ui, sans-serif">
+<button aria-label="Close" data-on="click:closeContact" style="position: absolute; top: 14px; right: 14px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer" type="button"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<div data-if="contactForm" style="display: contents">
+<p style="margin: 0 0 6px; color: #3DB8FF; font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">Contact us</p>
+<h2 style="margin: 0 0 8px; font-size: 28px; line-height: 1.15; font-weight: 800">Try your own voice agent <span style="color: #3DB8FF">free for 14 days.</span></h2>
+<p style="margin: 0 0 20px; color: #C9D2E3; font-size: 15px">Share your details and we'll contact you directly to set up a live voice agent for your business, completely on us for 14 days.</p>
+<form data-on="submit:onSubmit" style="display: flex; flex-direction: column; gap: 14px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Full name<input autocomplete="name" class="qf-input" data-on="input:onField" name="name" placeholder="Your full name" required=""/></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Email<input autocomplete="email" class="qf-input" data-on="input:onField" name="email" placeholder="you@business.com" required="" type="email"/></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Phone number<input autocomplete="tel" class="qf-input" data-on="input:onField" name="phone" placeholder="(555) 123-4567" required="" type="tel"/></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Business name<input autocomplete="organization" class="qf-input" data-on="input:onField" name="business" placeholder="Your business name" required=""/></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">About your business<textarea class="qf-input" data-on="input:onField" name="message" placeholder="A short description, e.g. a family dental clinic in Phoenix open Mon to Sat" required="" rows="3" style="resize: vertical"></textarea></label>
+<button style="margin-top: 4px; min-height: 50px; border: none; border-radius: 999px; background: #3DB8FF; color: #000000; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 0 30px rgba(61,184,255,0.45)" type="submit">Start my free 14-day trial</button>
+<p style="margin: 0; text-align: center; font-size: 13px; color: #9AA6BA">By submitting, you agree to our <a href="terms.html" style="color: #3DB8FF">Terms of Service</a> and <a href="privacy.html" style="color: #3DB8FF">Privacy Policy</a>.</p>
+<p style="margin: 0; text-align: center; font-size: 14px; color: #C9D2E3">Or email us directly at <a href="mailto:hello@qoraflow.com" style="color: #3DB8FF; font-weight: 700">hello@qoraflow.com</a></p>
+</form>
+</div>
+<div data-if="contactSent" style="display: none">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 24px 0 8px">
+<span style="width: 64px; height: 64px; border-radius: 50%; background: rgba(61,184,255,0.15); border: 1px solid #3DB8FF; box-shadow: 0 0 40px rgba(61,184,255,0.45); display: flex; align-items: center; justify-content: center; color: #3DB8FF"><svg aria-hidden="true" fill="none" height="28" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="28"><path d="M5 12l5 5L20 7"></path></svg></span>
+<h2 style="margin: 0; font-size: 26px; font-weight: 800">Almost there!</h2>
+<p style="margin: 0; color: #C9D2E3; font-size: 15px; max-width: 340px">Your email app has opened with your details ready. Just hit send and we'll contact you to set up your free 14-day voice agent.</p>
+<button data-on="click:closeContact" style="min-height: 46px; padding: 0 28px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.25); background: transparent; color: #FFFFFF; font: inherit; font-weight: 700; cursor: pointer" type="button">Done</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="qf-stage" data-ref="setStage" style="position: relative; margin-top: -73px">
+<div class="qf-sticky" style="position: sticky; top: 0; overflow: hidden; background: radial-gradient(ellipse at 70% 52%, rgba(255,159,28,0.10), rgba(0,0,0,0) 60%), #000000">
+<canvas aria-label="Qoraflow AI core: a holographic sphere of glowing data lines with a voice visualizer that reacts to your cursor and voice" data-ref="setCanvas" role="img" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; z-index: 0"></canvas>
+<div aria-hidden="true" class="qf-shade-l" style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 32%, rgba(0,0,0,0) 55%)"></div>
+<div aria-hidden="true" class="qf-shade-r" style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(270deg, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0) 62%)"></div>
+<section class="qf-hero-sec" id="home" style="position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; pointer-events: none">
+<div class="qf-hero-wrap" style="width: 100%; max-width: 1200px; box-sizing: border-box; margin: 0 auto; padding: 96px 24px 40px">
+<div style="max-width: 560px; text-shadow: 0 2px 24px rgba(0,0,0,0.95)">
+<div class="qf-hero-el" style="--o: 3">
+<p class="qf-pill" style="display: inline-block; margin: 0 0 22px; padding: 6px 16px; border: 1px solid rgba(255,159,28,0.5); border-radius: 999px; background: rgba(0,0,0,0.6); color: #FF9F1C; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase">
+<span class="qf-word" style="animation-delay: 3.60s">AI </span><span class="qf-word" style="animation-delay: 3.66s">voice </span><span class="qf-word" style="animation-delay: 3.72s">agents </span><span class="qf-word" style="animation-delay: 3.78s">for </span><span class="qf-word" style="animation-delay: 3.84s">every </span><span class="qf-word" style="animation-delay: 3.90s">business </span></p>
+</div>
+<h1 class="qf-hero-el" style="--o: 2; margin: 0 0 22px; font-size: clamp(40px, 5.2vw, 72px); line-height: 1.02; font-weight: 800; letter-spacing: -2px">
+<span class="qf-word" style="animation-delay: 3.95s">Every </span><span class="qf-word" style="animation-delay: 4.05s">call </span><span class="qf-word" style="animation-delay: 4.15s">answered. </span><br/>
+<span class="qf-word" style="color: #FF9F1C; animation-delay: 4.20s">Every </span><span class="qf-word" style="color: #FF9F1C; animation-delay: 4.30s">booking </span><span class="qf-word" style="color: #FF9F1C; animation-delay: 4.40s">made. </span></h1>
+<div class="qf-hero-el" style="--o: 1.2"><p class="qf-word" style="display: block; margin: 0 0 34px; font-size: 19px; font-weight: 500; color: #FFFFFF; max-width: 520px; animation-delay: 5.2s">Qoraflow builds AI voice agents that work like a receptionist — answering calls, booking appointments and taking messages 24/7, at a price any business can afford.</p></div>
+<div class="qf-hero-el" data-styles="pointer-events:heroPE" style="--o: 99; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; pointer-events: auto; text-shadow: none">
+<a class="qf-word qf-cta qf-hx" href="#contact" style="--o: 0; color: #FFFFFF; font-weight: 800; padding: 16px 30px; border-radius: 999px; box-shadow: 0 0 36px rgba(255,59,82,0.5), 0 0 60px rgba(224,30,55,0.3); animation-delay: 5.4s">Get your voice agent</a>
+<button class="qf-word qf-mic qf-hx" data-on="click:enterTalk" style="--o: 0.6; display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(255,159,28,0.6); background: rgba(0,0,0,0.6); color: #FFB547; font-weight: 800; font-size: 16px; padding: 15px 28px; border-radius: 999px; animation-delay: 5.5s" type="button">
+<svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg><span data-text="micLabel">
+Talk to Qoraflow</span></button>
+</div>
+</div>
+</div>
+</section>
+<section id="features" style="position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; pointer-events: none">
+<div class="qf-feat-wrap" style="width: 100%; box-sizing: border-box; margin: 0 auto; padding: 96px 40px 40px">
+<div class="qf-feat-inner">
+<p class="qf-feat-el" style="--i: 0; margin: 0 0 10px; color: #FF9F1C; font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">Features</p>
+<h2 class="qf-feat-el qf-feat-h2" style="--i: 1; margin: 0 0 28px; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.1; font-weight: 800; letter-spacing: -1px">Everything a front desk does — <span style="color: #FF9F1C">and more.</span></h2>
+<div class="qf-feat-grid" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+
+<div class="qf-feat-el qf-card" style="--i: 2; display: flex; gap: 14px; align-items: flex-start; padding: 16px; border-radius: 16px; background: #121215; border: 1px solid rgba(255,159,28,0.28); box-shadow: 0 10px 30px rgba(0,0,0,0.5)">
+<div class="qf-card-ico" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(255,159,28,0.12); border: 1px solid rgba(255,159,28,0.45)">
+<svg aria-hidden="true" fill="none" height="20" stroke="#FFB547" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M12 6v6l4 2M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"></path></svg>
+</div>
+<div style="min-width: 0">
+<h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 800">24/7 call answering</h3>
+<p style="margin: 0; font-size: 14px; font-weight: 500; color: #E4E9F7; line-height: 1.5">Nights, weekends and holidays — every call picked up in seconds.</p>
+</div>
+</div>
+
+<div class="qf-feat-el qf-card" style="--i: 2.6; display: flex; gap: 14px; align-items: flex-start; padding: 16px; border-radius: 16px; background: #121215; border: 1px solid rgba(255,159,28,0.28); box-shadow: 0 10px 30px rgba(0,0,0,0.5)">
+<div class="qf-card-ico" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(255,159,28,0.12); border: 1px solid rgba(255,159,28,0.45)">
+<svg aria-hidden="true" fill="none" height="20" stroke="#FFB547" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path></svg>
+</div>
+<div style="min-width: 0">
+<h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 800">Appointment booking</h3>
+<p style="margin: 0; font-size: 14px; font-weight: 500; color: #E4E9F7; line-height: 1.5">Books, reschedules and confirms right in your calendar.</p>
+</div>
+</div>
+
+<div class="qf-feat-el qf-card" style="--i: 3.6; display: flex; gap: 14px; align-items: flex-start; padding: 16px; border-radius: 16px; background: #121215; border: 1px solid rgba(255,159,28,0.28); box-shadow: 0 10px 30px rgba(0,0,0,0.5)">
+<div class="qf-card-ico" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(255,159,28,0.12); border: 1px solid rgba(255,159,28,0.45)">
+<svg aria-hidden="true" fill="none" height="20" stroke="#FFB547" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"></path></svg>
+</div>
+<div style="min-width: 0">
+<h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 800">Smart call routing</h3>
+<p style="margin: 0; font-size: 14px; font-weight: 500; color: #E4E9F7; line-height: 1.5">Urgent calls go straight to you or the right person.</p>
+</div>
+</div>
+
+<div class="qf-feat-el qf-card" style="--i: 4.2; display: flex; gap: 14px; align-items: flex-start; padding: 16px; border-radius: 16px; background: #121215; border: 1px solid rgba(255,159,28,0.28); box-shadow: 0 10px 30px rgba(0,0,0,0.5)">
+<div class="qf-card-ico" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(255,159,28,0.12); border: 1px solid rgba(255,159,28,0.45)">
+<svg aria-hidden="true" fill="none" height="20" stroke="#FFB547" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+</div>
+<div style="min-width: 0">
+<h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 800">Message taking</h3>
+<p style="margin: 0; font-size: 14px; font-weight: 500; color: #E4E9F7; line-height: 1.5">Captures names, numbers and details, then texts you.</p>
+</div>
+</div>
+
+<div class="qf-feat-el qf-card" style="--i: 5.2; display: flex; gap: 14px; align-items: flex-start; padding: 16px; border-radius: 16px; background: #121215; border: 1px solid rgba(255,159,28,0.28); box-shadow: 0 10px 30px rgba(0,0,0,0.5)">
+<div class="qf-card-ico" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(255,159,28,0.12); border: 1px solid rgba(255,159,28,0.45)">
+<svg aria-hidden="true" fill="none" height="20" stroke="#FFB547" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM17 11l2 2 4-4"></path></svg>
+</div>
+<div style="min-width: 0">
+<h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 800">Remembers every caller</h3>
+<p style="margin: 0; font-size: 14px; font-weight: 500; color: #E4E9F7; line-height: 1.5">Recognizes returning numbers and greets them by name, with their history in mind.</p>
+</div>
+</div>
+
+<div class="qf-feat-el qf-card" style="--i: 5.8; display: flex; gap: 14px; align-items: flex-start; padding: 16px; border-radius: 16px; background: #121215; border: 1px solid rgba(255,159,28,0.28); box-shadow: 0 10px 30px rgba(0,0,0,0.5)">
+<div class="qf-card-ico" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(255,159,28,0.12); border: 1px solid rgba(255,159,28,0.45)">
+<svg aria-hidden="true" fill="none" height="20" stroke="#FFB547" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"></path></svg>
+</div>
+<div style="min-width: 0">
+<h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 800">App tracking</h3>
+<p style="margin: 0; font-size: 14px; font-weight: 500; color: #E4E9F7; line-height: 1.5">Follow every call live in the Qoraflow app: recordings, transcripts and analytics.</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<section id="how" style="position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; pointer-events: none">
+<div class="qf-how-wrap" style="width: 100%; max-width: 1200px; box-sizing: border-box; margin: 0 auto; padding: 96px 24px 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div style="flex: 1 1 440px; min-width: 0">
+<p class="qf-how-el" style="--i: 0; margin: 0 0 10px; color: #FF9F1C; font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">How it works</p>
+<h2 class="qf-how-el" style="--i: 1; margin: 0 0 34px; font-size: clamp(32px, 4vw, 52px); line-height: 1.08; font-weight: 800; letter-spacing: -1px">Live in three steps.<br/><span style="color: #FF9F1C">No tech skills needed.</span></h2>
+<div style="position: relative; display: flex; flex-direction: column; gap: 28px">
+<div aria-hidden="true" class="qf-how-track" style="position: absolute; left: 21px; top: 22px; bottom: 22px; width: 2px; background: rgba(255,255,255,0.08)"><div class="qf-how-line" style="position: absolute; inset: 0; background: linear-gradient(180deg, #FF9F1C, #3DB8FF); box-shadow: 0 0 12px rgba(255,159,28,0.6)"></div></div>
+
+<div class="qf-how-el" style="--i: 2; position: relative; display: flex; gap: 20px; align-items: flex-start">
+<span style="flex-shrink: 0; width: 44px; height: 44px; box-sizing: border-box; border-radius: 50%; background: #121215; border: 2px solid #FF9F1C; box-shadow: 0 0 22px rgba(255,159,28,0.5); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; color: #FF9F1C">1</span>
+<div style="min-width: 0"><h3 style="margin: 6px 0 4px; font-size: 20px; font-weight: 800">Tell us about your business</h3><p style="margin: 0; color: #C9D2E3; font-size: 15px; max-width: 420px">Share your hours, services, prices and FAQs. We turn them into your agent’s knowledge.</p></div>
+</div>
+
+<div class="qf-how-el" style="--i: 2.8; position: relative; display: flex; gap: 20px; align-items: flex-start">
+<span style="flex-shrink: 0; width: 44px; height: 44px; box-sizing: border-box; border-radius: 50%; background: #121215; border: 2px solid #FFC861; box-shadow: 0 0 22px rgba(255,200,97,0.45); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; color: #FFC861">2</span>
+<div style="min-width: 0"><h3 style="margin: 6px 0 4px; font-size: 20px; font-weight: 800">We build your voice agent</h3><p style="margin: 0; color: #C9D2E3; font-size: 15px; max-width: 420px">Choose a voice and greeting. We connect it to your phone number and calendar.</p></div>
+</div>
+
+<div class="qf-how-el" style="--i: 3.6; position: relative; display: flex; gap: 20px; align-items: flex-start">
+<span style="flex-shrink: 0; width: 44px; height: 44px; box-sizing: border-box; border-radius: 50%; background: #121215; border: 2px solid #3DB8FF; box-shadow: 0 0 22px rgba(61,184,255,0.5); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; color: #3DB8FF">3</span>
+<div style="min-width: 0"><h3 style="margin: 6px 0 4px; font-size: 20px; font-weight: 800">Go live and track every call</h3><p style="margin: 0; color: #C9D2E3; font-size: 15px; max-width: 420px">Calls are answered instantly. Watch every conversation in the Qoraflow app.</p></div>
+</div>
+
+</div>
+</div>
+<div class="qf-how-el qf-how-card" style="--i: 3; flex: 1 1 380px; min-width: 0; max-width: 460px; margin-left: auto; box-sizing: border-box; padding: 22px; border-radius: 24px; background: #121215; border: 1px solid rgba(61,184,255,0.3); box-shadow: 0 0 60px rgba(61,184,255,0.15), 0 30px 80px rgba(0,0,0,0.6)">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,159,28,0.15); border: 1px solid #FF9F1C; display: flex; align-items: center; justify-content: center; color: #FF9F1C"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg></span>
+<div><p style="margin: 0; font-weight: 800; font-size: 15px">Example call</p><p style="margin: 0; color: #9AA6BA; font-size: 13px">Answered by Qoraflow · 0:42</p></div>
+</div>
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; color: #3DB8FF; letter-spacing: 0.1em; text-transform: uppercase"><span class="qf-live" style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF"></span>Live</span>
+</div>
+<div aria-hidden="true" style="display: flex; align-items: center; justify-content: center; gap: 3px; height: 36px; margin-bottom: 16px">
+<span class="qf-wave" style="display: block; width: 4px; height: 10px; border-radius: 2px; background: #3DB8FF; animation-delay: 0.00s"></span><span class="qf-wave" style="display: block; width: 4px; height: 18px; border-radius: 2px; background: #FF9F1C; animation-delay: 0.06s"></span><span class="qf-wave" style="display: block; width: 4px; height: 26px; border-radius: 2px; background: #FF9F1C; animation-delay: 0.12s"></span><span class="qf-wave" style="display: block; width: 4px; height: 14px; border-radius: 2px; background: #3DB8FF; animation-delay: 0.18s"></span><span class="qf-wave" style="display: block; width: 4px; height: 30px; border-radius: 2px; background: #FF9F1C; animation-delay: 0.24s"></span><span class="qf-wave" style="display: block; width: 4px; height: 22px; border-radius: 2px; background: #FF9F1C; animation-delay: 0.30s"></span><span class="qf-wave" style="display: block; width: 4px; height: 34px; border-radius: 2px; background: #3DB8FF; animation-delay: 0.36s"></span><span class="qf-wave" style="display: block; width: 4px; height: 16px; border-radius: 2px; background: #FF9F1C; animation-delay: 0.42s"></span><span class="qf-wave" style="display: block; width: 4px; height: 28px; border-radius: 2px; background: #FF9F1C; animation-delay: 0.48s"></span><span class="qf-wave" style="display: block; width: 4px; height: 36px; border-radius: 2px; background: #3DB8FF; animation-delay: 0.54s"></span><span class="qf-wave" style="display: block; width: 4px; height: 20px; border-radius: 2px; background: #FF9F1C; animation-delay: 0.60s"></span><span class="qf-wave" style="display: block; width: 4px; height: 32px; border-radius: 2px; background: #FF9F1C; animation-delay: 0.66s"></span><span class="qf-wave" style="display: block; width: 4px; height: 24px; border-radius: 2px; background: #3DB8FF; animation-delay: 0.72s"></span><span class="qf-wave" style="display: block; width: 4px; height: 12px; border-radius: 2px; background: #FF9F1C; animation-delay: 0.78s"></span><span class="qf-wave" style="display: block; width: 4px; height: 30px; border-radius: 2px; background: #FF9F1C; animation-delay: 0.84s"></span><span class="qf-wave" style="display: block; width: 4px; height: 26px; border-radius: 2px; background: #3DB8FF; animation-delay: 0.90s"></span><span class="qf-wave" style="display: block; width: 4px; height: 34px; border-radius: 2px; background: #FF9F1C; animation-delay: 0.96s"></span><span class="qf-wave" style="display: block; width: 4px; height: 18px; border-radius: 2px; background: #FF9F1C; animation-delay: 1.02s"></span><span class="qf-wave" style="display: block; width: 4px; height: 28px; border-radius: 2px; background: #3DB8FF; animation-delay: 1.08s"></span><span class="qf-wave" style="display: block; width: 4px; height: 22px; border-radius: 2px; background: #FF9F1C; animation-delay: 1.14s"></span><span class="qf-wave" style="display: block; width: 4px; height: 36px; border-radius: 2px; background: #FF9F1C; animation-delay: 1.20s"></span><span class="qf-wave" style="display: block; width: 4px; height: 14px; border-radius: 2px; background: #3DB8FF; animation-delay: 1.26s"></span><span class="qf-wave" style="display: block; width: 4px; height: 24px; border-radius: 2px; background: #FF9F1C; animation-delay: 1.32s"></span><span class="qf-wave" style="display: block; width: 4px; height: 30px; border-radius: 2px; background: #FF9F1C; animation-delay: 1.38s"></span><span class="qf-wave" style="display: block; width: 4px; height: 16px; border-radius: 2px; background: #3DB8FF; animation-delay: 1.44s"></span><span class="qf-wave" style="display: block; width: 4px; height: 26px; border-radius: 2px; background: #FF9F1C; animation-delay: 1.50s"></span><span class="qf-wave" style="display: block; width: 4px; height: 20px; border-radius: 2px; background: #FF9F1C; animation-delay: 1.56s"></span><span class="qf-wave" style="display: block; width: 4px; height: 12px; border-radius: 2px; background: #3DB8FF; animation-delay: 1.62s"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div class="qf-bub" style="--i: 0; align-self: flex-start; max-width: 85%; padding: 10px 14px; border-radius: 16px; background: rgba(255,159,28,0.12); border: 1px solid rgba(255,159,28,0.35); font-size: 14px; line-height: 1.45"><span style="display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #FF9F1C; margin-bottom: 2px">Qoraflow</span>Thanks for calling Bright Smile Dental! How can I help?</div><div class="qf-bub" style="--i: 1; align-self: flex-end; max-width: 85%; padding: 10px 14px; border-radius: 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); font-size: 14px; line-height: 1.45"><span style="display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #9AA6BA; margin-bottom: 2px">Caller</span>Hi, can I book a cleaning this Thursday?</div><div class="qf-bub" style="--i: 2; align-self: flex-start; max-width: 85%; padding: 10px 14px; border-radius: 16px; background: rgba(255,159,28,0.12); border: 1px solid rgba(255,159,28,0.35); font-size: 14px; line-height: 1.45"><span style="display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #FF9F1C; margin-bottom: 2px">Qoraflow</span>Of course. I have 10:00 AM or 2:30 PM open. Which works best?</div><div class="qf-bub" style="--i: 3; align-self: flex-end; max-width: 85%; padding: 10px 14px; border-radius: 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); font-size: 14px; line-height: 1.45"><span style="display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #9AA6BA; margin-bottom: 2px">Caller</span>2:30, please.</div><div class="qf-bub" style="--i: 4; align-self: flex-start; max-width: 85%; padding: 10px 14px; border-radius: 16px; background: rgba(255,159,28,0.12); border: 1px solid rgba(255,159,28,0.35); font-size: 14px; line-height: 1.45"><span style="display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #FF9F1C; margin-bottom: 2px">Qoraflow</span>You’re booked for Thursday at 2:30 PM. A confirmation text is on its way.</div>
+</div>
+<div class="qf-bub" style="--i: 5; margin-top: 14px; display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; background: rgba(61,184,255,0.1); border: 1px solid rgba(61,184,255,0.45); font-weight: 800; font-size: 14px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>Appointment booked · Thu 2:30 PM</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<section id="industries" style="position: relative; z-index: 1; padding: 120px 0 40px; background: radial-gradient(ellipse at 50% 0%, rgba(255,159,28,0.10), rgba(0,0,0,0) 60%)">
+<div class="qf-rv" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 48px; box-sizing: border-box; text-align: center">
+<p class="qf-lbl">Built for everyone</p>
+<h2 class="qf-h2">If your phone rings, <span style="color: #FF9F1C">Qoraflow answers.</span></h2>
+<p class="qf-sub" style="margin: 0 auto">Affordable AI voice agents for every kind of business, from solo owners to busy multi-location teams.</p>
+</div>
+<div class="qf-marq-wrap qf-rv" style="overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)">
+<div class="qf-marq">
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Dental clinics</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Medical practices</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Salons &amp; spas</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Barbershops</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>HVAC</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Plumbers</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Electricians</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Roofers</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Auto repair</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Real estate</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Property managers</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Law firms</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Restaurants</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Gyms &amp; studios</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Veterinary clinics</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Cleaning services</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Insurance agencies</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Marketing agencies</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Dental clinics</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Medical practices</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Salons &amp; spas</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Barbershops</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>HVAC</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Plumbers</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Electricians</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Roofers</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Auto repair</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Real estate</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Property managers</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Law firms</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Restaurants</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Gyms &amp; studios</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Veterinary clinics</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Cleaning services</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF9F1C; box-shadow: 0 0 10px #FF9F1C"></span>Insurance agencies</span>
+
+<span style="display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 14px 22px; border-radius: 999px; background: #121215; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; font-size: 16px; white-space: nowrap"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DB8FF; box-shadow: 0 0 10px #3DB8FF"></span>Marketing agencies</span>
+
+</div>
+</div>
+</section>
+<section class="qf-sec" id="app" style="position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div class="qf-rv" style="flex: 1 1 380px; min-width: 0">
+<p class="qf-lbl">The Qoraflow app</p>
+<h2 class="qf-h2">Every call, tracked <span style="color: #FF9F1C">in one place.</span></h2>
+<p class="qf-sub" style="margin-bottom: 28px">See who called, what they needed and what your agent did, with recordings, transcripts and summaries on web and mobile.</p>
+<ul class="qf-app-pts" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 16px; font-weight: 600">
+<li style="display: flex; gap: 12px; align-items: center"><span style="width: 26px; height: 26px; flex-shrink: 0; border-radius: 50%; background: rgba(61,184,255,0.15); border: 1px solid #3DB8FF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="14" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="14"><path d="M5 12l5 5L20 7"></path></svg></span>Live call log with recordings</li><li style="display: flex; gap: 12px; align-items: center"><span style="width: 26px; height: 26px; flex-shrink: 0; border-radius: 50%; background: rgba(61,184,255,0.15); border: 1px solid #3DB8FF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="14" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="14"><path d="M5 12l5 5L20 7"></path></svg></span>AI transcripts and call summaries</li><li style="display: flex; gap: 12px; align-items: center"><span style="width: 26px; height: 26px; flex-shrink: 0; border-radius: 50%; background: rgba(61,184,255,0.15); border: 1px solid #3DB8FF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="14" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="14"><path d="M5 12l5 5L20 7"></path></svg></span>Bookings, leads and caller history</li><li style="display: flex; gap: 12px; align-items: center"><span style="width: 26px; height: 26px; flex-shrink: 0; border-radius: 50%; background: rgba(61,184,255,0.15); border: 1px solid #3DB8FF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="14" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="14"><path d="M5 12l5 5L20 7"></path></svg></span>Instant alerts for urgent calls</li>
+</ul>
+</div>
+<div class="qf-rv qf-card2 qf-app-card" style="flex: 1 1 520px; min-width: 0; padding: 24px; border-color: rgba(61,184,255,0.3); box-shadow: 0 0 80px rgba(61,184,255,0.12), 0 40px 90px rgba(0,0,0,0.6)">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px"><p style="margin: 0; font-weight: 800; font-size: 17px">This week</p><p style="margin: 0; font-size: 12px; font-weight: 700; color: #9AA6BA; letter-spacing: 0.08em; text-transform: uppercase">Sample data</p></div>
+<div class="qf-app-stats" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px">
+<div style="background: rgba(255,255,255,0.04); border-radius: 14px; padding: 14px"><p style="margin: 0; font-size: 12px; color: #9AA6BA">Calls answered</p><p style="margin: 0; font-size: 28px; font-weight: 800">312</p></div>
+<div style="background: rgba(255,255,255,0.04); border-radius: 14px; padding: 14px"><p style="margin: 0; font-size: 12px; color: #9AA6BA">Bookings</p><p style="margin: 0; font-size: 28px; font-weight: 800; color: #3DB8FF">96</p></div>
+<div style="background: rgba(255,255,255,0.04); border-radius: 14px; padding: 14px"><p style="margin: 0; font-size: 12px; color: #9AA6BA">Missed</p><p style="margin: 0; font-size: 28px; font-weight: 800; color: #FF9F1C">0</p></div>
+</div>
+<div aria-hidden="true" class="qf-app-chart" style="display: flex; align-items: flex-end; gap: 10px; height: 110px; padding: 0 4px 6px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.08)">
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end"><div style="width: 100%; height: 62%; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, #3DB8FF, rgba(61,184,255,0.25))"></div><span style="font-size: 11px; color: #9AA6BA">Mon</span></div><div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end"><div style="width: 100%; height: 78%; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, #3DB8FF, rgba(61,184,255,0.25))"></div><span style="font-size: 11px; color: #9AA6BA">Tue</span></div><div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end"><div style="width: 100%; height: 55%; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, #3DB8FF, rgba(61,184,255,0.25))"></div><span style="font-size: 11px; color: #9AA6BA">Wed</span></div><div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end"><div style="width: 100%; height: 90%; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, #3DB8FF, rgba(61,184,255,0.25))"></div><span style="font-size: 11px; color: #9AA6BA">Thu</span></div><div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end"><div style="width: 100%; height: 84%; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, #3DB8FF, rgba(61,184,255,0.25))"></div><span style="font-size: 11px; color: #9AA6BA">Fri</span></div><div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end"><div style="width: 100%; height: 40%; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, #3DB8FF, rgba(61,184,255,0.25))"></div><span style="font-size: 11px; color: #9AA6BA">Sat</span></div><div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end"><div style="width: 100%; height: 28%; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, #3DB8FF, rgba(61,184,255,0.25))"></div><span style="font-size: 11px; color: #9AA6BA">Sun</span></div>
+</div>
+<div class="qf-app-calls" style="display: flex; flex-direction: column; gap: 8px">
+<div class="qf-app-row" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; background: rgba(255,255,255,0.03); border-radius: 12px; padding: 12px 14px; font-size: 14px"><div style="min-width: 0"><p style="margin: 0; font-weight: 700">Returning caller · 10:42 AM</p><p style="margin: 0; color: #9AA6BA; font-size: 13px">Booked a cleaning for Thursday 2:30 PM</p></div><span style="flex-shrink: 0; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 999px; background: rgba(61,184,255,0.15); color: #3DB8FF">Booked</span></div><div class="qf-app-row" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; background: rgba(255,255,255,0.03); border-radius: 12px; padding: 12px 14px; font-size: 14px"><div style="min-width: 0"><p style="margin: 0; font-weight: 700">New caller · 10:18 AM</p><p style="margin: 0; color: #9AA6BA; font-size: 13px">Asked about pricing, sent info by text</p></div><span style="flex-shrink: 0; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 999px; background: rgba(255,159,28,0.15); color: #FF9F1C">Lead</span></div><div class="qf-app-row" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; background: rgba(255,255,255,0.03); border-radius: 12px; padding: 12px 14px; font-size: 14px"><div style="min-width: 0"><p style="margin: 0; font-weight: 700">New caller · 9:55 AM</p><p style="margin: 0; color: #9AA6BA; font-size: 13px">Urgent request, forwarded to owner</p></div><span style="flex-shrink: 0; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,0.1); color: #FFFFFF">Routed</span></div><div class="qf-app-row" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; background: rgba(255,255,255,0.03); border-radius: 12px; padding: 12px 14px; font-size: 14px"><div style="min-width: 0"><p style="margin: 0; font-weight: 700">Returning caller · 9:30 AM</p><p style="margin: 0; color: #9AA6BA; font-size: 13px">Left a callback message</p></div><span style="flex-shrink: 0; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,0.1); color: #FFFFFF">Message</span></div>
+</div>
+</div>
+</section>
+<section class="qf-sec" id="compare" style="position: relative; z-index: 1">
+<div class="qf-rv" style="text-align: center; margin-bottom: 48px">
+<p class="qf-lbl">Why Qoraflow</p>
+<h2 class="qf-h2">A front desk that <span style="color: #FF9F1C">never clocks out.</span></h2>
+<p class="qf-sub" style="margin: 0 auto">See how an AI voice agent compares with the usual ways businesses handle calls.</p>
+</div>
+<div class="qf-rv qf-card2" style="overflow-x: auto">
+<table class="qf-cmp" style="width: 100%; min-width: 620px; border-collapse: collapse; font-size: 15px">
+<thead><tr>
+<th scope="col" style="text-align: left; padding: 20px 24px; color: #9AA6BA; font-weight: 700"></th>
+<th scope="col" style="padding: 20px 16px; font-weight: 800; color: #FF9F1C; background: rgba(255,159,28,0.08); border-left: 1px solid rgba(255,159,28,0.3); border-right: 1px solid rgba(255,159,28,0.3)">Qoraflow</th>
+<th scope="col" style="padding: 20px 16px; font-weight: 700; color: #C9D2E3">Receptionist</th>
+<th scope="col" style="padding: 20px 16px; font-weight: 700; color: #C9D2E3">Voicemail</th>
+</tr></thead>
+<tbody>
+<tr style="border-top: 1px solid rgba(255,255,255,0.08)">
+<th scope="row" style="text-align: left; padding: 16px 24px; font-weight: 700">Answers 24/7, including holidays</th>
+<td style="text-align: center; padding: 16px; background: rgba(255,159,28,0.08); border-left: 1px solid rgba(255,159,28,0.3); border-right: 1px solid rgba(255,159,28,0.3)">
+<svg aria-label="Yes" fill="none" height="22" role="img" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="22"><path d="M5 12l5 5L20 7"></path></svg>
+
+
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+<svg aria-label="No" fill="none" height="20" role="img" stroke="#6B7385" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="20"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+<svg aria-label="No" fill="none" height="20" role="img" stroke="#6B7385" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="20"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+
+</td>
+</tr><tr style="border-top: 1px solid rgba(255,255,255,0.08)">
+<th scope="row" style="text-align: left; padding: 16px 24px; font-weight: 700">Handles several calls at once</th>
+<td style="text-align: center; padding: 16px; background: rgba(255,159,28,0.08); border-left: 1px solid rgba(255,159,28,0.3); border-right: 1px solid rgba(255,159,28,0.3)">
+<svg aria-label="Yes" fill="none" height="22" role="img" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="22"><path d="M5 12l5 5L20 7"></path></svg>
+
+
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+<svg aria-label="No" fill="none" height="20" role="img" stroke="#6B7385" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="20"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+<svg aria-label="No" fill="none" height="20" role="img" stroke="#6B7385" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="20"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+
+</td>
+</tr><tr style="border-top: 1px solid rgba(255,255,255,0.08)">
+<th scope="row" style="text-align: left; padding: 16px 24px; font-weight: 700">Books appointments on the call</th>
+<td style="text-align: center; padding: 16px; background: rgba(255,159,28,0.08); border-left: 1px solid rgba(255,159,28,0.3); border-right: 1px solid rgba(255,159,28,0.3)">
+<svg aria-label="Yes" fill="none" height="22" role="img" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="22"><path d="M5 12l5 5L20 7"></path></svg>
+
+
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+<svg aria-label="Yes" fill="none" height="22" role="img" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="22"><path d="M5 12l5 5L20 7"></path></svg>
+
+
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+<svg aria-label="No" fill="none" height="20" role="img" stroke="#6B7385" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="20"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+
+</td>
+</tr><tr style="border-top: 1px solid rgba(255,255,255,0.08)">
+<th scope="row" style="text-align: left; padding: 16px 24px; font-weight: 700">Remembers returning callers</th>
+<td style="text-align: center; padding: 16px; background: rgba(255,159,28,0.08); border-left: 1px solid rgba(255,159,28,0.3); border-right: 1px solid rgba(255,159,28,0.3)">
+<svg aria-label="Yes" fill="none" height="22" role="img" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="22"><path d="M5 12l5 5L20 7"></path></svg>
+
+
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+
+<span style="font-weight: 700; color: #C9D2E3">Sometimes</span>
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+<svg aria-label="No" fill="none" height="20" role="img" stroke="#6B7385" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="20"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+
+</td>
+</tr><tr style="border-top: 1px solid rgba(255,255,255,0.08)">
+<th scope="row" style="text-align: left; padding: 16px 24px; font-weight: 700">Records and transcribes every call</th>
+<td style="text-align: center; padding: 16px; background: rgba(255,159,28,0.08); border-left: 1px solid rgba(255,159,28,0.3); border-right: 1px solid rgba(255,159,28,0.3)">
+<svg aria-label="Yes" fill="none" height="22" role="img" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="22"><path d="M5 12l5 5L20 7"></path></svg>
+
+
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+<svg aria-label="No" fill="none" height="20" role="img" stroke="#6B7385" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="20"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+<svg aria-label="No" fill="none" height="20" role="img" stroke="#6B7385" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="20"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+
+</td>
+</tr><tr style="border-top: 1px solid rgba(255,255,255,0.08)">
+<th scope="row" style="text-align: left; padding: 16px 24px; font-weight: 700">Sick days and time off</th>
+<td style="text-align: center; padding: 16px; background: rgba(255,159,28,0.08); border-left: 1px solid rgba(255,159,28,0.3); border-right: 1px solid rgba(255,159,28,0.3)">
+
+
+<span style="font-weight: 700; color: #FF9F1C">Never</span>
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+
+<span style="font-weight: 700; color: #C9D2E3">Yes</span>
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+
+<span style="font-weight: 700; color: #C9D2E3">—</span>
+</td>
+</tr><tr style="border-top: 1px solid rgba(255,255,255,0.08)">
+<th scope="row" style="text-align: left; padding: 16px 24px; font-weight: 700">Monthly cost</th>
+<td style="text-align: center; padding: 16px; background: rgba(255,159,28,0.08); border-left: 1px solid rgba(255,159,28,0.3); border-right: 1px solid rgba(255,159,28,0.3)">
+
+
+<span style="font-weight: 700; color: #FF9F1C">From $1,500</span>
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+
+<span style="font-weight: 700; color: #C9D2E3">Full salary</span>
+</td><td style="text-align: center; padding: 16px; background: transparent; border-left: none; border-right: none">
+
+
+<span style="font-weight: 700; color: #C9D2E3">Lost customers</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="qf-sec" id="pricing" style="position: relative; z-index: 1">
+<div class="qf-rv" style="text-align: center; margin-bottom: 48px">
+<p class="qf-lbl">Pricing</p>
+<h2 class="qf-h2">Affordable for <span style="color: #FF9F1C">every business.</span></h2>
+<p class="qf-sub" style="margin: 0 auto">Two simple monthly plans. Sign up now to lock in the sale price and get a free website.</p>
+</div>
+<div class="qf-plans" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: stretch; max-width: 940px; margin: 0 auto">
+
+<div class="qf-rv qf-card2 qf-plan" style="display: flex; flex-direction: column; padding: 32px; border: 1px solid #E01E37; box-shadow: 0 0 60px rgba(224,30,55,0.25)">
+<p style="margin: 0 0 10px; min-height: 20px"><span style="display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(224,30,55,0.15); color: #FF4D5E; border: 1px solid #FF4D5E">Limited-time offer</span></p>
+<h3 style="margin: 0 0 6px; font-size: 26px; font-weight: 800">Inbound</h3>
+<p style="margin: 4px 0 0; display: flex; align-items: center; gap: 10px"><span style="font-size: 22px; font-weight: 700; color: #9AA6BA; text-decoration: line-through; text-decoration-color: #E01E37; text-decoration-thickness: 2px">$2,000</span><span style="padding: 3px 10px; border-radius: 999px; background: #E01E37; color: #FFFFFF; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; box-shadow: 0 0 18px rgba(255,59,82,0.5)">Sale · Save $500</span></p>
+<p class="qf-price" style="margin: 0 0 6px; font-size: 44px; font-weight: 800; letter-spacing: -1px">$1,500<span style="font-size: 16px; font-weight: 600; color: #9AA6BA; letter-spacing: 0"> /month</span></p>
+<p style="margin: 0 0 24px; color: #C9D2E3; font-size: 15px">Every feature, for every call coming in to your business.</p>
+<ul style="margin: 0 0 28px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; font-size: 15px">
+<li style="display: flex; gap: 10px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" style="flex-shrink: 0; margin-top: 3px" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>Inbound calls only</li><li style="display: flex; gap: 10px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" style="flex-shrink: 0; margin-top: 3px" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>All Qoraflow features included</li><li style="display: flex; gap: 10px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" style="flex-shrink: 0; margin-top: 3px" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>24/7 call answering</li><li style="display: flex; gap: 10px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" style="flex-shrink: 0; margin-top: 3px" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>Appointment booking and smart routing</li><li style="display: flex; gap: 10px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" style="flex-shrink: 0; margin-top: 3px" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>Message taking</li><li style="display: flex; gap: 10px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" style="flex-shrink: 0; margin-top: 3px" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>Remembers returning callers</li><li style="display: flex; gap: 10px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" style="flex-shrink: 0; margin-top: 3px" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>Qoraflow app: recordings, transcripts and analytics</li>
+</ul>
+<div style="display: flex; gap: 12px; align-items: flex-start; margin: 0 0 22px; padding: 16px; border-radius: 16px; background: rgba(61,184,255,0.1); border: 1px dashed rgba(61,184,255,0.6)"><svg aria-hidden="true" fill="none" height="22" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="flex-shrink: 0; margin-top: 2px" viewbox="0 0 24 24" width="22"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg><p style="margin: 0; font-size: 15px; line-height: 1.5"><strong style="color: #3DB8FF">Limited-time bonus:</strong> sign up now and get a <strong>free website</strong>, designed, built and fully managed by us.</p></div>
+
+<button class="qf-red" data-on="click:openContact" style="min-height: 52px; border: none; border-radius: 999px; background: #E01E37; color: #FFFFFF; font-size: 16px; font-weight: 800; box-shadow: 0 0 34px rgba(255,59,82,0.45)" type="button">Claim this offer</button>
+
+</div>
+
+<div class="qf-rv qf-card2 qf-plan" style="display: flex; flex-direction: column; padding: 32px; border: 1px solid rgba(255,159,28,0.4); box-shadow: none">
+<p style="margin: 0 0 10px; min-height: 20px"><span style="display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(255,159,28,0.12); color: #FF9F1C; border: 1px solid #FF9F1C">Coming soon</span></p>
+<h3 style="margin: 0 0 6px; font-size: 26px; font-weight: 800">Inbound + Outbound</h3>
+
+<p class="qf-price" style="margin: 0 0 6px; font-size: 44px; font-weight: 800; letter-spacing: -1px">$2,500<span style="font-size: 16px; font-weight: 600; color: #9AA6BA; letter-spacing: 0"> /month</span></p>
+<p style="margin: 0 0 24px; color: #C9D2E3; font-size: 15px">Everything in Inbound, plus an agent that makes calls for you.</p>
+<ul style="margin: 0 0 28px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; font-size: 15px">
+<li style="display: flex; gap: 10px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" style="flex-shrink: 0; margin-top: 3px" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>Everything in the Inbound plan</li><li style="display: flex; gap: 10px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" style="flex-shrink: 0; margin-top: 3px" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>Inbound and outbound calls</li><li style="display: flex; gap: 10px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" style="flex-shrink: 0; margin-top: 3px" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>Automatic lead follow-up: when people respond to your ads and request a call, your agent calls them right away and turns them into booked leads</li><li style="display: flex; gap: 10px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" style="flex-shrink: 0; margin-top: 3px" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>All Qoraflow features included</li><li style="display: flex; gap: 10px"><svg aria-hidden="true" fill="none" height="18" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" style="flex-shrink: 0; margin-top: 3px" viewbox="0 0 24 24" width="18"><path d="M5 12l5 5L20 7"></path></svg>Outbound calling: under development</li>
+</ul>
+
+<div style="display: flex; gap: 12px; align-items: flex-start; margin: 0 0 22px; padding: 16px; border-radius: 16px; background: rgba(255,159,28,0.08); border: 1px dashed rgba(255,159,28,0.6)"><svg aria-hidden="true" fill="none" height="22" stroke="#FF9F1C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="flex-shrink: 0; margin-top: 2px" viewbox="0 0 24 24" width="22"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"></path></svg><p style="margin: 0; font-size: 15px; line-height: 1.5"><strong style="color: #FF9F1C">Under development:</strong> outbound calling is being built now. Join the waitlist to get early access when it launches.</p></div>
+
+<button class="qf-ghost" data-on="click:openContact" style="min-height: 52px; border-radius: 999px; background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #FFFFFF; font-size: 16px; font-weight: 800" type="button">Join the waitlist</button>
+</div>
+
+</div>
+<p aria-hidden="true" class="qf-swipe" style="display: none; align-items: center; justify-content: center; gap: 8px; margin: 6px 0 0; color: #9AA6BA; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase">Swipe to compare plans<svg class="qf-swipe-arrow" fill="none" height="16" stroke="#FF9F1C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewbox="0 0 24 24" width="16"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></p>
+</section>
+<section class="qf-sec" id="faq" style="position: relative; z-index: 1; max-width: 860px">
+<div class="qf-rv" style="text-align: center; margin-bottom: 40px">
+<p class="qf-lbl">FAQ</p>
+<h2 class="qf-h2">Questions? <span style="color: #FF9F1C">Answers.</span></h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+
+<details class="qf-faq qf-rv qf-card2" style="padding: 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 24px; font-weight: 800; font-size: 17px">What is a Qoraflow voice agent?<span class="qf-plus" style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,159,28,0.5); display: flex; align-items: center; justify-content: center; color: #FF9F1C"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="16"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<p style="margin: 0; padding: 0 24px 22px; color: #C9D2E3; font-size: 16px">An AI receptionist that answers your business calls, books appointments, answers common questions, routes urgent calls and takes messages, 24/7.</p>
+</details>
+
+<details class="qf-faq qf-rv qf-card2" style="padding: 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 24px; font-weight: 800; font-size: 17px">Will callers know they are talking to AI?<span class="qf-plus" style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,159,28,0.5); display: flex; align-items: center; justify-content: center; color: #FF9F1C"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="16"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<p style="margin: 0; padding: 0 24px 22px; color: #C9D2E3; font-size: 16px">Our agents sound natural and friendly. You choose how your agent introduces itself, including whether it says it is an AI assistant.</p>
+</details>
+
+<details class="qf-faq qf-rv qf-card2" style="padding: 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 24px; font-weight: 800; font-size: 17px">Can I keep my existing phone number?<span class="qf-plus" style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,159,28,0.5); display: flex; align-items: center; justify-content: center; color: #FF9F1C"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="16"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<p style="margin: 0; padding: 0 24px 22px; color: #C9D2E3; font-size: 16px">Yes. Forward your current number to your Qoraflow agent, or we can set you up with a new one.</p>
+</details>
+
+<details class="qf-faq qf-rv qf-card2" style="padding: 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 24px; font-weight: 800; font-size: 17px">How long does setup take?<span class="qf-plus" style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,159,28,0.5); display: flex; align-items: center; justify-content: center; color: #FF9F1C"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="16"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<p style="margin: 0; padding: 0 24px 22px; color: #C9D2E3; font-size: 16px">[Add your typical setup time here.]</p>
+</details>
+
+<details class="qf-faq qf-rv qf-card2" style="padding: 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 24px; font-weight: 800; font-size: 17px">Does it work with my calendar?<span class="qf-plus" style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,159,28,0.5); display: flex; align-items: center; justify-content: center; color: #FF9F1C"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="16"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<p style="margin: 0; padding: 0 24px 22px; color: #C9D2E3; font-size: 16px">Your agent books straight into your existing calendar. Tell us which one you use and we will connect it during setup.</p>
+</details>
+
+<details class="qf-faq qf-rv qf-card2" style="padding: 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 24px; font-weight: 800; font-size: 17px">How does it remember returning callers?<span class="qf-plus" style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,159,28,0.5); display: flex; align-items: center; justify-content: center; color: #FF9F1C"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="16"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<p style="margin: 0; padding: 0 24px 22px; color: #C9D2E3; font-size: 16px">When someone calls from a number they have used before, your agent recognizes them and can greet them by name with their past calls in mind.</p>
+</details>
+
+<details class="qf-faq qf-rv qf-card2" style="padding: 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 24px; font-weight: 800; font-size: 17px">What do I see in the Qoraflow app?<span class="qf-plus" style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,159,28,0.5); display: flex; align-items: center; justify-content: center; color: #FF9F1C"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="16"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<p style="margin: 0; padding: 0 24px 22px; color: #C9D2E3; font-size: 16px">Every call with its recording, transcript and summary, plus bookings, messages and analytics, on web and mobile.</p>
+</details>
+
+<details class="qf-faq qf-rv qf-card2" style="padding: 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 24px; font-weight: 800; font-size: 17px">Is there a contract?<span class="qf-plus" style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,159,28,0.5); display: flex; align-items: center; justify-content: center; color: #FF9F1C"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" viewbox="0 0 24 24" width="16"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<p style="margin: 0; padding: 0 24px 22px; color: #C9D2E3; font-size: 16px">No long contracts. Plans are month-to-month and you can cancel anytime.</p>
+</details>
+
+</div>
+</section>
+<section class="qf-sec" id="contact" style="position: relative; z-index: 1; padding-top: 40px">
+<div class="qf-rv" style="position: relative; overflow: hidden; text-align: center; border-radius: 32px; padding: 88px 24px; background: radial-gradient(ellipse at 50% 0%, rgba(255,159,28,0.28), rgba(0,0,0,0) 60%), radial-gradient(ellipse at 50% 100%, rgba(61,184,255,0.22), rgba(0,0,0,0) 60%), #0B0B0E; border: 1px solid rgba(255,159,28,0.35)">
+<h2 class="qf-h2" style="max-width: 760px; margin-left: auto; margin-right: auto">Never miss <span style="color: #FF9F1C">another call.</span></h2>
+<p class="qf-sub" style="margin: 0 auto 36px">Get your own AI voice agent, set up for your business, at a price that makes sense.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px">
+<button class="qf-red" data-on="click:openContact" style="min-height: 54px; padding: 0 32px; border: none; border-radius: 999px; background: #E01E37; color: #FFFFFF; font-size: 16px; font-weight: 800; box-shadow: 0 0 40px rgba(255,59,82,0.5)" type="button">Get your voice agent</button>
+<button class="qf-ghost" data-on="click:enterTalk" style="display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 28px; border-radius: 999px; background: transparent; border: 1px solid rgba(255,159,28,0.6); color: #FFB547; font-size: 16px; font-weight: 800" type="button"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg>Talk to Qoraflow</button>
+</div>
+</div>
+</section>
+<footer style="position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.08)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px">
+<div style="flex: 1 1 260px; min-width: 0">
+<p style="margin: 0 0 10px; font-size: 26px; font-weight: 800; letter-spacing: -0.5px">Qora<span style="color: #FF9F1C">flow</span></p>
+<p style="margin: 0 0 6px; color: #C9D2E3; max-width: 300px">AI voice agents for every business. Every call answered. Every booking made.</p>
+<a href="mailto:hello@qoraflow.com" style="color: #3DB8FF; font-weight: 700">hello@qoraflow.com</a>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 10px"><p style="margin: 0 0 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #9AA6BA">Product</p><a href="#app" style="color: #FFFFFF">The app</a><a href="#pricing" style="color: #FFFFFF">Pricing</a><a href="#faq" style="color: #FFFFFF">FAQ</a><a href="https://app.qoraflow.com" style="color: #FFFFFF">Log in</a></div>
+<div style="display: flex; flex-direction: column; gap: 10px"><p style="margin: 0 0 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #9AA6BA">Company</p><a href="about.html" style="color: #FFFFFF">About us</a><a href="mailto:hello@qoraflow.com" style="color: #FFFFFF">Contact</a><a href="privacy.html" style="color: #FFFFFF">Privacy policy</a><a href="terms.html" style="color: #FFFFFF">Terms of service</a></div>
+</div>
+</div>
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px 24px 32px; box-sizing: border-box; border-top: 1px solid rgba(255,255,255,0.06); color: #9AA6BA; font-size: 14px">© 2026 Qoraflow. All rights reserved.</div>
+</footer>
+<div aria-hidden="true" class="qf-veil" style="position: fixed; inset: 0; z-index: 10; background: #000000; display: flex; align-items: center; justify-content: center">
+<div class="qf-flash" style="position: absolute; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(61,184,255,0.7), rgba(255,159,28,0.3) 45%, rgba(0,0,0,0) 70%)"></div>
+<div class="qf-lockup" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 26px">
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 26px">
+<svg height="128" viewbox="0 0 120 120" width="128">
+<g class="qf-ring" style="transform-origin: 60px 60px; animation-delay: 0s"><circle cx="60" cy="60" fill="none" opacity="0.8" r="47" stroke="#FF9F1C" stroke-dasharray="2 4" stroke-width="1.5"></circle><circle cx="60" cy="19" fill="#FF9F1C" r="2.5"></circle><circle cx="95" cy="80" fill="#FF9F1C" r="2.2"></circle></g>
+<g class="qf-ring" style="transform-origin: 60px 60px; animation-delay: 0.1s"><circle cx="60" cy="60" fill="none" r="41" stroke="#3DB8FF" stroke-dasharray="58 17 22 17" stroke-linecap="round" stroke-width="3" transform="rotate(-20 60 60)"></circle><ellipse cx="60" cy="60" fill="none" opacity="0.55" rx="46" ry="17" stroke="#3DB8FF" stroke-width="1.5" transform="rotate(-32 60 60)"></ellipse><circle cx="24" cy="84" fill="#3DB8FF" r="2"></circle></g>
+<g class="qf-ring" style="transform-origin: 60px 60px; animation-delay: 0.2s"><circle cx="60" cy="60" fill="none" r="33" stroke="#FF9F1C" stroke-dasharray="34 11" stroke-linecap="round" stroke-width="2.5" transform="rotate(40 60 60)"></circle></g>
+<g class="qf-ring" style="transform-origin: 60px 60px; animation-delay: 0.3s"><circle cx="60" cy="60" fill="none" opacity="0.85" r="26" stroke="#FFFFFF" stroke-width="1.5"></circle><rect fill="none" height="18" rx="3" stroke="#FFFFFF" stroke-width="2.5" width="22" x="49" y="51"></rect><line stroke="#FFFFFF" stroke-width="2.5" x1="49" x2="71" y1="57" y2="57"></line><line stroke="#FFFFFF" stroke-linecap="round" stroke-width="2.5" x1="55" x2="55" y1="47" y2="52"></line><line stroke="#FFFFFF" stroke-linecap="round" stroke-width="2.5" x1="65" x2="65" y1="47" y2="52"></line><polyline fill="none" points="54,63 58,66.5 66,59" stroke="#FF9F1C" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline></g>
+</svg>
+<p style="margin: 0; font-size: clamp(56px, 9vw, 104px); font-weight: 800; letter-spacing: -3px; line-height: 1">
+<span class="qf-letter" style="color: #FFFFFF; animation-delay: 0.35s">Q</span><span class="qf-letter" style="color: #FFFFFF; animation-delay: 0.39s">o</span><span class="qf-letter" style="color: #FFFFFF; animation-delay: 0.43s">r</span><span class="qf-letter" style="color: #FFFFFF; animation-delay: 0.47s">a</span><span class="qf-letter" style="color: #FF9F1C; animation-delay: 0.51s">f</span><span class="qf-letter" style="color: #FF9F1C; animation-delay: 0.55s">l</span><span class="qf-letter" style="color: #FF9F1C; animation-delay: 0.59s">o</span><span class="qf-letter" style="color: #FF9F1C; animation-delay: 0.63s">w</span>
+</p>
+</div>
+<p class="qf-tag" style="margin: 0; font-size: clamp(13px, 1.6vw, 20px); font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: #9FB3D1; text-align: center; padding: 0 24px">Every call answered. Every booking made.</p>
+</div>
+</div>
+</div>
+
+<script>
+
+class DCLogic {
+  constructor(props) { this.props = props || {}; this.state = {}; }
+  setState(p) { Object.assign(this.state, typeof p === 'function' ? p(this.state) : p); if (this.__apply) this.__apply(); }
+  forceUpdate() { if (this.__apply) this.__apply(); }
+}
+
+
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+var s = this;
+s.state = { mic: 'off', heroHidden: false, menu: false, contact: false, sent: false, talk: false };
+s.tk = 0; s.lockT = 0;
+s.skip = false;
+try { if (window.__qfSeen) s.skip = true; } catch (err) {}
+try { if (sessionStorage.getItem('qf-seen') === '1' || sessionStorage.getItem('qf-skip') === '1') s.skip = true; } catch (err) {}
+try { if (String(window.name || '').indexOf('qfseen') >= 0) s.skip = true; } catch (err) {}
+try { if (window.parent && window.parent !== window && window.parent.__qfSeen) s.skip = true; } catch (err) {}
+s.enterTalk = function () {
+s.setState({ talk: true, menu: false, contact: false });
+try { window.scrollTo({ top: 0, behavior: s.reduce ? 'auto' : 'smooth' }); } catch (err) { window.scrollTo(0, 0); }
+clearTimeout(s.lockT);
+s.lockT = setTimeout(function () { if (s.state.talk) document.documentElement.style.overflow = 'hidden'; }, 900);
+};
+s.exitTalk = function () {
+clearTimeout(s.lockT);
+document.documentElement.style.overflow = '';
+s.stopMic();
+s.setState({ talk: false, mic: 'off' });
+};
+s.hdr = null; s.hdrShown = true; s.lastY = 0; s.form = {};
+s.setHeader = function (el) { if (el) s.hdr = el; };
+s.openContact = function () { s.form = {}; s.setState({ contact: true, sent: false, menu: false }); };
+s.closeContact = function () { s.setState({ contact: false, sent: false }); };
+s.onField = function (e) { if (e && e.target) s.form[e.target.name] = e.target.value; };
+s.onSubmit = function (e) {
+if (e) e.preventDefault();
+var f = s.form, lines = ['Full name: ' + (f.name || ''), 'Email: ' + (f.email || ''), 'Phone: ' + (f.phone || ''), 'Business name: ' + (f.business || ''), '', 'About the business:', f.message || ''];
+var url = 'mailto:hello@qoraflow.com?subject=' + encodeURIComponent('Free 14-day trial request: ' + (f.business || f.name || 'website')) + '&body=' + encodeURIComponent(lines.join('\n'));
+try { window.location.href = url; } catch (err) {}
+s.setState({ sent: true });
+};
+s.toggleMenu = function () { s.setState({ menu: !s.state.menu }); };
+s.closeMenu = function () { s.setState({ menu: false }); };
+s.stage = null; s.prog = 0;
+s.setStage = function (el) { if (el) s.stage = el; };
+s.scrollToProg = function (p) {
+if (!s.stage) return;
+var r = s.stage.getBoundingClientRect(), span = r.height - window.innerHeight;
+var y = (window.pageYOffset || document.documentElement.scrollTop) + r.top + span * p;
+try { window.scrollTo({ top: y, behavior: s.reduce ? 'auto' : 'smooth' }); } catch (err) { window.scrollTo(0, y); }
+};
+s.goFeatures = function (e) { if (e) e.preventDefault(); s.scrollToProg(0.45); };
+s.menuFeatures = function (e) { s.closeMenu(); s.goFeatures(e); };
+s.menuHome = function (e) { s.closeMenu(); s.goHome(e); };
+s.goHome = function (e) { if (e) e.preventDefault(); try { window.scrollTo({ top: 0, behavior: s.reduce ? 'auto' : 'smooth' }); } catch (err) { window.scrollTo(0, 0); } };
+s.cv = null; s.raf = 0; s.mx = null; s.my = null; s.pulses = [];
+s.yaw = 0; s.pitch = 0; s.yawOff = 0; s.speed = 1; s.hover = 0; s.last = 0; s.level = 0;
+s.analyser = null; s.freq = null; s.stream = null; s.actx = null;
+s.reduce = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+s.setCanvas = function (el) { if (el && el !== s.cv) { s.cv = el; s.start(); } };
+s.coarse = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
+s.tap = null;
+s.onMove = function (e) { if (!s.cv || e.pointerType === 'touch') return; var r = s.cv.getBoundingClientRect(); s.mx = e.clientX - r.left; s.my = e.clientY - r.top; };
+s.onTapUp = function (e) {
+var tp = s.tap; s.tap = null;
+if (!tp || e.pointerType !== 'touch') return;
+if (e.target && e.target.closest && e.target.closest('a,button,input,textarea,label')) return;
+if (Math.abs(e.clientX - tp.x) + Math.abs(e.clientY - tp.y) < 12 && performance.now() - tp.t < 350) s.pulses.push(performance.now());
+};
+s.onLeave = function () { s.mx = null; s.my = null; };
+s.onDown = function (e) {
+if (e.pointerType === 'touch') { s.tap = { x: e.clientX, y: e.clientY, t: performance.now() }; return; }
+if (e.target && e.target.closest && e.target.closest('a,button,input,textarea,label')) return;
+s.pulses.push(performance.now());
+};
+s.onMic = function () {
+if (s.analyser) { s.stopMic(); s.setState({ mic: 'off' }); return; }
+if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { s.setState({ mic: 'denied' }); return; }
+navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+var AC = window.AudioContext || window.webkitAudioContext;
+s.actx = new AC(); s.stream = stream;
+var src = s.actx.createMediaStreamSource(stream);
+s.analyser = s.actx.createAnalyser(); s.analyser.fftSize = 256; s.analyser.smoothingTimeConstant = 0.7;
+src.connect(s.analyser); s.freq = new Uint8Array(s.analyser.frequencyBinCount);
+s.setState({ mic: 'on' });
+}).catch(function () { s.setState({ mic: 'denied' }); });
+};
+s.build();
+s.text = s.makeText();
+}
+stopMic() {
+if (this.stream) this.stream.getTracks().forEach(function (t) { t.stop(); });
+if (this.actx) { try { this.actx.close(); } catch (e) {} }
+this.analyser = null; this.freq = null; this.stream = null; this.actx = null;
+}
+componentDidMount() {
+try { window.__qfSeen = true; } catch (err) {}
+try { sessionStorage.setItem('qf-seen', '1'); sessionStorage.removeItem('qf-skip'); } catch (err) {}
+try { if (String(window.name || '').indexOf('qfseen') < 0) window.name = (window.name ? window.name + ' ' : '') + 'qfseen'; } catch (err) {}
+try { if (window.parent && window.parent !== window) window.parent.__qfSeen = true; } catch (err) {}
+}
+componentWillUnmount() { if (this.raf) cancelAnimationFrame(this.raf); this.raf = 0; this.stopMic(); clearTimeout(this.lockT); if (typeof document !== 'undefined') document.documentElement.style.overflow = ''; }
+build() {
+var seed = 7;
+function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+this.rnd = rnd;
+var cols = ['#FF9F1C', '#FFB547', '#FF8A00', '#3DB8FF', '#7FD3FF', '#FF9F1C', '#5EC8FF', '#FFB547', '#3DB8FF'];
+var pts = [];
+this.cols = cols; this.bk = []; this.fbk = [];
+function add(o) {
+var ang = rnd() * Math.PI * 2, dist = 900 + rnd() * 800;
+o.ax = Math.cos(ang) * dist; o.ay = Math.sin(ang) * dist; o.delay = rnd() * 800;
+o.dx = 0; o.dy = 0; o.vx = 0; o.vy = 0; o.ci = Math.floor(rnd() * cols.length); o.col = cols[o.ci]; o.sa = rnd() * Math.PI * 2; o.ss = 0.4 + rnd() * 1.2;
+pts.push(o);
+}
+var N = 300;
+for (var i = 0; i < N; i++) {
+var y = 1 - 2 * (i + 0.5) / N, r = Math.sqrt(1 - y * y), th = i * 2.39996;
+var x = Math.cos(th) * r, z = Math.sin(th) * r, t;
+if (rnd() < 0.5) t = [-y * Math.cos(th), r, -y * Math.sin(th)]; else t = [-Math.sin(th), 0, Math.cos(th)];
+var rad = 0.9 + rnd() * 0.16;
+add({ k: 0, p: [x * rad, y * rad, z * rad], t: t, len: 0.015 + rnd() * 0.13, w: 0.8 + rnd() * 1.8 });
+}
+var rings = [
+{ r: 1.26, n: 64, sp: 0.1, ax: 1.25, az: 0.2, w: 3 },
+{ r: 1.14, n: 56, sp: -0.2, ax: 0.35, az: -0.5, w: 2.6 },
+{ r: 1.02, n: 48, sp: 0.28, ax: -0.4, az: 1.9, w: 1.6 },
+{ r: 0.82, n: 44, sp: 0.38, ax: -0.8, az: 0.9, w: 2 },
+{ r: 0.64, n: 36, sp: -0.55, ax: 1.6, az: -1.1, w: 1.8 },
+{ r: 0.46, n: 30, sp: 0.8, ax: 0.1, az: 2.4, w: 1.6 },
+{ r: 0.32, n: 26, sp: 1.1, ax: 0.6, az: 1.4, w: 2.2 },
+{ r: 0.18, n: 18, sp: -1.6, ax: -1.2, az: 0.3, w: 2.4 }
+];
+rings.forEach(function (g) {
+var ca = Math.cos(g.ax), sa = Math.sin(g.ax), cz = Math.cos(g.az), sz = Math.sin(g.az);
+function tf(v) { var y1 = v[1] * ca - v[2] * sa, z1 = v[1] * sa + v[2] * ca; return [v[0] * cz - y1 * sz, v[0] * sz + y1 * cz, z1]; }
+var u = tf([1, 0, 0]), v = tf([0, 0, 1]);
+for (var j = 0; j < g.n; j++) {
+if (rnd() < 0.15) continue;
+add({ k: 1, u: u, v: v, r: g.r * (0.97 + rnd() * 0.06), a0: j / g.n * Math.PI * 2 + rnd() * 0.05, len: 0.03 + rnd() * 0.12, sp: g.sp * (0.9 + rnd() * 0.2), w: g.w * (0.5 + rnd()) });
+}
+});
+this.pts = pts;
+var field = [];
+for (i = 0; i < 240; i++) field.push({ a: rnd() * Math.PI * 2, d: rnd(), sp: 0.04 + rnd() * 0.16, w: 0.6 + rnd() * 1.6, c: cols[Math.floor(rnd() * cols.length)] });
+this.field = field;
+this.NB = 128; this.bars = new Float32Array(this.NB);
+this.halos = [
+{ r: 1.75, w: 1, dash: [2, 10], sp: 0.05, a: 0.35 },
+{ r: 2.3, w: 1.5, dash: [40, 18, 6, 18], sp: -0.03, a: 0.22 },
+{ r: 3.1, w: 1, dash: [1, 14], sp: 0.02, a: 0.25 },
+{ r: 4.0, w: 2, dash: [120, 60, 20, 60], sp: -0.015, a: 0.12 }
+];
+}
+makeText() {
+function words(text, start, step) { return text.split(' ').map(function (t, i) { return { t: t, delay: (start + i * step).toFixed(2) }; }); }
+var dirs = [['-220px', '-120px'], ['0px', '-160px'], ['200px', '-140px'], ['-180px', '140px'], ['260px', '60px'], ['-80px', '180px'], ['160px', '170px'], ['300px', '-40px']];
+return {
+letters: 'Qoraflow'.split('').map(function (ch, i) { return { ch: ch, color: i < 4 ? '#FFFFFF' : '#FF9F1C', delay: (0.35 + i * 0.04).toFixed(2) }; }),
+navLetters: 'Qoraflow'.split('').map(function (ch, i) { return { ch: ch, color: i < 4 ? '#FFFFFF' : '#FF9F1C', dx: dirs[i][0], dy: dirs[i][1], delay: (4.55 + i * 0.04).toFixed(2) }; }),
+features: [
+{ i: 2.0, title: '24/7 call answering', text: 'Nights, weekends and holidays — every call picked up in seconds.', icon: 'M12 6v6l4 2M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z' },
+{ i: 2.6, title: 'Appointment booking', text: 'Books, reschedules and confirms right in your calendar.', icon: 'M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z' },
+{ i: 3.6, title: 'Smart call routing', text: 'Urgent calls go straight to you or the right person.', icon: 'M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7' },
+{ i: 4.2, title: 'Message taking', text: 'Captures names, numbers and details, then texts you.', icon: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z' },
+{ i: 5.2, title: 'Remembers every caller', text: 'Recognizes returning numbers and greets them by name, with their history in mind.', icon: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM17 11l2 2 4-4' },
+{ i: 5.8, title: 'App tracking', text: 'Follow every call live in the Qoraflow app: recordings, transcripts and analytics.', icon: 'M3 3v18h18M7 15l4-4 3 3 5-6' }
+],
+steps: [
+{ i: 2, n: '1', t: 'Tell us about your business', d: 'Share your hours, services, prices and FAQs. We turn them into your agent’s knowledge.', c: '#FF9F1C', g: 'rgba(255,159,28,0.5)' },
+{ i: 2.8, n: '2', t: 'We build your voice agent', d: 'Choose a voice and greeting. We connect it to your phone number and calendar.', c: '#FFC861', g: 'rgba(255,200,97,0.45)' },
+{ i: 3.6, n: '3', t: 'Go live and track every call', d: 'Calls are answered instantly. Watch every conversation in the Qoraflow app.', c: '#3DB8FF', g: 'rgba(61,184,255,0.5)' }
+],
+wave: [10, 18, 26, 14, 30, 22, 34, 16, 28, 36, 20, 32, 24, 12, 30, 26, 34, 18, 28, 22, 36, 14, 24, 30, 16, 26, 20, 12].map(function (h, i) { return { h: h, d: (i * 0.06).toFixed(2), c: i % 3 === 0 ? '#3DB8FF' : '#FF9F1C' }; }),
+bubbles: [
+{ i: 0, who: 'Qoraflow', t: 'Thanks for calling Bright Smile Dental! How can I help?', align: 'flex-start', bg: 'rgba(255,159,28,0.12)', bd: 'rgba(255,159,28,0.35)', lc: '#FF9F1C' },
+{ i: 1, who: 'Caller', t: 'Hi, can I book a cleaning this Thursday?', align: 'flex-end', bg: 'rgba(255,255,255,0.06)', bd: 'rgba(255,255,255,0.15)', lc: '#9AA6BA' },
+{ i: 2, who: 'Qoraflow', t: 'Of course. I have 10:00 AM or 2:30 PM open. Which works best?', align: 'flex-start', bg: 'rgba(255,159,28,0.12)', bd: 'rgba(255,159,28,0.35)', lc: '#FF9F1C' },
+{ i: 3, who: 'Caller', t: '2:30, please.', align: 'flex-end', bg: 'rgba(255,255,255,0.06)', bd: 'rgba(255,255,255,0.15)', lc: '#9AA6BA' },
+{ i: 4, who: 'Qoraflow', t: 'You’re booked for Thursday at 2:30 PM. A confirmation text is on its way.', align: 'flex-start', bg: 'rgba(255,159,28,0.12)', bd: 'rgba(255,159,28,0.35)', lc: '#FF9F1C' }
+],
+industries: (function () {
+var names = ['Dental clinics', 'Medical practices', 'Salons & spas', 'Barbershops', 'HVAC', 'Plumbers', 'Electricians', 'Roofers', 'Auto repair', 'Real estate', 'Property managers', 'Law firms', 'Restaurants', 'Gyms & studios', 'Veterinary clinics', 'Cleaning services', 'Insurance agencies', 'Marketing agencies'];
+var list = names.map(function (t, i) { return { t: t, c: i % 2 ? '#3DB8FF' : '#FF9F1C' }; });
+return list.concat(list);
+})(),
+appPoints: ['Live call log with recordings', 'AI transcripts and call summaries', 'Bookings, leads and caller history', 'Instant alerts for urgent calls'],
+chart: [{ d: 'Mon', h: 62 }, { d: 'Tue', h: 78 }, { d: 'Wed', h: 55 }, { d: 'Thu', h: 90 }, { d: 'Fri', h: 84 }, { d: 'Sat', h: 40 }, { d: 'Sun', h: 28 }],
+calls: [
+{ who: 'Returning caller · 10:42 AM', what: 'Booked a cleaning for Thursday 2:30 PM', tag: 'Booked', bg: 'rgba(61,184,255,0.15)', fg: '#3DB8FF' },
+{ who: 'New caller · 10:18 AM', what: 'Asked about pricing, sent info by text', tag: 'Lead', bg: 'rgba(255,159,28,0.15)', fg: '#FF9F1C' },
+{ who: 'New caller · 9:55 AM', what: 'Urgent request, forwarded to owner', tag: 'Routed', bg: 'rgba(255,255,255,0.1)', fg: '#FFFFFF' },
+{ who: 'Returning caller · 9:30 AM', what: 'Left a callback message', tag: 'Message', bg: 'rgba(255,255,255,0.1)', fg: '#FFFFFF' }
+],
+compare: (function () {
+function Y() { return { ok: true }; } function N() { return { no: true }; } function T(t, fg) { return { isTxt: true, txt: t, fg: fg || '#C9D2E3' }; }
+var rows = [
+['Answers 24/7, including holidays', Y(), N(), N()],
+['Handles several calls at once', Y(), N(), N()],
+['Books appointments on the call', Y(), Y(), N()],
+['Remembers returning callers', Y(), T('Sometimes'), N()],
+['Records and transcribes every call', Y(), N(), N()],
+['Sick days and time off', T('Never', '#FF9F1C'), T('Yes'), T('—')],
+['Monthly cost', T('From $1,500', '#FF9F1C'), T('Full salary'), T('Lost customers')]
+];
+return rows.map(function (r) {
+return { label: r[0], cells: [r[1], r[2], r[3]].map(function (c, i) { c.bg = i === 0 ? 'rgba(255,159,28,0.08)' : 'transparent'; c.bl = i === 0 ? '1px solid rgba(255,159,28,0.3)' : 'none'; return c; }) };
+});
+})(),
+plans: [
+{ name: 'Inbound', price: '$1,500', was: '$2,000', sale: true, bonus: true, soon: false, desc: 'Every feature, for every call coming in to your business.', badge: 'Limited-time offer', badgeBg: 'rgba(224,30,55,0.15)', badgeFg: '#FF4D5E', items: ['Inbound calls only', 'All Qoraflow features included', '24/7 call answering', 'Appointment booking and smart routing', 'Message taking', 'Remembers returning callers', 'Qoraflow app: recordings, transcripts and analytics'], border: '1px solid #E01E37', glow: '0 0 60px rgba(224,30,55,0.25)', hot: true, cool: false, cta: 'Claim this offer' },
+{ name: 'Inbound + Outbound', price: '$2,500', was: '', sale: false, bonus: false, soon: true, desc: 'Everything in Inbound, plus an agent that makes calls for you.', badge: 'Coming soon', badgeBg: 'rgba(255,159,28,0.12)', badgeFg: '#FF9F1C', items: ['Everything in the Inbound plan', 'Inbound and outbound calls', 'Automatic lead follow-up: when people respond to your ads and request a call, your agent calls them right away and turns them into booked leads', 'All Qoraflow features included', 'Outbound calling: under development'], border: '1px solid rgba(255,159,28,0.4)', glow: 'none', hot: false, cool: true, cta: 'Join the waitlist' }
+],
+values: [
+{ t: 'Always available', d: 'Your customers reach a friendly voice any hour of any day.', c: '#FF9F1C', bg: 'rgba(255,159,28,0.12)', icon: 'M12 6v6l4 2M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z' },
+{ t: 'Affordable for all', d: 'Pricing built for small businesses, not just big companies.', c: '#3DB8FF', bg: 'rgba(61,184,255,0.12)', icon: 'M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6' },
+{ t: 'Human-sounding', d: 'Natural, warm conversations that represent your brand well.', c: '#3DB8FF', bg: 'rgba(61,184,255,0.12)', icon: 'M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zM19 10v2a7 7 0 0 1-14 0v-2M12 19v3' },
+{ t: 'You stay in control', d: 'Every call is logged in the app so nothing slips through.', c: '#FF9F1C', bg: 'rgba(255,159,28,0.12)', icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' }
+],
+faqs: [
+{ q: 'What is a Qoraflow voice agent?', a: 'An AI receptionist that answers your business calls, books appointments, answers common questions, routes urgent calls and takes messages, 24/7.' },
+{ q: 'Will callers know they are talking to AI?', a: 'Our agents sound natural and friendly. You choose how your agent introduces itself, including whether it says it is an AI assistant.' },
+{ q: 'Can I keep my existing phone number?', a: 'Yes. Forward your current number to your Qoraflow agent, or we can set you up with a new one.' },
+{ q: 'How long does setup take?', a: '[Add your typical setup time here.]' },
+{ q: 'Does it work with my calendar?', a: 'Your agent books straight into your existing calendar. Tell us which one you use and we will connect it during setup.' },
+{ q: 'How does it remember returning callers?', a: 'When someone calls from a number they have used before, your agent recognizes them and can greet them by name with their past calls in mind.' },
+{ q: 'What do I see in the Qoraflow app?', a: 'Every call with its recording, transcript and summary, plus bookings, messages and analytics, on web and mobile.' },
+{ q: 'Is there a contract?', a: 'No long contracts. Plans are month-to-month and you can cancel anytime.' }
+],
+badgeWords: words('AI voice agents for every business', 3.6, 0.06),
+line1: words('Every call answered.', 3.95, 0.1),
+line2: words('Every booking made.', 4.2, 0.1)
+};
+}
+start() {
+if (this.raf) return;
+var s = this;
+s.t0 = performance.now() - (s.reduce || s.skip ? 5000 : 0); s.last = s.t0;
+var loop = function (now) { s.raf = requestAnimationFrame(loop); if (typeof document !== 'undefined' && document.hidden) return; s.frame(now); };
+s.raf = requestAnimationFrame(loop);
+}
+frame(now) {
+var cv = this.cv; if (!cv || !cv.isConnected) return;
+var w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return;
+var dpr = Math.min(window.devicePixelRatio || 1, w < 900 ? 1.25 : 1.5);
+var W = Math.round(w * dpr), H = Math.round(h * dpr);
+if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; }
+var ctx = cv.getContext('2d');
+ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
+if (!this.blank) ctx.clearRect(0, 0, w, h);
+var dt = Math.min(0.05, (now - this.last) / 1000); this.last = now;
+var el = now - this.t0, t = el / 1000, i, j;
+if (this.hdr) {
+var sy = window.pageYOffset || document.documentElement.scrollTop || 0, dyS = sy - this.lastY, show = this.hdrShown;
+this.lastY = sy;
+if (dyS > 0) { this.upAcc = 0; this.downAcc = (this.downAcc || 0) + dyS; } else if (dyS < 0) { this.downAcc = 0; this.upAcc = (this.upAcc || 0) - dyS; }
+if (sy < 60) show = true; else if (this.downAcc > 40) show = false; else if (this.upAcc > 260) show = true;
+if (this.state.menu || this.state.contact) show = true;
+if (show !== this.hdrShown) { this.hdrShown = show; this.hdr.style.transform = show ? 'translateY(0)' : 'translateY(-110%)'; this.setState(show ? { hdrUp: false } : { hdrUp: true, menu: false }); }
+}
+
+var NB = this.NB, bars = this.bars, lvl = 0;
+if (this.analyser) {
+this.analyser.getByteFrequencyData(this.freq);
+var bins = this.freq.length * 0.7;
+for (i = 0; i < NB; i++) { var m = i < NB / 2 ? i : NB - 1 - i; var v = this.freq[Math.floor(m / (NB / 2) * bins)] / 255; lvl += v; bars[i] += (v - bars[i]) * 0.45; }
+lvl /= NB;
+} else {
+var en = this.hover;
+for (i = 0; i < NB; i++) {
+var tg = en * (0.25 + 0.75 * Math.abs(Math.sin(t * 7.3 + i * 0.61) * Math.sin(t * 3.1 + i * 0.17) + 0.35 * Math.sin(t * 13 + i * 1.3))) + 0.06 * (0.5 + 0.5 * Math.sin(t * 1.5 + i * 0.3));
+bars[i] += (Math.min(1, tg) - bars[i]) * 0.3; lvl += bars[i];
+}
+lvl = lvl / NB * en;
+}
+this.level += (lvl - this.level) * 0.2;
+var L = this.level;
+
+var wide = w > 900, lite = !wide;
+var pr = 0, st = this.stage;
+if (st) { var sr = st.getBoundingClientRect(), span = sr.height - h; pr = span > 0 ? Math.max(0, Math.min(1, -sr.top / span)) : 0; }
+this.prog += (pr - this.prog) * (1 - Math.pow(this.coarse ? 1e-12 : 1e-8, dt));
+if (Math.abs(pr - this.prog) < 0.0004) this.prog = pr;
+var P = this.prog, pg = Math.min(1, P / 0.45), qg = Math.max(0, Math.min(1, (P - 0.5) / 0.5));
+if (st) { var ps = pg.toFixed(3), qs = qg.toFixed(3); if (ps !== this.lp) { this.lp = ps; st.style.setProperty('--p', ps); } if (qs !== this.lq) { this.lq = qs; st.style.setProperty('--q', qs); } }
+var dis = Math.max(0, Math.min(1, qg / 0.4)); dis = dis * dis * (3 - 2 * dis); this.dis = dis;
+var cvo = 1 - Math.max(0, Math.min(1, (dis - 0.55) / 0.45));
+if (cv.style.opacity !== String(cvo)) cv.style.opacity = String(cvo);
+if (dis >= 0.999) { this.blank = true; return; }
+this.blank = false;
+var hid = pg > 0.25;
+if (hid !== this.state.heroHidden) this.setState({ heroHidden: hid });
+var m = Math.max(0, Math.min(1, (pg - 0.08) / 0.6)); m = m * m * (3 - 2 * m);
+var cx0 = wide ? w * 0.7 : w / 2, cy0 = wide ? h * 0.52 : Math.max(h * 0.3, 190), R0 = wide ? Math.min(w * 0.42, h) * 0.3 : Math.min(w * 0.2, h * 0.11);
+var cx1 = wide ? Math.max(w * 0.2, w / 2 - 420) : w / 2, cy1 = wide ? h * 0.54 : h * 0.145, R1 = R0 * (wide ? 0.62 : 0.5);
+var cx = cx0 + (cx1 - cx0) * m, cy = cy0 + (cy1 - cy0) * m, R = (R0 + (R1 - R0) * m) * (1 + L * 0.08);
+var tgt = this.state.talk ? 1 : 0;
+this.tk += (tgt - this.tk) * (1 - Math.pow(0.02, dt)); if (Math.abs(tgt - this.tk) < 0.001) this.tk = tgt;
+if (this.tk > 0) { var te = this.tk * this.tk * (3 - 2 * this.tk); cx += (w / 2 - cx) * te; cy += (h * 0.45 - cy) * te; R += (Math.min(w, h) * (wide ? 0.24 : 0.22) * (1 + L * 0.08) - R) * te; }
+var tp = 0, ty = 0, hov = 0, mx = this.mx, my = this.my;
+if (mx !== null) {
+var nx = (mx - cx) / R, ny = (my - cy) / R, dd = Math.sqrt(nx * nx + ny * ny);
+tp = Math.max(-1, Math.min(1, ny)) * 0.55; ty = Math.max(-1, Math.min(1, nx)) * 0.7;
+hov = dd < 1.5 ? 1 : 0;
+}
+if (this.analyser && L > 0.08) hov = 1; else if (this.coarse) hov = Math.max(hov, 0.4);
+var k = 1 - Math.pow(0.0015, dt);
+this.pitch += (tp - this.pitch) * k; this.yawOff += (ty - this.yawOff) * k;
+this.hover += (hov - this.hover) * k; this.speed = 1 + this.hover * 2.2 + L * 3;
+this.yaw += dt * (this.reduce ? 0.04 : 0.16) * this.speed;
+var Y = this.yaw + this.yawOff, P = this.pitch + Math.sin(t * 0.4) * 0.08;
+var cY = Math.cos(Y), sY = Math.sin(Y), cP = Math.cos(P), sP = Math.sin(P);
+var F = 3.2;
+var intro = Math.max(0, Math.min(1, (el - 1600) / 1600)), ci = (1 - Math.pow(1 - intro, 3)) * (1 - dis);
+var pul = 0.5 + 0.5 * Math.sin(t * 2.2);
+var maxD = Math.sqrt(w * w + h * h) * 0.6;
+
+ctx.globalCompositeOperation = 'lighter'; ctx.lineCap = 'round';
+
+var fld = this.field, fs = 1 + this.hover * 1.5 + L * 4;
+for (i = 0; i < fld.length; i++) {
+if (lite && (i & 1)) continue;
+var f = fld[i];
+f.d += f.sp * dt * fs * 0.35;
+if (f.d > 1) { f.d = 0; f.a = this.rnd() * Math.PI * 2; }
+var r0 = R * 0.9 + f.d * maxD, r1 = r0 + 6 + f.sp * 120 * fs;
+var ca = Math.cos(f.a), sa = Math.sin(f.a);
+if (f.ci === undefined) f.ci = this.cols.indexOf(f.c);
+var fga = ci * (1 - f.d) * 0.55; if (fga < 0.01) continue;
+var fkey = f.ci * 10 + Math.min(4, (fga * 9) | 0) * 2 + (f.w > 1.4 ? 1 : 0);
+var fb = this.fbk[fkey] || (this.fbk[fkey] = []); fb.push(cx + ca * r0, cy + sa * r0, cx + ca * r1, cy + sa * r1);
+}
+
+var fbk = this.fbk, cl = this.cols, kk, m, arr;
+for (kk = 0; kk < fbk.length; kk++) { arr = fbk[kk]; if (!arr || !arr.length) continue; ctx.globalAlpha = (((kk % 10) >> 1) + 0.5) / 9; ctx.strokeStyle = cl[(kk / 10) | 0]; ctx.lineWidth = (kk & 1) ? 1.8 : 1; ctx.beginPath(); for (m = 0; m < arr.length; m += 4) { ctx.moveTo(arr[m], arr[m + 1]); ctx.lineTo(arr[m + 2], arr[m + 3]); } ctx.stroke(); arr.length = 0; }
+var halos = this.halos;
+for (i = 0; i < halos.length; i++) {
+var hl = halos[i];
+ctx.save(); ctx.translate(cx, cy); ctx.rotate(t * hl.sp * (1 + this.hover));
+ctx.setLineDash(hl.dash); ctx.globalAlpha = hl.a * ci * (0.8 + this.hover * 0.4); ctx.strokeStyle = i % 2 ? '#3DB8FF' : '#FF9F1C'; ctx.lineWidth = hl.w;
+ctx.beginPath(); ctx.arc(0, 0, R * hl.r, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+}
+ctx.setLineDash([]);
+var wavePeriod = 2.6;
+for (j = 0; j < 3; j++) {
+var ph = ((t + j * wavePeriod / 3) % wavePeriod) / wavePeriod;
+ctx.globalAlpha = (1 - ph) * 0.18 * ci; ctx.strokeStyle = '#FFB547'; ctx.lineWidth = 1.5;
+ctx.beginPath(); ctx.arc(cx, cy, R * (1.3 + ph * 3.5), 0, Math.PI * 2); ctx.stroke();
+}
+
+var gr = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * (0.55 + this.hover * 0.12 + L * 0.3));
+gr.addColorStop(0, 'rgba(255,244,214,' + Math.min(1, (0.55 + pul * 0.2 + this.hover * 0.2 + L) * ci) + ')');
+gr.addColorStop(0.25, 'rgba(255,200,97,' + (0.35 + pul * 0.1) * ci + ')');
+gr.addColorStop(1, 'rgba(255,159,28,0)');
+ctx.globalAlpha = 1; ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(cx, cy, R * 0.8, 0, Math.PI * 2); ctx.fill();
+
+var br0 = R * 1.42;
+for (i = 0; i < NB; i++) {
+var ang = i / NB * Math.PI * 2 - Math.PI / 2 + t * 0.05;
+var bl = 3 + bars[i] * R * 0.55;
+var c1 = Math.cos(ang), s1 = Math.sin(ang);
+ctx.globalAlpha = ci * (0.35 + bars[i] * 0.65); ctx.strokeStyle = bars[i] > 0.6 ? '#FFE2A3' : (i % 2 === 0 ? '#3DB8FF' : '#FF9F1C'); ctx.lineWidth = 2.2;
+ctx.beginPath(); ctx.moveTo(cx + c1 * br0, cy + s1 * br0); ctx.lineTo(cx + c1 * (br0 + bl), cy + s1 * (br0 + bl)); ctx.stroke();
+var il = bl * 0.35;
+ctx.globalAlpha *= 0.6;
+ctx.beginPath(); ctx.moveTo(cx + c1 * (br0 - 6), cy + s1 * (br0 - 6)); ctx.lineTo(cx + c1 * (br0 - 6 - il), cy + s1 * (br0 - 6 - il)); ctx.stroke();
+}
+
+var pulses = this.pulses;
+for (i = pulses.length - 1; i >= 0; i--) if (now - pulses[i] > 1400) pulses.splice(i, 1);
+var tm = t * this.speed * 0.6 + t * 0.4;
+var pts = this.pts;
+function proj(x, y, z, o) {
+var x1 = x * cY + z * sY, z1 = -x * sY + z * cY;
+var y1 = y * cP - z1 * sP, z2 = y * sP + z1 * cP;
+var sc = F / (F + z2);
+o[0] = cx + x1 * R * sc; o[1] = cy + y1 * R * sc; o[2] = z2; o[3] = sc;
+}
+var A = [0, 0, 0, 0], B = [0, 0, 0, 0];
+for (i = 0; i < pts.length; i++) {
+var p = pts[i];
+if (lite && p.k === 0 && (i & 1)) continue;
+var e = Math.max(0, Math.min(1, (el - 1600 - p.delay) / 1100));
+if (e <= 0) continue;
+e = 1 - Math.pow(1 - e, 3);
+if (p.k === 0) {
+proj(p.p[0], p.p[1], p.p[2], A);
+proj(p.p[0] + p.t[0] * p.len, p.p[1] + p.t[1] * p.len, p.p[2] + p.t[2] * p.len, B);
+} else {
+var a = p.a0 + p.sp * tm, a2 = a + p.len, k1 = Math.cos(a) * p.r, q1 = Math.sin(a) * p.r, k2 = Math.cos(a2) * p.r, q2 = Math.sin(a2) * p.r;
+proj(k1 * p.u[0] + q1 * p.v[0], k1 * p.u[1] + q1 * p.v[1], k1 * p.u[2] + q1 * p.v[2], A);
+proj(k2 * p.u[0] + q2 * p.v[0], k2 * p.u[1] + q2 * p.v[1], k2 * p.u[2] + q2 * p.v[2], B);
+}
+var mxp = (A[0] + B[0]) / 2, myp = (A[1] + B[1]) / 2;
+if (mx !== null) {
+var ddx = mxp + p.dx - mx, ddy = myp + p.dy - my, d2 = ddx * ddx + ddy * ddy;
+if (d2 < 32400 && d2 > 1) { var d = Math.sqrt(d2), ff = (1 - d / 180) * 2.4; p.vx += ddx / d * ff; p.vy += ddy / d * ff; }
+}
+for (j = 0; j < pulses.length; j++) {
+var wr = (now - pulses[j]) / 1000 * R * 2.4, rx = mxp - cx, ry = myp - cy, rc = Math.sqrt(rx * rx + ry * ry) || 1;
+if (Math.abs(rc - wr) < 26) { p.vx += rx / rc * 3; p.vy += ry / rc * 3; }
+}
+if (L > 0.05) { var rx2 = mxp - cx, ry2 = myp - cy, rc2 = Math.sqrt(rx2 * rx2 + ry2 * ry2) || 1; p.vx += rx2 / rc2 * L * 1.2; p.vy += ry2 / rc2 * L * 1.2; }
+p.vx += -p.dx * 0.06; p.vy += -p.dy * 0.06; p.vx *= 0.86; p.vy *= 0.86; p.dx += p.vx; p.dy += p.vy;
+var ox = p.ax * (1 - e) + p.dx, oy = p.ay * (1 - e) + p.dy;
+if (dis > 0) { var rxd = mxp - cx, ryd = myp - cy, rcd = Math.sqrt(rxd * rxd + ryd * ryd) || 1, sd = Math.pow(dis, 1.5) * maxD * 1.4 * p.ss; ox += (rxd / rcd + Math.cos(p.sa) * 0.7) * sd; oy += (ryd / rcd + Math.sin(p.sa) * 0.7) * sd; }
+var depth = (1.25 - A[2]) / 2.5;
+var ga = Math.max(0.06, Math.min(1, (0.15 + 0.85 * depth) * e * (0.85 + this.hover * 0.15))) * (1 - dis * dis);
+if (ga < 0.01) continue;
+var lw = p.w * A[3], pkey = p.ci * 18 + Math.min(5, (ga * 6) | 0) * 3 + (lw < 1.4 ? 0 : (lw < 2.8 ? 1 : 2));
+var pb = this.bk[pkey] || (this.bk[pkey] = []); pb.push(A[0] + ox, A[1] + oy, B[0] + ox, B[1] + oy);
+}
+var bk = this.bk, LW = [1, 2.1, 3.4];
+for (kk = 0; kk < bk.length; kk++) { arr = bk[kk]; if (!arr || !arr.length) continue; var rem = kk % 18; ctx.globalAlpha = (((rem / 3) | 0) + 0.5) / 6; ctx.strokeStyle = cl[(kk / 18) | 0]; ctx.lineWidth = LW[rem % 3]; ctx.beginPath(); for (m = 0; m < arr.length; m += 4) { ctx.moveTo(arr[m], arr[m + 1]); ctx.lineTo(arr[m + 2], arr[m + 3]); } ctx.stroke(); arr.length = 0; }
+for (j = 0; j < pulses.length; j++) {
+var age = (now - pulses[j]) / 1400;
+ctx.globalAlpha = (1 - age) * 0.7; ctx.strokeStyle = '#FFC861'; ctx.lineWidth = 2;
+ctx.beginPath(); ctx.arc(cx, cy, age * 1.4 * R * 2.4, 0, Math.PI * 2); ctx.stroke();
+}
+
+if (dis > 0 && dis < 1) { ctx.globalAlpha = (1 - dis) * 0.8; ctx.strokeStyle = '#FFE2A3'; ctx.lineWidth = 3 * (1 - dis) + 0.5; ctx.beginPath(); ctx.arc(cx, cy, R * (0.3 + dis * 3.2), 0, Math.PI * 2); ctx.stroke(); }
+if (!this.g1) { this.g1 = document.createElement('canvas'); this.g2 = document.createElement('canvas'); }
+var g1 = this.g1, g2 = this.g2;
+var w1 = Math.max(1, Math.round(w / 4)), h1 = Math.max(1, Math.round(h / 4)), w2 = Math.max(1, Math.round(w / 12)), h2 = Math.max(1, Math.round(h / 12));
+if (g1.width !== w1 || g1.height !== h1) { g1.width = w1; g1.height = h1; }
+if (g2.width !== w2 || g2.height !== h2) { g2.width = w2; g2.height = h2; }
+var x1 = g1.getContext('2d'), x2 = g2.getContext('2d');
+x1.globalCompositeOperation = 'copy'; x1.imageSmoothingEnabled = true; x1.drawImage(cv, 0, 0, w1, h1);
+x2.globalCompositeOperation = 'copy'; x2.imageSmoothingEnabled = true; x2.drawImage(g1, 0, 0, w2, h2);
+ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.imageSmoothingEnabled = true; ctx.globalCompositeOperation = 'lighter';
+if (lite) { ctx.globalAlpha = 0.95; ctx.drawImage(g1, 0, 0, W, H); }
+else { ctx.globalAlpha = 0.7; ctx.drawImage(g1, 0, 0, W, H); ctx.globalAlpha = 0.8; ctx.drawImage(g2, 0, 0, W, H); }
+ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+}
+renderVals() {
+var d = this.text, m = this.state.mic;
+return {
+letters: d.letters, navLetters: d.navLetters, badgeWords: d.badgeWords, line1: d.line1, line2: d.line2,
+setCanvas: this.setCanvas, setStage: this.setStage, industries: d.industries, appPoints: d.appPoints, chart: d.chart, calls: d.calls, compare: d.compare, plans: d.plans, values: d.values, faqs: d.faqs, steps: d.steps, wave: d.wave, bubbles: d.bubbles, setHeader: this.setHeader, enterTalk: this.enterTalk, exitTalk: this.exitTalk, talk: this.state.talk, rootCls: (this.state.talk ? 'qf-talking ' : '') + (this.skip ? 'qf-skip' : ''), micLabel2: this.state.mic === 'on' ? 'Listening… tap to stop' : (this.state.mic === 'denied' ? 'Microphone unavailable' : 'Tap to speak'), hdrTf: this.state.hdrUp ? 'translateY(-110%)' : 'translateY(0)', openContact: this.openContact, closeContact: this.closeContact, onField: this.onField, onSubmit: this.onSubmit, contactOpen: this.state.contact, contactForm: !this.state.sent, contactSent: this.state.sent, toggleMenu: this.toggleMenu, closeMenu: this.closeMenu, menuFeatures: this.menuFeatures, menuHome: this.menuHome, menuOpen: this.state.menu, menuClosed: !this.state.menu, menuLabel: this.state.menu ? 'Close menu' : 'Open menu', goFeatures: this.goFeatures, goHome: this.goHome, features: d.features, heroPE: this.state.heroHidden ? 'none' : 'auto', onMove: this.onMove, onLeave: this.onLeave, onDown: this.onDown, onTapUp: this.onTapUp, onMic: this.onMic,
+micLabel: m === 'on' ? 'Listening… tap to stop' : (m === 'denied' ? 'Microphone unavailable' : 'Talk to Qoraflow')
+};
+}
+}
+
+
+(function () {
+  var comp = new Component({});
+  var vals = function () { return comp.renderVals(); };
+  var v0 = vals();
+  document.querySelectorAll('[data-on]').forEach(function (el) {
+    el.getAttribute('data-on').split(';').forEach(function (pair) {
+      var i = pair.indexOf(':'), ev = pair.slice(0, i), name = pair.slice(i + 1);
+      el.addEventListener(ev, function (e) { var f = vals()[name]; if (typeof f === 'function') f(e); });
+    });
+  });
+  var ifs = document.querySelectorAll('[data-if]'), texts = document.querySelectorAll('[data-text]');
+  var attrs = document.querySelectorAll('[data-attrs]'), styles = document.querySelectorAll('[data-styles]');
+  function apply() {
+    var v = vals();
+    ifs.forEach(function (el) {
+      var on = !!v[el.getAttribute('data-if')], was = el.style.display !== 'none';
+      if (on !== was) {
+        el.style.display = on ? 'contents' : 'none';
+        if (on) el.querySelectorAll('form').forEach(function (f) { f.reset(); });
+      }
+    });
+    texts.forEach(function (el) { var t = String(v[el.getAttribute('data-text')]); if (el.textContent !== t) el.textContent = t; });
+    attrs.forEach(function (el) {
+      el.getAttribute('data-attrs').split(';').forEach(function (pair) {
+        var i = pair.indexOf(':'), a = pair.slice(0, i), val = String(v[pair.slice(i + 1)]);
+        if (el.getAttribute(a) !== val) el.setAttribute(a, val);
+      });
+    });
+    styles.forEach(function (el) {
+      el.getAttribute('data-styles').split(';').forEach(function (pair) {
+        var i = pair.indexOf(':'), p = pair.slice(0, i), val = String(v[pair.slice(i + 1)]);
+        if (el.style.getPropertyValue(p) !== val) el.style.setProperty(p, val);
+      });
+    });
+  }
+  comp.__apply = apply;
+  apply();
+  document.querySelectorAll('[data-ref]').forEach(function (el) { var f = v0[el.getAttribute('data-ref')]; if (typeof f === 'function') f(el); });
+  if (typeof comp.componentDidMount === 'function') comp.componentDidMount();
+  window.addEventListener('pagehide', function () { if (typeof comp.componentWillUnmount === 'function') comp.componentWillUnmount(); });
+})();
+
+</script>
+</body>
+</html>

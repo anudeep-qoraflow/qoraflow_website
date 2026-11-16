@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About Qoraflow</title>
+<meta name="description" content="Qoraflow is building the front desk every business deserves: an AI receptionist that answers every call, books every appointment and remembers every customer.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="About Qoraflow">
+<meta property="og:description" content="Qoraflow is building the front desk every business deserves: an AI receptionist that answers every call, books every appointment and remembers every customer.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;800&amp;display=swap" rel="stylesheet"/>
+<style>
+body{margin:0;background:#000000}
+a{color:#3DB8FF;text-decoration:none}a:hover{color:#8FD6FF}
+html{scroll-behavior:smooth}
+@keyframes qfUp{from{opacity:0;transform:translate3d(0,28px,0)}to{opacity:1;transform:none}}
+@keyframes qfSpin{to{transform:rotate(360deg)}}
+@keyframes qfSpinR{to{transform:rotate(-360deg)}}
+@keyframes qfPulse{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+@keyframes qfRv{from{opacity:0;transform:translate3d(0,46px,0) scale(.97)}to{opacity:1;transform:none}}
+.qf-in{animation:qfUp .9s cubic-bezier(.16,1,.3,1) both}
+@supports (animation-timeline: view()){.qf-rv{animation:qfRv linear both;animation-timeline:view();animation-range:entry 5% cover 28%}}
+.qf-orb-a{transform-origin:150px 150px;animation:qfSpin 40s linear infinite}
+.qf-orb-b{transform-origin:150px 150px;animation:qfSpinR 26s linear infinite}
+.qf-orb-c{transform-origin:150px 150px;animation:qfSpin 14s linear infinite}
+.qf-core{transform-origin:150px 150px;animation:qfPulse 3.2s ease-in-out infinite}
+.qf-lbl{margin:0 0 12px;color:#FF9F1C;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.qf-h2{margin:0 0 18px;font-size:clamp(30px,4.2vw,50px);line-height:1.08;font-weight:800;letter-spacing:-1px}
+.qf-p{margin:0 0 16px;color:#D3DAE6;font-size:18px;line-height:1.7}
+.qf-card{background:#121215;border:1px solid rgba(255,255,255,0.1);border-radius:22px;box-sizing:border-box}
+.qf-back:hover,.qf-ghost:hover{background:rgba(255,255,255,0.08)!important}
+.qf-red{transition:transform .25s ease,box-shadow .25s ease}
+.qf-red:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(255,59,82,0.65)!important}
+@media (max-width: 600px){.qf-sec{padding-top:72px!important;padding-bottom:72px!important}.qf-p{font-size:16px}}
+@media (max-width: 900px){.qf-hero{min-height:auto!important}.qf-hero-inner{padding:330px 20px 72px!important}.qf-shade{background:linear-gradient(0deg,rgba(0,0,0,0.95) 0%,rgba(0,0,0,0.8) 45%,rgba(0,0,0,0) 68%)!important}}
+@media (prefers-reduced-motion: reduce){.qf-in,.qf-rv,.qf-orb-a,.qf-orb-b,.qf-orb-c,.qf-core{animation:none}}
+</style>
+
+</head>
+<body>
+
+
+<div style="min-height: 100vh; overflow-x: clip; background: radial-gradient(ellipse at 75% 8%, rgba(255,159,28,0.16), rgba(0,0,0,0) 45%), radial-gradient(ellipse at 10% 40%, rgba(61,184,255,0.08), rgba(0,0,0,0) 40%), #000000; color: #FFFFFF; font-family: Manrope, system-ui, sans-serif">
+<header style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a data-on="click:skip" href="index.html" style="display: flex; align-items: center; gap: 10px; color: #FFFFFF; font-weight: 800; font-size: 24px; letter-spacing: -0.5px">
+<svg aria-hidden="true" height="36" viewbox="0 0 120 120" width="36"><circle cx="60" cy="60" fill="none" opacity="0.9" r="47" stroke="#FF9F1C" stroke-dasharray="3 6" stroke-width="3"></circle><circle cx="60" cy="60" fill="none" r="40" stroke="#3DB8FF" stroke-dasharray="58 17 22 17" stroke-linecap="round" stroke-width="6" transform="rotate(-20 60 60)"></circle><circle cx="60" cy="60" fill="none" r="29" stroke="#FF9F1C" stroke-dasharray="34 11" stroke-linecap="round" stroke-width="5" transform="rotate(40 60 60)"></circle><polyline fill="none" points="49,61 57,68 71,53" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></polyline></svg>
+<span>Qora<span style="color: #FF9F1C">flow</span></span></a>
+<a class="qf-back" data-on="click:skip" href="index.html" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.25); color: #FFFFFF; font-weight: 700; font-size: 15px">
+<svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24" width="16"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>Back to home</a>
+</header>
+<section class="qf-hero" data-on="pointermove:onMove;pointerleave:onLeave;pointerdown:onDown" style="position: relative; overflow: hidden; min-height: 680px; display: flex; align-items: center">
+<canvas aria-label="Qoraflow AI core: a holographic sphere of glowing lines that reacts to your cursor" data-ref="setCanvas" role="img" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none"></canvas>
+<div aria-hidden="true" class="qf-shade" style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.72) 34%, rgba(0,0,0,0) 56%)"></div>
+<div class="qf-hero-inner" style="position: relative; width: 100%; max-width: 1200px; margin: 0 auto; padding: 72px 24px 96px; box-sizing: border-box">
+<div style="max-width: 600px">
+<p class="qf-lbl qf-in">About Qoraflow</p>
+<h1 class="qf-in" style="margin: 0 0 22px; font-size: clamp(40px, 6vw, 72px); line-height: 1.03; font-weight: 800; letter-spacing: -2px; animation-delay: 0.1s">We're building the front desk <span style="color: #FF9F1C">every business deserves.</span></h1>
+<p class="qf-p qf-in" style="max-width: 560px; font-size: 20px; animation-delay: 0.2s">Qoraflow gives small and growing businesses an AI receptionist that answers every call, books every appointment and remembers every customer, at a price that finally makes sense.</p>
+</div>
+</div>
+</section>
+<section class="qf-sec" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+<div class="qf-rv" style="flex: 1 1 380px; min-width: 0">
+<p class="qf-lbl">Why we exist</p>
+<h2 class="qf-h2">The phone is still where business <span style="color: #FF9F1C">is won or lost.</span></h2>
+</div>
+<div class="qf-rv" style="flex: 1 1 520px; min-width: 0">
+<p class="qf-p">Think about the dentist with a waiting room full of patients, the plumber under a sink, the salon owner mid-appointment. Their phone rings, and they can't answer. The caller doesn't leave a voicemail. They call the next business on the list.</p>
+<p class="qf-p">Big companies solve this with full reception teams and call centers. Small businesses are left choosing between an expensive hire, a voicemail box nobody checks, or simply losing customers.</p>
+<p class="qf-p" style="margin: 0"><strong style="color: #FFFFFF">We started Qoraflow to end that trade-off.</strong> Modern AI can now hold a natural, helpful phone conversation, and we believe that power belongs to the corner shop just as much as the corporation.</p>
+</div>
+</section>
+<section class="qf-sec" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box">
+<div class="qf-rv qf-card" style="position: relative; overflow: hidden; padding: clamp(32px, 6vw, 72px); text-align: center; background: radial-gradient(ellipse at 50% 0%, rgba(255,159,28,0.22), rgba(0,0,0,0) 60%), radial-gradient(ellipse at 50% 100%, rgba(61,184,255,0.16), rgba(0,0,0,0) 60%), #0B0B0E; border-color: rgba(255,159,28,0.35)">
+<p class="qf-lbl">Our mission</p>
+<p style="margin: 0 auto; max-width: 860px; font-size: clamp(28px, 4vw, 46px); line-height: 1.15; font-weight: 800; letter-spacing: -1px">Make a world-class front desk <span style="color: #FF9F1C">affordable for every business,</span> so no customer ever goes unanswered.</p>
+</div>
+</section>
+<section class="qf-sec" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box">
+<div class="qf-rv" style="max-width: 680px; margin-bottom: 44px">
+<p class="qf-lbl">What we believe</p>
+<h2 class="qf-h2">Four promises behind <span style="color: #FF9F1C">everything we build.</span></h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px">
+<div class="qf-rv qf-card" style="padding: 28px">
+<div style="width: 46px; height: 46px; border-radius: 14px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; background: rgba(255,159,28,0.12); border: 1px solid #FF9F1C"><svg aria-hidden="true" fill="none" height="22" stroke="#FF9F1C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg></div>
+<h3 style="margin: 0 0 8px; font-size: 19px; font-weight: 800">Every caller deserves an answer</h3>
+<p style="margin: 0; color: #C9D2E3; font-size: 15px; line-height: 1.6">At 2 PM or 2 AM, on a holiday or a busy Saturday, every person who calls gets a warm, helpful response.</p>
+</div>
+<div class="qf-rv qf-card" style="padding: 28px">
+<div style="width: 46px; height: 46px; border-radius: 14px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; background: rgba(61,184,255,0.12); border: 1px solid #3DB8FF"><svg aria-hidden="true" fill="none" height="22" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zM19 10v2a7 7 0 0 1-14 0v-2M12 19v3"></path></svg></div>
+<h3 style="margin: 0 0 8px; font-size: 19px; font-weight: 800">Technology should feel human</h3>
+<p style="margin: 0; color: #C9D2E3; font-size: 15px; line-height: 1.6">No robotic menus, no "press 1." Just natural conversations that sound like your business and remember your regulars.</p>
+</div>
+<div class="qf-rv qf-card" style="padding: 28px">
+<div style="width: 46px; height: 46px; border-radius: 14px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; background: rgba(255,159,28,0.12); border: 1px solid #FF9F1C"><svg aria-hidden="true" fill="none" height="22" stroke="#FF9F1C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+<h3 style="margin: 0 0 8px; font-size: 19px; font-weight: 800">Affordable by design</h3>
+<p style="margin: 0; color: #C9D2E3; font-size: 15px; line-height: 1.6">Simple monthly pricing, no long contracts and no surprises. Enterprise-grade technology without the enterprise price tag.</p>
+</div>
+<div class="qf-rv qf-card" style="padding: 28px">
+<div style="width: 46px; height: 46px; border-radius: 14px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; background: rgba(61,184,255,0.12); border: 1px solid #3DB8FF"><svg aria-hidden="true" fill="none" height="22" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+<h3 style="margin: 0 0 8px; font-size: 19px; font-weight: 800">You stay in control</h3>
+<p style="margin: 0; color: #C9D2E3; font-size: 15px; line-height: 1.6">Every call is recorded, transcribed and summarized in the Qoraflow app, so you always know exactly what your agent said and did.</p>
+</div>
+</div>
+</section>
+<section class="qf-sec" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+<div class="qf-rv" style="flex: 1 1 380px; min-width: 0">
+<p class="qf-lbl">How we work</p>
+<h2 class="qf-h2">Done for you, <span style="color: #FF9F1C">not handed to you.</span></h2>
+<p class="qf-p">Most AI tools give you a dashboard and wish you luck. We do the opposite. We learn your business, build your voice agent, connect it to your phone and calendar, and stay with you as it grows.</p>
+</div>
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div class="qf-rv qf-card" style="padding: 22px 24px; display: flex; gap: 16px; align-items: flex-start"><span style="flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: rgba(61,184,255,0.15); border: 1px solid #3DB8FF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="16" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="16"><path d="M5 12l5 5L20 7"></path></svg></span><div><h3 style="margin: 0 0 4px; font-size: 17px; font-weight: 800">Personal setup</h3><p style="margin: 0; color: #C9D2E3; font-size: 15px; line-height: 1.6">We turn your hours, services, prices and FAQs into an agent that knows your business.</p></div></div>
+<div class="qf-rv qf-card" style="padding: 22px 24px; display: flex; gap: 16px; align-items: flex-start"><span style="flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: rgba(61,184,255,0.15); border: 1px solid #3DB8FF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="16" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="16"><path d="M5 12l5 5L20 7"></path></svg></span><div><h3 style="margin: 0 0 4px; font-size: 17px; font-weight: 800">Try it free for 14 days</h3><p style="margin: 0; color: #C9D2E3; font-size: 15px; line-height: 1.6">Hear your own agent answer real calls before you spend a dollar.</p></div></div>
+<div class="qf-rv qf-card" style="padding: 22px 24px; display: flex; gap: 16px; align-items: flex-start"><span style="flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: rgba(61,184,255,0.15); border: 1px solid #3DB8FF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="16" stroke="#3DB8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="16"><path d="M5 12l5 5L20 7"></path></svg></span><div><h3 style="margin: 0 0 4px; font-size: 17px; font-weight: 800">Real people behind the AI</h3><p style="margin: 0; color: #C9D2E3; font-size: 15px; line-height: 1.6">When you need a change, you talk to us, not a ticket queue. We keep tuning your agent as your business grows.</p></div></div>
+<div class="qf-rv qf-card" style="padding: 22px 24px; display: flex; gap: 16px; align-items: flex-start"><span style="flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,159,28,0.15); border: 1px solid #FF9F1C; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="16" stroke="#FF9F1C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24" width="16"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><div><h3 style="margin: 0 0 4px; font-size: 17px; font-weight: 800">What's next</h3><p style="margin: 0; color: #C9D2E3; font-size: 15px; line-height: 1.6">We're building outbound calling that follows up with your leads the moment they reach out, so your agent doesn't just answer the phone, it helps grow your business.</p></div></div>
+</div>
+</section>
+<section class="qf-sec" style="max-width: 900px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box">
+<div class="qf-rv qf-card" style="padding: clamp(28px, 5vw, 56px); border-color: rgba(61,184,255,0.3)">
+<p class="qf-lbl" style="color: #3DB8FF">A note from our founder</p>
+<p style="margin: 0 0 18px; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.5; font-weight: 600">"Every small business owner I talk to has the same story: they're great at what they do, but they can't be in two places at once. Qoraflow is my answer to that. It's the team member who never takes a break, never misses a call and makes every customer feel welcome. I built it so you can focus on the work you love, knowing your phone is in good hands."</p>
+<p style="margin: 0; font-weight: 800; font-size: 17px">Anudeep Cherukupalli</p>
+<p style="margin: 0; color: #9AA6BA; font-size: 15px">Founder, Qoraflow</p>
+</div>
+</section>
+<section class="qf-sec" style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 96px; box-sizing: border-box">
+<div class="qf-rv" style="text-align: center; border-radius: 32px; padding: 80px 24px; background: radial-gradient(ellipse at 50% 0%, rgba(255,159,28,0.28), rgba(0,0,0,0) 60%), radial-gradient(ellipse at 50% 100%, rgba(61,184,255,0.22), rgba(0,0,0,0) 60%), #0B0B0E; border: 1px solid rgba(255,159,28,0.35)">
+<h2 class="qf-h2" style="max-width: 720px; margin-left: auto; margin-right: auto">Let's make sure <span style="color: #FF9F1C">your next call is answered.</span></h2>
+<p class="qf-p" style="max-width: 540px; margin: 0 auto 32px">Start with a free 14-day trial. We'll set everything up for you.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px">
+<a class="qf-red" href="mailto:hello@qoraflow.com?subject=Free%2014-day%20trial" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 32px; border-radius: 999px; background: #E01E37; color: #FFFFFF; font-size: 16px; font-weight: 800; box-shadow: 0 0 40px rgba(255,59,82,0.5)">Get your voice agent</a>
+<a class="qf-ghost" data-on="click:skip" href="index.html" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 28px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.3); color: #FFFFFF; font-size: 16px; font-weight: 800">Explore Qoraflow</a>
+</div>
+</div>
+</section>
+<footer style="border-top: 1px solid rgba(255,255,255,0.08)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px 36px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; color: #9AA6BA; font-size: 14px">
+<span>© 2026 Qoraflow. All rights reserved.</span>
+<span style="display: flex; flex-wrap: wrap; gap: 20px"><a data-on="click:skip" href="index.html">Home</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="mailto:hello@qoraflow.com">Contact</a></span>
+</div>
+</footer>
+</div>
+
+<script>
+
+class DCLogic {
+  constructor(props) { this.props = props || {}; this.state = {}; }
+  setState(p) { Object.assign(this.state, typeof p === 'function' ? p(this.state) : p); if (this.__apply) this.__apply(); }
+  forceUpdate() { if (this.__apply) this.__apply(); }
+}
+
+
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+var s = this;
+s.cv = null; s.raf = 0; s.mx = null; s.my = null; s.pulses = [];
+s.yaw = 0; s.pitch = 0; s.yawOff = 0; s.speed = 1; s.hover = 0; s.last = 0; s.level = 0;
+s.reduce = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+s.coarse = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
+s.setCanvas = function (el) { if (el && el !== s.cv) { s.cv = el; s.start(); } };
+s.onMove = function (e) { if (!s.cv || e.pointerType === 'touch') return; var r = s.cv.getBoundingClientRect(); s.mx = e.clientX - r.left; s.my = e.clientY - r.top; };
+s.onLeave = function () { s.mx = null; s.my = null; };
+s.onDown = function (e) { if (e.target && e.target.closest && e.target.closest('a,button')) return; s.pulses.push(performance.now()); };
+s.skip = function () { try { sessionStorage.setItem('qf-skip', '1'); } catch (err) {} };
+s.build();
+}
+componentWillUnmount() { if (this.raf) cancelAnimationFrame(this.raf); this.raf = 0; }
+build() {
+var seed = 7;
+function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+this.rnd = rnd;
+var cols = ['#FF9F1C', '#FFB547', '#FF8A00', '#3DB8FF', '#7FD3FF', '#FF9F1C', '#5EC8FF', '#FFB547', '#3DB8FF'];
+this.cols = cols; this.bk = []; this.fbk = [];
+var pts = [];
+function add(o) {
+var ang = rnd() * Math.PI * 2, dist = 900 + rnd() * 800;
+o.ax = Math.cos(ang) * dist; o.ay = Math.sin(ang) * dist; o.delay = rnd() * 800;
+o.dx = 0; o.dy = 0; o.vx = 0; o.vy = 0; o.ci = Math.floor(rnd() * cols.length);
+pts.push(o);
+}
+var N = 300, i;
+for (i = 0; i < N; i++) {
+var y = 1 - 2 * (i + 0.5) / N, r = Math.sqrt(1 - y * y), th = i * 2.39996;
+var x = Math.cos(th) * r, z = Math.sin(th) * r, t;
+if (rnd() < 0.5) t = [-y * Math.cos(th), r, -y * Math.sin(th)]; else t = [-Math.sin(th), 0, Math.cos(th)];
+var rad = 0.9 + rnd() * 0.16;
+add({ k: 0, p: [x * rad, y * rad, z * rad], t: t, len: 0.015 + rnd() * 0.13, w: 0.8 + rnd() * 1.8 });
+}
+var rings = [
+{ r: 1.26, n: 64, sp: 0.1, ax: 1.25, az: 0.2, w: 3 },
+{ r: 1.14, n: 56, sp: -0.2, ax: 0.35, az: -0.5, w: 2.6 },
+{ r: 1.02, n: 48, sp: 0.28, ax: -0.4, az: 1.9, w: 1.6 },
+{ r: 0.82, n: 44, sp: 0.38, ax: -0.8, az: 0.9, w: 2 },
+{ r: 0.64, n: 36, sp: -0.55, ax: 1.6, az: -1.1, w: 1.8 },
+{ r: 0.46, n: 30, sp: 0.8, ax: 0.1, az: 2.4, w: 1.6 },
+{ r: 0.32, n: 26, sp: 1.1, ax: 0.6, az: 1.4, w: 2.2 },
+{ r: 0.18, n: 18, sp: -1.6, ax: -1.2, az: 0.3, w: 2.4 }
+];
+rings.forEach(function (g) {
+var ca = Math.cos(g.ax), sa = Math.sin(g.ax), cz = Math.cos(g.az), sz = Math.sin(g.az);
+function tf(v) { var y1 = v[1] * ca - v[2] * sa, z1 = v[1] * sa + v[2] * ca; return [v[0] * cz - y1 * sz, v[0] * sz + y1 * cz, z1]; }
+var u = tf([1, 0, 0]), v = tf([0, 0, 1]);
+for (var j = 0; j < g.n; j++) {
+if (rnd() < 0.15) continue;
+add({ k: 1, u: u, v: v, r: g.r * (0.97 + rnd() * 0.06), a0: j / g.n * Math.PI * 2 + rnd() * 0.05, len: 0.03 + rnd() * 0.12, sp: g.sp * (0.9 + rnd() * 0.2), w: g.w * (0.5 + rnd()) });
+}
+});
+this.pts = pts;
+var field = [];
+for (i = 0; i < 240; i++) field.push({ a: rnd() * Math.PI * 2, d: rnd(), sp: 0.04 + rnd() * 0.16, w: 0.6 + rnd() * 1.6, ci: Math.floor(rnd() * cols.length) });
+this.field = field;
+this.NB = 128; this.bars = new Float32Array(this.NB);
+this.halos = [
+{ r: 1.75, w: 1, dash: [2, 10], sp: 0.05, a: 0.35 },
+{ r: 2.3, w: 1.5, dash: [40, 18, 6, 18], sp: -0.03, a: 0.22 },
+{ r: 3.1, w: 1, dash: [1, 14], sp: 0.02, a: 0.25 },
+{ r: 4.0, w: 2, dash: [120, 60, 20, 60], sp: -0.015, a: 0.12 }
+];
+}
+start() {
+if (this.raf) return;
+var s = this;
+s.t0 = performance.now() - (s.reduce ? 5000 : 0); s.last = s.t0;
+var loop = function (now) { s.raf = requestAnimationFrame(loop); if (typeof document !== 'undefined' && document.hidden) return; s.frame(now); };
+s.raf = requestAnimationFrame(loop);
+}
+frame(now) {
+var cv = this.cv; if (!cv || !cv.isConnected) return;
+var w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return;
+var rr = cv.getBoundingClientRect(), vh = window.innerHeight || 800;
+if (rr.bottom < 0 || rr.top > vh) { this.last = now; return; }
+var wide = w > 900, lite = !wide;
+var dpr = Math.min(window.devicePixelRatio || 1, lite ? 1.25 : 1.5);
+var W = Math.round(w * dpr), H = Math.round(h * dpr);
+if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; }
+var ctx = cv.getContext('2d');
+ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
+ctx.clearRect(0, 0, w, h);
+var dt = Math.min(0.05, (now - this.last) / 1000); this.last = now;
+var el = now - this.t0, t = el / 1000, i, j, kk, m, arr;
+var NB = this.NB, bars = this.bars, lvl = 0, en = this.hover;
+for (i = 0; i < NB; i++) {
+var tg = en * (0.25 + 0.75 * Math.abs(Math.sin(t * 7.3 + i * 0.61) * Math.sin(t * 3.1 + i * 0.17) + 0.35 * Math.sin(t * 13 + i * 1.3))) + 0.06 * (0.5 + 0.5 * Math.sin(t * 1.5 + i * 0.3));
+bars[i] += (Math.min(1, tg) - bars[i]) * 0.3; lvl += bars[i];
+}
+lvl = lvl / NB * en;
+this.level += (lvl - this.level) * 0.2;
+var L = this.level;
+var cx = wide ? w * 0.72 : w / 2, cy = wide ? h * 0.5 : 165, R = (wide ? Math.min(w * 0.4, h) * 0.27 : Math.min(w * 0.2, 80)) * (1 + L * 0.08);
+var tp = 0, ty = 0, hov = 0, mx = this.mx, my = this.my;
+if (mx !== null) {
+var nx = (mx - cx) / R, ny = (my - cy) / R, dd = Math.sqrt(nx * nx + ny * ny);
+tp = Math.max(-1, Math.min(1, ny)) * 0.55; ty = Math.max(-1, Math.min(1, nx)) * 0.7;
+hov = dd < 1.5 ? 1 : 0;
+}
+if (this.coarse) hov = Math.max(hov, 0.4);
+var k = 1 - Math.pow(0.0015, dt);
+this.pitch += (tp - this.pitch) * k; this.yawOff += (ty - this.yawOff) * k;
+this.hover += (hov - this.hover) * k; this.speed = 1 + this.hover * 2.2 + L * 3;
+this.yaw += dt * (this.reduce ? 0.04 : 0.16) * this.speed;
+var Y = this.yaw + this.yawOff, P = this.pitch + Math.sin(t * 0.4) * 0.08;
+var cY = Math.cos(Y), sY = Math.sin(Y), cP = Math.cos(P), sP = Math.sin(P);
+var F = 3.2;
+var intro = Math.max(0, Math.min(1, (el - 300) / 1600)), ci = 1 - Math.pow(1 - intro, 3);
+var pul = 0.5 + 0.5 * Math.sin(t * 2.2);
+var maxD = Math.sqrt(w * w + h * h) * 0.6;
+var cl = this.cols;
+ctx.globalCompositeOperation = 'lighter'; ctx.lineCap = 'round';
+
+var fld = this.field, fs = 1 + this.hover * 1.5 + L * 4, fbk = this.fbk;
+for (i = 0; i < fld.length; i++) {
+if (lite && (i & 1)) continue;
+var f = fld[i];
+f.d += f.sp * dt * fs * 0.35;
+if (f.d > 1) { f.d = 0; f.a = this.rnd() * Math.PI * 2; }
+var r0 = R * 0.9 + f.d * maxD, r1 = r0 + 6 + f.sp * 120 * fs;
+var ca = Math.cos(f.a), sa = Math.sin(f.a);
+var fga = ci * (1 - f.d) * 0.55; if (fga < 0.01) continue;
+var fkey = f.ci * 10 + Math.min(4, (fga * 9) | 0) * 2 + (f.w > 1.4 ? 1 : 0);
+var fb = fbk[fkey] || (fbk[fkey] = []); fb.push(cx + ca * r0, cy + sa * r0, cx + ca * r1, cy + sa * r1);
+}
+for (kk = 0; kk < fbk.length; kk++) { arr = fbk[kk]; if (!arr || !arr.length) continue; ctx.globalAlpha = (((kk % 10) >> 1) + 0.5) / 9; ctx.strokeStyle = cl[(kk / 10) | 0]; ctx.lineWidth = (kk & 1) ? 1.8 : 1; ctx.beginPath(); for (m = 0; m < arr.length; m += 4) { ctx.moveTo(arr[m], arr[m + 1]); ctx.lineTo(arr[m + 2], arr[m + 3]); } ctx.stroke(); arr.length = 0; }
+
+var halos = this.halos;
+for (i = 0; i < halos.length; i++) {
+var hl = halos[i];
+ctx.save(); ctx.translate(cx, cy); ctx.rotate(t * hl.sp * (1 + this.hover));
+ctx.setLineDash(hl.dash); ctx.globalAlpha = hl.a * ci * (0.8 + this.hover * 0.4); ctx.strokeStyle = i % 2 ? '#3DB8FF' : '#FF9F1C'; ctx.lineWidth = hl.w;
+ctx.beginPath(); ctx.arc(0, 0, R * hl.r, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+}
+ctx.setLineDash([]);
+var wavePeriod = 2.6;
+for (j = 0; j < 3; j++) {
+var ph = ((t + j * wavePeriod / 3) % wavePeriod) / wavePeriod;
+ctx.globalAlpha = (1 - ph) * 0.18 * ci; ctx.strokeStyle = '#FFB547'; ctx.lineWidth = 1.5;
+ctx.beginPath(); ctx.arc(cx, cy, R * (1.3 + ph * 3.5), 0, Math.PI * 2); ctx.stroke();
+}
+
+var gr = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * (0.55 + this.hover * 0.12 + L * 0.3));
+gr.addColorStop(0, 'rgba(255,244,214,' + Math.min(1, (0.55 + pul * 0.2 + this.hover * 0.2 + L) * ci) + ')');
+gr.addColorStop(0.25, 'rgba(255,200,97,' + (0.35 + pul * 0.1) * ci + ')');
+gr.addColorStop(1, 'rgba(255,159,28,0)');
+ctx.globalAlpha = 1; ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(cx, cy, R * 0.8, 0, Math.PI * 2); ctx.fill();
+
+var br0 = R * 1.42;
+for (i = 0; i < NB; i++) {
+var ang = i / NB * Math.PI * 2 - Math.PI / 2 + t * 0.05;
+var bl = 3 + bars[i] * R * 0.55;
+var c1 = Math.cos(ang), s1 = Math.sin(ang);
+ctx.globalAlpha = ci * (0.35 + bars[i] * 0.65); ctx.strokeStyle = bars[i] > 0.6 ? '#FFE2A3' : (i % 2 === 0 ? '#3DB8FF' : '#FF9F1C'); ctx.lineWidth = 2.2;
+ctx.beginPath(); ctx.moveTo(cx + c1 * br0, cy + s1 * br0); ctx.lineTo(cx + c1 * (br0 + bl), cy + s1 * (br0 + bl)); ctx.stroke();
+var il = bl * 0.35;
+ctx.globalAlpha *= 0.6;
+ctx.beginPath(); ctx.moveTo(cx + c1 * (br0 - 6), cy + s1 * (br0 - 6)); ctx.lineTo(cx + c1 * (br0 - 6 - il), cy + s1 * (br0 - 6 - il)); ctx.stroke();
+}
+
+var pulses = this.pulses;
+for (i = pulses.length - 1; i >= 0; i--) if (now - pulses[i] > 1400) pulses.splice(i, 1);
+var tm = t * this.speed * 0.6 + t * 0.4;
+var pts = this.pts, bk = this.bk, LW = [1, 2.1, 3.4];
+function proj(x, y, z, o) {
+var x1 = x * cY + z * sY, z1 = -x * sY + z * cY;
+var y1 = y * cP - z1 * sP, z2 = y * sP + z1 * cP;
+var sc = F / (F + z2);
+o[0] = cx + x1 * R * sc; o[1] = cy + y1 * R * sc; o[2] = z2; o[3] = sc;
+}
+var A = [0, 0, 0, 0], B = [0, 0, 0, 0];
+for (i = 0; i < pts.length; i++) {
+var p = pts[i];
+if (lite && p.k === 0 && (i & 1)) continue;
+var e = Math.max(0, Math.min(1, (el - 300 - p.delay) / 1100));
+if (e <= 0) continue;
+e = 1 - Math.pow(1 - e, 3);
+if (p.k === 0) {
+proj(p.p[0], p.p[1], p.p[2], A);
+proj(p.p[0] + p.t[0] * p.len, p.p[1] + p.t[1] * p.len, p.p[2] + p.t[2] * p.len, B);
+} else {
+var a = p.a0 + p.sp * tm, a2 = a + p.len, k1 = Math.cos(a) * p.r, q1 = Math.sin(a) * p.r, k2 = Math.cos(a2) * p.r, q2 = Math.sin(a2) * p.r;
+proj(k1 * p.u[0] + q1 * p.v[0], k1 * p.u[1] + q1 * p.v[1], k1 * p.u[2] + q1 * p.v[2], A);
+proj(k2 * p.u[0] + q2 * p.v[0], k2 * p.u[1] + q2 * p.v[1], k2 * p.u[2] + q2 * p.v[2], B);
+}
+var mxp = (A[0] + B[0]) / 2, myp = (A[1] + B[1]) / 2;
+if (mx !== null) {
+var ddx = mxp + p.dx - mx, ddy = myp + p.dy - my, d2 = ddx * ddx + ddy * ddy;
+if (d2 < 32400 && d2 > 1) { var d = Math.sqrt(d2), ff = (1 - d / 180) * 2.4; p.vx += ddx / d * ff; p.vy += ddy / d * ff; }
+}
+for (j = 0; j < pulses.length; j++) {
+var wr = (now - pulses[j]) / 1000 * R * 2.4, rx = mxp - cx, ry = myp - cy, rc = Math.sqrt(rx * rx + ry * ry) || 1;
+if (Math.abs(rc - wr) < 26) { p.vx += rx / rc * 3; p.vy += ry / rc * 3; }
+}
+p.vx += -p.dx * 0.06; p.vy += -p.dy * 0.06; p.vx *= 0.86; p.vy *= 0.86; p.dx += p.vx; p.dy += p.vy;
+var ox = p.ax * (1 - e) + p.dx, oy = p.ay * (1 - e) + p.dy;
+var depth = (1.25 - A[2]) / 2.5;
+var ga = Math.max(0.06, Math.min(1, (0.15 + 0.85 * depth) * e * (0.85 + this.hover * 0.15)));
+var lw = p.w * A[3], pkey = p.ci * 18 + Math.min(5, (ga * 6) | 0) * 3 + (lw < 1.4 ? 0 : (lw < 2.8 ? 1 : 2));
+var pb = bk[pkey] || (bk[pkey] = []); pb.push(A[0] + ox, A[1] + oy, B[0] + ox, B[1] + oy);
+}
+for (kk = 0; kk < bk.length; kk++) { arr = bk[kk]; if (!arr || !arr.length) continue; var rem = kk % 18; ctx.globalAlpha = (((rem / 3) | 0) + 0.5) / 6; ctx.strokeStyle = cl[(kk / 18) | 0]; ctx.lineWidth = LW[rem % 3]; ctx.beginPath(); for (m = 0; m < arr.length; m += 4) { ctx.moveTo(arr[m], arr[m + 1]); ctx.lineTo(arr[m + 2], arr[m + 3]); } ctx.stroke(); arr.length = 0; }
+for (j = 0; j < pulses.length; j++) {
+var age = (now - pulses[j]) / 1400;
+ctx.globalAlpha = (1 - age) * 0.7; ctx.strokeStyle = '#FFC861'; ctx.lineWidth = 2;
+ctx.beginPath(); ctx.arc(cx, cy, age * 1.4 * R * 2.4, 0, Math.PI * 2); ctx.stroke();
+}
+
+if (!this.g1) { this.g1 = document.createElement('canvas'); this.g2 = document.createElement('canvas'); }
+var g1 = this.g1, g2 = this.g2;
+var w1 = Math.max(1, Math.round(w / 4)), h1 = Math.max(1, Math.round(h / 4)), w2 = Math.max(1, Math.round(w / 12)), h2 = Math.max(1, Math.round(h / 12));
+if (g1.width !== w1 || g1.height !== h1) { g1.width = w1; g1.height = h1; }
+if (g2.width !== w2 || g2.height !== h2) { g2.width = w2; g2.height = h2; }
+var x1 = g1.getContext('2d'), x2 = g2.getContext('2d');
+x1.globalCompositeOperation = 'copy'; x1.imageSmoothingEnabled = true; x1.drawImage(cv, 0, 0, w1, h1);
+ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.imageSmoothingEnabled = true; ctx.globalCompositeOperation = 'lighter';
+if (lite) { ctx.globalAlpha = 0.95; ctx.drawImage(g1, 0, 0, W, H); }
+else { x2.globalCompositeOperation = 'copy'; x2.imageSmoothingEnabled = true; x2.drawImage(g1, 0, 0, w2, h2); ctx.globalAlpha = 0.7; ctx.drawImage(g1, 0, 0, W, H); ctx.globalAlpha = 0.8; ctx.drawImage(g2, 0, 0, W, H); }
+ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+}
+renderVals() {
+return { setCanvas: this.setCanvas, onMove: this.onMove, onLeave: this.onLeave, onDown: this.onDown, skip: this.skip };
+}
+}
+
+
+(function () {
+  var comp = new Component({});
+  var vals = function () { return comp.renderVals(); };
+  var v0 = vals();
+  document.querySelectorAll('[data-on]').forEach(function (el) {
+    el.getAttribute('data-on').split(';').forEach(function (pair) {
+      var i = pair.indexOf(':'), ev = pair.slice(0, i), name = pair.slice(i + 1);
+      el.addEventListener(ev, function (e) { var f = vals()[name]; if (typeof f === 'function') f(e); });
+    });
+  });
+  var ifs = document.querySelectorAll('[data-if]'), texts = document.querySelectorAll('[data-text]');
+  var attrs = document.querySelectorAll('[data-attrs]'), styles = document.querySelectorAll('[data-styles]');
+  function apply() {
+    var v = vals();
+    ifs.forEach(function (el) {
+      var on = !!v[el.getAttribute('data-if')], was = el.style.display !== 'none';
+      if (on !== was) {
+        el.style.display = on ? 'contents' : 'none';
+        if (on) el.querySelectorAll('form').forEach(function (f) { f.reset(); });
+      }
+    });
+    texts.forEach(function (el) { var t = String(v[el.getAttribute('data-text')]); if (el.textContent !== t) el.textContent = t; });
+    attrs.forEach(function (el) {
+      el.getAttribute('data-attrs').split(';').forEach(function (pair) {
+        var i = pair.indexOf(':'), a = pair.slice(0, i), val = String(v[pair.slice(i + 1)]);
+        if (el.getAttribute(a) !== val) el.setAttribute(a, val);
+      });
+    });
+    styles.forEach(function (el) {
+      el.getAttribute('data-styles').split(';').forEach(function (pair) {
+        var i = pair.indexOf(':'), p = pair.slice(0, i), val = String(v[pair.slice(i + 1)]);
+        if (el.style.getPropertyValue(p) !== val) el.style.setProperty(p, val);
+      });
+    });
+  }
+  comp.__apply = apply;
+  apply();
+  document.querySelectorAll('[data-ref]').forEach(function (el) { var f = v0[el.getAttribute('data-ref')]; if (typeof f === 'function') f(el); });
+  if (typeof comp.componentDidMount === 'function') comp.componentDidMount();
+  window.addEventListener('pagehide', function () { if (typeof comp.componentWillUnmount === 'function') comp.componentWillUnmount(); });
+})();
+
+</script>
+</body>
+</html>
