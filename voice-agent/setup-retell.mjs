@@ -83,8 +83,8 @@ const agentBody = {
   pronunciation_dictionary: [
     { word: "Qoraflow", alphabet: "ipa", phoneme: "ˈkɔːrəfloʊ" },
     { word: "Qora", alphabet: "ipa", phoneme: "ˈkɔːrə" },
-    { word: "Anudeep", alphabet: "ipa", phoneme: "ʌnuːˈdiːp" },
-    { word: "Cherukupalli", alphabet: "ipa", phoneme: "tʃeɪruːkuːˈpɑːli" },
+    { word: "Anudeep", alphabet: "ipa", phoneme: "ɑːnuˈd̪iːp" },
+    { word: "Cherukupalli", alphabet: "ipa", phoneme: "tʃeɾukuˈpɑlːi" },
   ],
 };
 if (!agentBody.voice_id) {
