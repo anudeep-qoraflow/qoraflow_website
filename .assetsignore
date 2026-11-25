@@ -1,0 +1,11 @@
+# Files in the repo that must not be served as public website files.
+.git
+.gitignore
+.assetsignore
+.dev.vars
+.wrangler
+node_modules
+worker
+voice-agent
+wrangler.jsonc
+README.txt

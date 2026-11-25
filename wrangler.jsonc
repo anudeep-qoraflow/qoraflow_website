@@ -1,0 +1,17 @@
+// Deploy config for the qoraflow.com Worker (used by Cloudflare's Git builds and `wrangler dev`).
+{
+  "name": "qoraflow-website",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-09-24",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    // Only /api/* runs the Worker code; everything else is served straight from the site files.
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    // Not secret. The Retell API key is a Worker secret: `npx wrangler secret put RETELL_API_KEY`.
+    "RETELL_AGENT_ID": "agent_dea5f07b5bbfb9500ee31ea67f"
+  },
+  "observability": { "enabled": true }
+}
