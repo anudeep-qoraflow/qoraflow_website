@@ -2,8 +2,8 @@ QORAFLOW WEBSITE — READY TO HOST
 ================================
 
 Files
-  index.html     Home page (intro, AI core, features, how it works, app, pricing, FAQ, contact, talk mode)
   about.html     About us
+  index.html     Home page (intro, AI core, features, how it works, app, pricing, FAQ, contact, talk mode)
   privacy.html   Privacy Policy
   terms.html     Terms of Service
   favicon.svg    Browser tab icon
@@ -30,7 +30,6 @@ BEFORE YOU GO LIVE
     (company name, address, effective date, retention period, etc.)
   - The contact form currently opens the visitor's email app addressed to hello@qoraflow.com.
     To receive submissions directly, connect it to a form service such as Formspree.
-  - "Log in" links point to https://app.qoraflow.com
   - Have an attorney review the Privacy Policy and Terms of Service.
 
 VOICE AGENT ("Talk to Qoraflow")
