@@ -27,6 +27,20 @@ const SCENARIOS = {
 
 const LANGUAGES = { en: "English", es: "Spanish" };
 
+// The agent's first sentence is fixed here, not written by the AI, so the
+// introduction is said once per page visit and never repeated on a restart.
+const DEMO_OPENERS = {
+  dental: "Thank you for calling Bright Smile Dental, this is Qora. How can I help you today?",
+  hvac: "Thanks for calling CoolAir Heating and Cooling, this is Qora. How can I help?",
+  salon: "Thank you for calling Luxe Hair Studio, this is Qora. How can I help you today?",
+};
+function openingLine(scenarioKey, firstName, restarted) {
+  if (restarted) return firstName ? `Hi again, ${firstName}! Where were we?` : "Hi again! Where were we?";
+  if (DEMO_OPENERS[scenarioKey]) return DEMO_OPENERS[scenarioKey];
+  const hi = firstName ? `Hi ${firstName}, ` : "Hi, ";
+  return `${hi}I'm Qora from Qoraflow. We build AI voice agents that answer the phone for businesses like HVAC companies and dental clinics. What can I help you with?`;
+}
+
 // Same signing as worker/call-events.js: lets the page follow only its own call.
 async function sign(callId, secret) {
   const key = await crypto.subtle.importKey(
@@ -118,6 +132,10 @@ export async function onRequestPost({ request, env }) {
   // null = first call on this page; "" = a restart whose transcript isn't available.
   const prev = await previousTranscript(body.prev_call_id, body.prev_sig, env);
 
+  const first = visitorName.split(/\s+/)[0] || "";
+  const firstName = first.charAt(0).toUpperCase() + first.slice(1);
+  const opening = openingLine(scenarioKey, firstName, prev !== null);
+
   const sdkVersion = request.headers.get("X-Retell-Client-JS-SDK-Version");
   const upstream = await fetch("https://api.retellai.com/v3/create-web-call", {
     method: "POST",
@@ -134,6 +152,7 @@ export async function onRequestPost({ request, env }) {
         visitor_name: visitorName,
         returning: prev === null ? "no" : "yes",
         previous_conversation: prev || "(not available)",
+        opening_line: opening,
       },
       // Shows on each call in Retell's Call History, so you can follow up.
       metadata: { source: "website", visitor_name: visitorName, visitor_phone: visitorPhone, scenario: scenarioKey, page_path: pagePath },

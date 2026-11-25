@@ -46,8 +46,9 @@ const prompt = await readFile(join(here, "prompt.md"), "utf8");
 const llmBody = {
   model: process.env.RETELL_MODEL || "claude-5.5-haiku",
   general_prompt: prompt,
-  // No begin_message: the agent writes its own opener from the prompt,
-  // so demo scenarios can open as the demo business.
+  // The first sentence is chosen by the Worker (worker/web-call.js) per call:
+  // the short intro on the first call, "Hi again" on a restart.
+  begin_message: "{{opening_line}}",
   start_speaker: "agent",
   default_dynamic_variables: {
     scenario: "The visitor wants to learn about Qoraflow.",
@@ -55,6 +56,7 @@ const llmBody = {
     visitor_name: "there",
     returning: "no",
     previous_conversation: "(not available)",
+    opening_line: "Hi, I'm Qora from Qoraflow. What can I help you with?",
   },
 };
 
