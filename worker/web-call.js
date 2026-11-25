@@ -40,6 +40,34 @@ async function sign(callId, secret) {
   return btoa(String.fromCharCode(...new Uint8Array(mac))).replace(/[+/=]/g, (c) => ({ "+": "-", "/": "_", "=": "" })[c]);
 }
 
+function safeEqual(a, b) {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+
+// When a visitor taps Start again on the same page, the page sends the
+// previous call's id and signature. We fetch that call's transcript so the
+// agent continues the conversation instead of introducing itself again.
+async function previousTranscript(callId, sig, env) {
+  if (typeof callId !== "string" || typeof sig !== "string") return null;
+  if (!/^[A-Za-z0-9_-]{6,100}$/.test(callId)) return null;
+  if (!safeEqual(sig, await sign(callId, env.RETELL_API_KEY))) return null;
+  try {
+    const res = await fetch(`https://api.retellai.com/v2/get-call/${callId}`, {
+      headers: { Authorization: `Bearer ${env.RETELL_API_KEY}` },
+      signal: AbortSignal.timeout(2500),
+    });
+    if (!res.ok) return "";
+    const call = await res.json();
+    const t = typeof call.transcript === "string" ? call.transcript.trim() : "";
+    return t.length > 2000 ? "..." + t.slice(-2000) : t;
+  } catch {
+    return "";
+  }
+}
+
 function json(body, status, origin) {
   const headers = { "Content-Type": "application/json", "Cache-Control": "no-store" };
   if (origin) {
@@ -87,6 +115,9 @@ export async function onRequestPost({ request, env }) {
     return json({ error: "Please enter your name and phone number." }, 400, origin);
   }
 
+  // null = first call on this page; "" = a restart whose transcript isn't available.
+  const prev = await previousTranscript(body.prev_call_id, body.prev_sig, env);
+
   const sdkVersion = request.headers.get("X-Retell-Client-JS-SDK-Version");
   const upstream = await fetch("https://api.retellai.com/v3/create-web-call", {
     method: "POST",
@@ -101,6 +132,8 @@ export async function onRequestPost({ request, env }) {
         scenario: SCENARIOS[scenarioKey],
         language: LANGUAGES[languageKey],
         visitor_name: visitorName,
+        returning: prev === null ? "no" : "yes",
+        previous_conversation: prev || "(not available)",
       },
       // Shows on each call in Retell's Call History, so you can follow up.
       metadata: { source: "website", visitor_name: visitorName, visitor_phone: visitorPhone, scenario: scenarioKey, page_path: pagePath },

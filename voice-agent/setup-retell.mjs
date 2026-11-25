@@ -53,6 +53,8 @@ const llmBody = {
     scenario: "The visitor wants to learn about Qoraflow.",
     language: "English",
     visitor_name: "there",
+    returning: "no",
+    previous_conversation: "(not available)",
   },
 };
 
@@ -79,6 +81,8 @@ const agentBody = {
   pronunciation_dictionary: [
     { word: "Qoraflow", alphabet: "ipa", phoneme: "ˈkɔːrəfloʊ" },
     { word: "Qora", alphabet: "ipa", phoneme: "ˈkɔːrə" },
+    { word: "Anudeep", alphabet: "ipa", phoneme: "ʌnuːˈdiːp" },
+    { word: "Cherukupalli", alphabet: "ipa", phoneme: "tʃeɪruːkuːˈpɑːli" },
   ],
 };
 if (!agentBody.voice_id) {
