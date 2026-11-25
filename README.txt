@@ -26,7 +26,7 @@ Any web host / cPanel
   Upload all files to the public_html (or www) folder.
 
 BEFORE YOU GO LIVE
-  - Fill in the [bracketed] placeholders: FAQ setup time, Privacy Policy and Terms
+  - Fill in the [bracketed] placeholders: Privacy Policy and Terms
     (company name, address, effective date, retention period, etc.)
   - The contact form currently opens the visitor's email app addressed to hello@qoraflow.com.
     To receive submissions directly, connect it to a form service such as Formspree.
