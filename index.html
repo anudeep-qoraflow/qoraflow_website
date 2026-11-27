@@ -852,7 +852,7 @@ s.setHeader = function (el) { if (el) s.hdr = el; };
 s.openContact = function () { s.form = {}; s.setState({ contact: true, sent: false, menu: false, cErr: '', cSending: false }); setTimeout(s.renderTurnstile, 0); };
 s.closeContact = function () { s.setState({ contact: false, sent: false, cErr: '' }); };
 s.tsBox = null; s.tsId = null; s.tsQueue = [];
-s.tsKey = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? '1x00000000000000000000AA' : '0x4AAAAAAAGEKRbNp3BD8OkDG';
+s.tsKey = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? '1x00000000000000000000AA' : '0x4AAAAAAGEKRbNp3BD8OkDG';
 s.setTurnstileBox = function (el) { if (el) s.tsBox = el; };
 s.loadTurnstile = function (cb) {
 if (window.turnstile) { cb(); return; }
