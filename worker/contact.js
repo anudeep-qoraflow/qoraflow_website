@@ -11,9 +11,12 @@
 //   4. Cloudflare Turnstile token, verified server-side (hostname checked).
 //   5. At most RATE_LIMIT sends per visitor IP per hour (KV counter).
 //   6. Resend API key and Turnstile secret are Worker secrets, never in the page.
+// After the lead email is sent, the visitor gets a branded confirmation email
+// (fixed wording; only a cleaned first name is personalised; at most one per
+// email address per day, so the form can't be used to spam someone).
 //
 // Secrets: RESEND_API_KEY, TURNSTILE_SECRET_KEY
-// Vars (wrangler.jsonc): CONTACT_TO, CONTACT_FROM, TURNSTILE_HOSTNAMES
+// Vars (wrangler.jsonc): CONTACT_TO, CONTACT_FROM, CONFIRM_FROM, EMAIL_ASSETS_URL, TURNSTILE_HOSTNAMES
 // Binding: CONTACT_LIMITS (KV namespace)
 
 const ALLOWED_ORIGINS = new Set([
@@ -29,6 +32,8 @@ const RATE_LIMIT = 3; // sends per visitor per hour
 const MAX_BODY_BYTES = 10_000;
 const SITEVERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 const RESEND_URL = "https://api.resend.com/emails";
+import { customerConfirmation, leadNotification, safeFirstName } from "./emails.js";
+
 const EMAIL_RE = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}$/;
 
 function json(body, status) {
@@ -57,9 +62,6 @@ function clean(value, max) {
 }
 function oneLine(value) {
   return value.replace(/\s+/g, " ").trim();
-}
-function escapeHtml(value) {
-  return value.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 }
 
 function validate(body) {
@@ -109,29 +111,11 @@ async function underRateLimit(ip, env) {
   return true;
 }
 
-async function sendEmail(f, env) {
-  const to = env.CONTACT_TO || "contact@qoraflow.com";
-  const from = env.CONTACT_FROM || "Qoraflow Website <website@qoraflow.com>";
-  const subject = `New trial request: ${f.business}`.slice(0, 200);
-  const rows = [
-    ["Full name", f.name],
-    ["Email", f.email],
-    ["Phone", f.phone],
-    ["Business name", f.business],
-  ];
-  const text = [...rows.map(([k, v]) => `${k}: ${v}`), "", "About the business:", f.message, "", "Sent from the contact form on qoraflow.com. Reply to this email to answer the visitor."].join("\n");
-  const html =
-    `<h2 style="font-family:Arial,sans-serif">New trial request from qoraflow.com</h2>` +
-    `<table style="font-family:Arial,sans-serif;font-size:15px;border-collapse:collapse">` +
-    rows.map(([k, v]) => `<tr><td style="padding:4px 12px 4px 0;color:#555"><b>${k}</b></td><td style="padding:4px 0">${escapeHtml(v)}</td></tr>`).join("") +
-    `</table>` +
-    `<p style="font-family:Arial,sans-serif;font-size:15px"><b>About the business:</b><br>${escapeHtml(f.message).replace(/\n/g, "<br>")}</p>` +
-    `<p style="font-family:Arial,sans-serif;font-size:13px;color:#777">Reply to this email to answer the visitor directly.</p>`;
-
+async function resendSend(env, payload) {
   const res = await fetch(RESEND_URL, {
     method: "POST",
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ from, to: [to], reply_to: f.email, subject, text, html }),
+    body: JSON.stringify(payload),
     signal: AbortSignal.timeout(8000),
   });
   if (!res.ok) {
@@ -141,6 +125,39 @@ async function sendEmail(f, env) {
     return false;
   }
   return true;
+}
+
+function assetsUrl(env) {
+  return String(env.EMAIL_ASSETS_URL || "https://qoraflow.com/email").replace(/\/$/, "");
+}
+
+// The lead, to the Qoraflow inbox. Reply-To is the visitor.
+async function sendLead(f, env) {
+  const mail = leadNotification({ f, assets: assetsUrl(env) });
+  return resendSend(env, {
+    from: env.CONTACT_FROM || "Qoraflow Website <website@qoraflow.com>",
+    to: [env.CONTACT_TO || "contact@qoraflow.com"],
+    reply_to: f.email,
+    subject: mail.subject,
+    html: mail.html,
+    text: mail.text,
+  });
+}
+
+// The confirmation, to the visitor. Max one per email address per 24 hours.
+async function sendConfirmation(f, env) {
+  const key = `confirm:${f.email}`;
+  if (await env.CONTACT_LIMITS.get(key)) return false;
+  await env.CONTACT_LIMITS.put(key, "1", { expirationTtl: 86400 });
+  const mail = customerConfirmation({ firstName: safeFirstName(f.name), assets: assetsUrl(env), siteUrl: "https://qoraflow.com" });
+  return resendSend(env, {
+    from: env.CONFIRM_FROM || "Qoraflow <contact@qoraflow.com>",
+    to: [f.email],
+    reply_to: env.CONTACT_TO || "contact@qoraflow.com",
+    subject: mail.subject,
+    html: mail.html,
+    text: mail.text,
+  });
 }
 
 export async function onRequestPost({ request, env }) {
@@ -174,8 +191,14 @@ export async function onRequestPost({ request, env }) {
   if (!(await underRateLimit(ip, env))) {
     return json({ error: "You've already sent us a few requests. We'll be in touch soon." }, 429);
   }
-  if (!(await sendEmail(fields, env))) {
+  if (!(await sendLead(fields, env))) {
     return json({ error: "We couldn't send your details." }, 502);
+  }
+  // The lead is safe with us; a failed confirmation must not show the visitor an error.
+  try {
+    await sendConfirmation(fields, env);
+  } catch (err) {
+    console.error("Confirmation email failed", String(err).slice(0, 200));
   }
   return json({ ok: true }, 200);
 }

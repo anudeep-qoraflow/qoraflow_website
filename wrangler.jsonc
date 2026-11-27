@@ -15,7 +15,9 @@
     // Contact form (worker/contact.js). Not secret. Secrets: RESEND_API_KEY, TURNSTILE_SECRET_KEY.
     "CONTACT_TO": "contact@qoraflow.com",
     "CONTACT_FROM": "Qoraflow Website <website@qoraflow.com>",
-    "TURNSTILE_HOSTNAMES": "qoraflow.com,www.qoraflow.com"
+    "TURNSTILE_HOSTNAMES": "qoraflow.com,www.qoraflow.com",
+    "CONFIRM_FROM": "Qoraflow <contact@qoraflow.com>",
+    "EMAIL_ASSETS_URL": "https://qoraflow.com/email"
   },
   // Per-visitor hourly counter for the contact form (3 sends per hour).
   "kv_namespaces": [
