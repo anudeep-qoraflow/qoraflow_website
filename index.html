@@ -1109,6 +1109,13 @@ if (this.actx) { try { this.actx.close(); } catch (e) {} }
 this.analyser = null; this.freq = null; this.stream = null; this.actx = null;
 }
 componentDidMount() {
+try {
+if (location.hash === '#contact-form') {
+var self = this;
+setTimeout(function () { self.openContact(); }, 250);
+try { history.replaceState(null, '', location.pathname + location.search); } catch (err) {}
+}
+} catch (err) {}
 try { window.__qfSeen = true; } catch (err) {}
 try { sessionStorage.setItem('qf-seen', '1'); sessionStorage.removeItem('qf-skip'); } catch (err) {}
 try { if (String(window.name || '').indexOf('qfseen') < 0) window.name = (window.name ? window.name + ' ' : '') + 'qfseen'; } catch (err) {}
