@@ -2,6 +2,20 @@
 
 Every change that goes live on the website, newest first.
 
+## v1.3.0 — 27 Nov 2026
+
+- **Customers get a confirmation email.** After they send the contact form, visitors receive a branded "You're in!" email in the Qoraflow style. It has:
+  - a hero image,
+  - the three "What happens next" steps (we reach out within 2 business days),
+  - an Explore Qoraflow button,
+  - Anudeep's business card.
+- **Safety guards on the confirmation:**
+  - fixed wording, with only a cleaned first name added,
+  - at most one per email address per day,
+  - sent only after the lead reaches us.
+- **Redesigned lead email** to contact@qoraflow.com, in the same style, with a details panel and Call now / Email them buttons.
+- **Email images** are served from qoraflow.com/email/ and can be rebuilt with `email-assets/build.sh`.
+
 ## v1.2.1 — 27 Nov 2026
 
 - **Fix:** the contact form's bot check showed "Invalid sitekey", so nobody could send the form. The wrong public Turnstile key had been typed into the page (one extra letter). It's now corrected.
