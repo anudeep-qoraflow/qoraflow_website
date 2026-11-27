@@ -19,7 +19,7 @@
   },
   // Per-visitor hourly counter for the contact form (3 sends per hour).
   "kv_namespaces": [
-    { "binding": "CONTACT_LIMITS", "id": "REPLACE_WITH_REAL_KV_ID_BEFORE_RELEASE" }
+    { "binding": "CONTACT_LIMITS", "id": "ae956e95f35a4f08959dd42c0b1b96a8" }
   ],
   "observability": { "enabled": true }
 }
