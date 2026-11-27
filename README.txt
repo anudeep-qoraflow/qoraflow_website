@@ -28,7 +28,7 @@ Any web host / cPanel
 BEFORE YOU GO LIVE
   - Fill in the [bracketed] placeholders: Privacy Policy and Terms
     (company name, address, effective date, retention period, etc.)
-  - The contact form currently opens the visitor's email app addressed to hello@qoraflow.com.
+  - The contact form currently opens the visitor's email app addressed to contact@qoraflow.com.
     To receive submissions directly, connect it to a form service such as Formspree.
   - Have an attorney review the Privacy Policy and Terms of Service.
 
