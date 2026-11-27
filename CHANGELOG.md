@@ -2,6 +2,10 @@
 
 Every change that goes live on the website, newest first.
 
+## v1.2.1 — 27 Nov 2026
+
+- **Fix:** the contact form's bot check showed "Invalid sitekey", so nobody could send the form. The wrong public Turnstile key had been typed into the page (one extra letter). It's now corrected.
+
 ## v1.2.0 — 27 Nov 2026
 
 - **The contact form sends directly.** Pressing "Request a callback" now emails the details to contact@qoraflow.com (through Resend). The visitor's email app never opens. Replying to that email in Zoho goes straight to the visitor.
