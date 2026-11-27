@@ -112,10 +112,6 @@ ${button(siteUrl, "Explore Qoraflow", OR, "#000000")}
 <p style="margin:22px 0 0 0;font-size:16px;line-height:1.6;color:#D5DEEC;">Warmly,<br><b style="color:${INK};font-size:17px;">The Qoraflow team</b></p>
 </td></tr>
 
-<tr><td class="px" style="padding:26px 36px 8px 36px;" bgcolor="#000000">
-<img src="${assets}/card-front.jpg" width="528" alt="Anudeep Cherukupalli, Founder, Qoraflow. contact@qoraflow.com" style="display:block;border:0;width:100%;max-width:528px;height:auto;border-radius:14px;">
-</td></tr>
-
 <tr><td class="px" style="padding:22px 36px 30px 36px;font-family:${FONT};" bgcolor="#000000">
 <div style="height:1px;line-height:1px;background:${LINE};margin-bottom:18px;">&nbsp;</div>
 <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:${DIM};">Every call answered. Every booking made.</div>
@@ -141,9 +137,6 @@ ${button(siteUrl, "Explore Qoraflow", OR, "#000000")}
     "",
     "Warmly,",
     "The Qoraflow team",
-    "",
-    "Anudeep Cherukupalli, Founder, Qoraflow",
-    "contact@qoraflow.com",
     "",
     "Every call answered. Every booking made.",
   ].join("\n");

@@ -20,7 +20,7 @@ import io
 from PIL import Image
 for name, b64 in data.items():
     raw = base64.b64decode(b64)
-    if name in ("card-front.png", "hero.png"):  # photos: compressed JPEG keeps emails light
+    if name in ("hero.png",):  # photos: compressed JPEG keeps emails light
         jpg = "email/" + name.replace(".png", ".jpg")
         Image.open(io.BytesIO(raw)).convert("RGB").save(jpg, "JPEG", quality=86, optimize=True, progressive=True)
         print("wrote " + jpg)

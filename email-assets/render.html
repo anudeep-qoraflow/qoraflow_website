@@ -70,7 +70,6 @@ try {
   const M = {};
   M.dark = await loadImg(uri(markSVG('#FFFFFF')));
   const make = (name, w, h, fn) => { const c = document.createElement('canvas'); c.width = w; c.height = h; fn(c.getContext('2d'), w, h, M); out[name] = c.toDataURL('image/png').split(',')[1]; };
-  make('card-front.png', 1200, Math.round(1200 * 600 / 1050), drawFront);
   make('hero.png', 1200, 520, drawHero);
   make('logo-lockup.png', lockupW(132), 132, drawLockup);
   const icon = (ctx, W, H) => { ctx.fillStyle = '#000'; ctx.beginPath(); ctx.roundRect(0, 0, W, H, W * .23); ctx.fill(); ctx.drawImage(M.dark, W * .1, W * .1, W * .8, W * .8); };
