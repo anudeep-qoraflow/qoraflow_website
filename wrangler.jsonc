@@ -11,7 +11,15 @@
   },
   "vars": {
     // Not secret. The Retell API key is a Worker secret: `npx wrangler secret put RETELL_API_KEY`.
-    "RETELL_AGENT_ID": "agent_dea5f07b5bbfb9500ee31ea67f"
+    "RETELL_AGENT_ID": "agent_dea5f07b5bbfb9500ee31ea67f",
+    // Contact form (worker/contact.js). Not secret. Secrets: RESEND_API_KEY, TURNSTILE_SECRET_KEY.
+    "CONTACT_TO": "contact@qoraflow.com",
+    "CONTACT_FROM": "Qoraflow Website <website@qoraflow.com>",
+    "TURNSTILE_HOSTNAMES": "qoraflow.com,www.qoraflow.com"
   },
+  // Per-visitor hourly counter for the contact form (3 sends per hour).
+  "kv_namespaces": [
+    { "binding": "CONTACT_LIMITS", "id": "REPLACE_WITH_REAL_KV_ID_BEFORE_RELEASE" }
+  ],
   "observability": { "enabled": true }
 }

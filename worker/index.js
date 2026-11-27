@@ -4,6 +4,7 @@
 
 import * as webCall from "./web-call.js";
 import * as callEvents from "./call-events.js";
+import * as contact from "./contact.js";
 
 export default {
   async fetch(request, env) {
@@ -16,6 +17,11 @@ export default {
     if (pathname === "/api/call-events") {
       return request.method === "GET"
         ? callEvents.onRequestGet(context)
+        : new Response("Method not allowed", { status: 405 });
+    }
+    if (pathname === "/api/contact") {
+      return request.method === "POST"
+        ? contact.onRequestPost(context)
         : new Response("Method not allowed", { status: 405 });
     }
     if (pathname.startsWith("/api/")) return new Response("Not found", { status: 404 });

@@ -286,7 +286,10 @@ Contact us</button>
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Phone number<input autocomplete="tel" class="qf-input" data-on="input:onField" name="phone" placeholder="(555) 123 4567" required="" type="tel"/></label>
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Business name<input autocomplete="organization" class="qf-input" data-on="input:onField" name="business" placeholder="Your business name" required=""/></label>
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">About your business<textarea class="qf-input" data-on="input:onField" name="message" placeholder="A short description, e.g. a family dental clinic in Phoenix open Mon to Sat" required="" rows="3" style="resize: vertical"></textarea></label>
-<button style="margin-top: 4px; min-height: 50px; border: none; border-radius: 999px; background: #3DB8FF; color: #000000; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 0 30px rgba(61,184,255,0.45)" type="submit">Request a callback</button>
+<div aria-hidden="true" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0"><label>Website<input autocomplete="off" name="website" tabindex="-1" type="text"/></label></div>
+<div data-ref="setTurnstileBox" style="min-height: 65px; display: flex; justify-content: center"></div>
+<div data-if="showContactErr" style="display: none"><p aria-live="polite" data-text="contactErr" role="alert" style="margin: 0; color: #FFB547; font-size: 14px; font-weight: 600; text-align: center"></p></div>
+<button aria-live="polite" data-attrs="aria-busy:contactBusy" style="margin-top: 4px; min-height: 50px; border: none; border-radius: 999px; background: #3DB8FF; color: #000000; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 0 30px rgba(61,184,255,0.45)" type="submit"><span data-text="contactBtn">Request a callback</span></button>
 <p style="margin: 0; text-align: center; font-size: 13px; color: #9AA6BA">By submitting, you agree to our <a href="terms.html" style="color: #3DB8FF">Terms of Service</a> and <a href="privacy.html" style="color: #3DB8FF">Privacy Policy</a>.</p>
 <p style="margin: 0; text-align: center; font-size: 14px; color: #C9D2E3">Or email us directly at <a href="mailto:contact@qoraflow.com" style="color: #3DB8FF; font-weight: 700">contact@qoraflow.com</a></p>
 </form>
@@ -294,8 +297,8 @@ Contact us</button>
 <div data-if="contactSent" style="display: none">
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 24px 0 8px">
 <span style="width: 64px; height: 64px; border-radius: 50%; background: rgba(61,184,255,0.15); border: 1px solid #3DB8FF; box-shadow: 0 0 40px rgba(61,184,255,0.45); display: flex; align-items: center; justify-content: center; color: #3DB8FF"><svg aria-hidden="true" fill="none" height="28" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="28"><path d="M5 12l5 5L20 7"></path></svg></span>
-<h2 style="margin: 0; font-size: 26px; font-weight: 800">Almost there!</h2>
-<p style="margin: 0; color: #C9D2E3; font-size: 15px; max-width: 340px">Your email app should now be open with your details filled in. Hit send and we'll get in touch to set up your free 14 day trial.</p>
+<h2 style="margin: 0; font-size: 26px; font-weight: 800">Thanks, we got it!</h2>
+<p style="margin: 0; color: #C9D2E3; font-size: 15px; max-width: 340px">Your details are with our team. We'll be in touch soon to set up your free 14 day trial.</p>
 <button data-on="click:closeContact" style="min-height: 46px; padding: 0 28px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.25); background: transparent; color: #FFFFFF; font: inherit; font-weight: 700; cursor: pointer" type="button">Done</button>
 </div>
 </div>
@@ -823,7 +826,7 @@ class Component extends DCLogic {
 constructor(props) {
 super(props);
 var s = this;
-s.state = { mic: 'off', heroHidden: false, menu: false, contact: false, sent: false, talk: false, talkMsg: '', agentTalking: false, gate: false, gateErr: '' };
+s.state = { mic: 'off', heroHidden: false, menu: false, contact: false, sent: false, talk: false, talkMsg: '', agentTalking: false, gate: false, gateErr: '', cSending: false, cErr: '' };
 s.tk = 0; s.lockT = 0;
 s.skip = false;
 try { if (window.__qfSeen) s.skip = true; } catch (err) {}
@@ -846,15 +849,55 @@ s.setState({ talk: false, mic: 'off' });
 };
 s.hdr = null; s.hdrShown = true; s.lastY = 0; s.form = {};
 s.setHeader = function (el) { if (el) s.hdr = el; };
-s.openContact = function () { s.form = {}; s.setState({ contact: true, sent: false, menu: false }); };
-s.closeContact = function () { s.setState({ contact: false, sent: false }); };
+s.openContact = function () { s.form = {}; s.setState({ contact: true, sent: false, menu: false, cErr: '', cSending: false }); setTimeout(s.renderTurnstile, 0); };
+s.closeContact = function () { s.setState({ contact: false, sent: false, cErr: '' }); };
+s.tsBox = null; s.tsId = null; s.tsQueue = [];
+s.tsKey = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? '1x00000000000000000000AA' : '0x4AAAAAAAGEKRbNp3BD8OkDG';
+s.setTurnstileBox = function (el) { if (el) s.tsBox = el; };
+s.loadTurnstile = function (cb) {
+if (window.turnstile) { cb(); return; }
+s.tsQueue.push(cb);
+if (document.getElementById('qf-turnstile-js')) return;
+window.__qfTurnstileReady = function () { var q = s.tsQueue; s.tsQueue = []; q.forEach(function (f) { try { f(); } catch (err) {} }); };
+var sc = document.createElement('script');
+sc.id = 'qf-turnstile-js'; sc.async = true; sc.defer = true;
+sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=__qfTurnstileReady';
+document.head.appendChild(sc);
+};
+s.renderTurnstile = function () {
+if (!s.tsBox) return;
+s.loadTurnstile(function () {
+try {
+if (s.tsId !== null) { window.turnstile.reset(s.tsId); return; }
+s.tsId = window.turnstile.render(s.tsBox, { sitekey: s.tsKey, action: 'contact', theme: 'dark', size: 'flexible' });
+} catch (err) {}
+});
+};
+s.resetTurnstile = function () { try { if (window.turnstile && s.tsId !== null) window.turnstile.reset(s.tsId); } catch (err) {} };
 s.onField = function (e) { if (e && e.target) s.form[e.target.name] = e.target.value; };
 s.onSubmit = function (e) {
 if (e) e.preventDefault();
-var f = s.form, lines = ['Full name: ' + (f.name || ''), 'Email: ' + (f.email || ''), 'Phone: ' + (f.phone || ''), 'Business name: ' + (f.business || ''), '', 'About the business:', f.message || ''];
-var url = 'mailto:contact@qoraflow.com?subject=' + encodeURIComponent('Free 14 day trial request: ' + (f.business || f.name || 'website')) + '&body=' + encodeURIComponent(lines.join('\n'));
-try { window.location.href = url; } catch (err) {}
-s.setState({ sent: true });
+if (s.state.cSending) return;
+var fd = null;
+try { if (e && e.target) fd = new FormData(e.target); } catch (err) {}
+var get = function (k) { return fd ? String(fd.get(k) || '') : String(s.form[k] || ''); };
+var token = '';
+try { if (window.turnstile && s.tsId !== null) token = window.turnstile.getResponse(s.tsId) || ''; } catch (err) {}
+if (!token && fd) token = String(fd.get('cf-turnstile-response') || '');
+if (!token) { s.setState({ cErr: 'Please wait a moment for the security check to finish, then press the button again.' }); return; }
+s.setState({ cSending: true, cErr: '' });
+var payload = { name: get('name'), email: get('email'), phone: get('phone'), business: get('business'), message: get('message'), website: get('website'), turnstile_token: token };
+fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+.then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok && !!(d && d.ok), d: d || {} }; }); })
+.then(function (res) {
+if (res.ok) { s.setState({ cSending: false, sent: true }); return; }
+s.setState({ cSending: false, cErr: (res.d.error || 'Something went wrong.') + ' You can also email us at contact@qoraflow.com.' });
+s.resetTurnstile();
+})
+.catch(function () {
+s.setState({ cSending: false, cErr: 'We could not reach our server. Please email us at contact@qoraflow.com.' });
+s.resetTurnstile();
+});
 };
 s.toggleMenu = function () { s.setState({ menu: !s.state.menu }); };
 s.closeMenu = function () { s.setState({ menu: false }); };
@@ -1411,7 +1454,7 @@ renderVals() {
 var d = this.text, m = this.state.mic;
 return {
 letters: d.letters, navLetters: d.navLetters, badgeWords: d.badgeWords, line1: d.line1, line2: d.line2,
-setCanvas: this.setCanvas, setStage: this.setStage, industries: d.industries, appPoints: d.appPoints, chart: d.chart, calls: d.calls, compare: d.compare, plans: d.plans, values: d.values, faqs: d.faqs, steps: d.steps, wave: d.wave, bubbles: d.bubbles, setHeader: this.setHeader, enterTalk: this.enterTalk, exitTalk: this.exitTalk, talk: this.state.talk, rootCls: (this.state.talk ? 'qf-talking ' : '') + (this.skip ? 'qf-skip' : ''), micLabel2: ({ on: 'Stop talking', connecting: 'Connecting…', error: 'Try again', denied: 'Try again' })[this.state.mic] || 'Start talking', mic: this.state.mic, micBusy: this.state.mic === 'connecting' ? 'true' : 'false', showTalkMsg: this.state.mic === 'error' && !!this.state.talkMsg, talkMsg: this.state.talkMsg, gateOpen: this.state.gate, openGate: this.openGate, closeGate: this.closeGate, onGateSubmit: this.onGateSubmit, setGateForm: this.setGateForm, setTalkContact: this.setTalkContact, showGateErr: !!this.state.gateErr, gateErr: this.state.gateErr, hdrTf: this.state.hdrUp ? 'translateY(-110%)' : 'translateY(0)', openContact: this.openContact, closeContact: this.closeContact, onField: this.onField, onSubmit: this.onSubmit, contactOpen: this.state.contact, contactForm: !this.state.sent, contactSent: this.state.sent, toggleMenu: this.toggleMenu, closeMenu: this.closeMenu, menuFeatures: this.menuFeatures, menuHome: this.menuHome, menuOpen: this.state.menu, menuClosed: !this.state.menu, menuLabel: this.state.menu ? 'Close menu' : 'Open menu', goFeatures: this.goFeatures, goHome: this.goHome, features: d.features, heroPE: this.state.heroHidden ? 'none' : 'auto', onMove: this.onMove, onLeave: this.onLeave, onDown: this.onDown, onTapUp: this.onTapUp, onMic: this.onMic,
+setCanvas: this.setCanvas, setStage: this.setStage, industries: d.industries, appPoints: d.appPoints, chart: d.chart, calls: d.calls, compare: d.compare, plans: d.plans, values: d.values, faqs: d.faqs, steps: d.steps, wave: d.wave, bubbles: d.bubbles, setHeader: this.setHeader, enterTalk: this.enterTalk, exitTalk: this.exitTalk, talk: this.state.talk, rootCls: (this.state.talk ? 'qf-talking ' : '') + (this.skip ? 'qf-skip' : ''), micLabel2: ({ on: 'Stop talking', connecting: 'Connecting…', error: 'Try again', denied: 'Try again' })[this.state.mic] || 'Start talking', mic: this.state.mic, micBusy: this.state.mic === 'connecting' ? 'true' : 'false', showTalkMsg: this.state.mic === 'error' && !!this.state.talkMsg, talkMsg: this.state.talkMsg, gateOpen: this.state.gate, openGate: this.openGate, closeGate: this.closeGate, onGateSubmit: this.onGateSubmit, setGateForm: this.setGateForm, setTalkContact: this.setTalkContact, showGateErr: !!this.state.gateErr, gateErr: this.state.gateErr, hdrTf: this.state.hdrUp ? 'translateY(-110%)' : 'translateY(0)', openContact: this.openContact, closeContact: this.closeContact, onField: this.onField, onSubmit: this.onSubmit, contactOpen: this.state.contact, contactForm: !this.state.sent, contactSent: this.state.sent, setTurnstileBox: this.setTurnstileBox, showContactErr: !!this.state.cErr, contactErr: this.state.cErr, contactBtn: this.state.cSending ? 'Sending...' : 'Request a callback', contactBusy: this.state.cSending ? 'true' : 'false', toggleMenu: this.toggleMenu, closeMenu: this.closeMenu, menuFeatures: this.menuFeatures, menuHome: this.menuHome, menuOpen: this.state.menu, menuClosed: !this.state.menu, menuLabel: this.state.menu ? 'Close menu' : 'Open menu', goFeatures: this.goFeatures, goHome: this.goHome, features: d.features, heroPE: this.state.heroHidden ? 'none' : 'auto', onMove: this.onMove, onLeave: this.onLeave, onDown: this.onDown, onTapUp: this.onTapUp, onMic: this.onMic,
 micLabel: m === 'on' ? 'Listening… tap to stop' : (m === 'denied' ? 'Microphone unavailable' : 'Talk to Qoraflow')
 };
 }
