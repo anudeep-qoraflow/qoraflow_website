@@ -2,6 +2,10 @@
 
 Every change that goes live on the website, newest first.
 
+## v1.3.1 — 27 Nov 2026
+
+- **Business card removed from the customer confirmation email.** The name and title lines are also gone from the plain-text version. The card image is no longer on the website.
+
 ## v1.3.0 — 27 Nov 2026
 
 - **Customers get a confirmation email.** After they send the contact form, visitors receive a branded "You're in!" email in the Qoraflow style. It has:
